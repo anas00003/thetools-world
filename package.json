@@ -1,0 +1,11 @@
+{
+  "name": "thetools-world",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TheTools.World static utility tools website for Vercel, starting with image tools.",
+  "scripts": {
+    "build": "node tools/build-site.js",
+    "dev": "node tools/static-server.mjs",
+    "test:smoke": "node tests/smoke-static.mjs"
+  }
+}

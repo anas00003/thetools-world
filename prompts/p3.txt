@@ -1,0 +1,59 @@
+Use `https://toolpilot.vercel.app` as the temporary production domain for ToolPilot and use `pdfbuddy73@gmail.com` as the contact/privacy email.
+
+Current folder:
+`D:\image-tool`
+
+Replace:
+
+* `https://toolpilot.example` → `https://toolpilot.vercel.app`
+* `contact@toolpilot.example` → `pdfbuddy73@gmail.com`
+* `privacy@toolpilot.example` → `pdfbuddy73@gmail.com`
+
+Rules:
+
+* Do not touch The PDF Buddy project.
+* Do not add AdSense code yet.
+* Do not change ToolPilot branding.
+* Do not create new pages.
+* Do not add fake claims.
+* Keep image tools as the only live category.
+
+Update all relevant places:
+
+* canonical URLs
+* Open Graph URLs
+* Twitter card URLs
+* sitemap.xml
+* robots.txt
+* footer links
+* contact page
+* privacy policy
+* terms page
+* package/deployment notes if needed
+* seo-keyword-map.md if it contains domain references
+* standalone-audit.md if it contains domain references
+
+After replacing, run:
+`cd D:\image-tool`
+`npm.cmd run build`
+`npm.cmd run test:smoke`
+
+Search for remaining:
+
+* `toolpilot.example`
+* `contact@toolpilot.example`
+* `privacy@toolpilot.example`
+* `ImagePilot`
+* `PixelFlow`
+* `The PDF Buddy`
+* `Advertisement (Your Ad Here)`
+
+Final output:
+A. Files changed
+B. Domain replaced
+C. Email replaced
+D. Build/test result
+E. Remaining placeholders, if any
+F. Exact git commands
+G. Vercel deployment settings
+H. Final live URLs to verify after deployment

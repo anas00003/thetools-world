@@ -1,0 +1,215 @@
+I want to create a new standalone image utility website from the existing `image-tool/` folder.
+
+Goal:
+Turn `image-tool/` into a clean, polished, SEO-friendly, AdSense-ready standalone website that can be deployed separately on Vercel.
+
+Important:
+This should not be a direct clone of The PDF Buddy.
+The new website must have unique branding, unique copy, clean routes, proper SEO, strong usability, and AdSense approval readiness.
+
+Current situation:
+
+* `image-tool/` currently exists inside The PDF Buddy project.
+* The PDF Buddy already has image tool routes integrated.
+* Now I want to create a separate image-first utility website from scratch using this folder.
+* The new website will be deployed separately on Vercel.
+* The PDF Buddy should remain untouched unless absolutely necessary.
+
+Strict rules:
+
+* Do not touch or modify the main The PDF Buddy pages unless I explicitly ask.
+* Do not touch dirty submodules:
+  `pdf-compressor-server`
+  `word-to-pdf-converter`
+* Do not copy The PDF Buddy branding into the new standalone website.
+* Do not use fake testimonials, fake numbers, fake “trusted by millions” claims, or unverified claims.
+* Do not add misleading download buttons or unsafe AdSense placements.
+* Do not keyword stuff.
+* Do not create thin doorway pages.
+
+Branding:
+Suggest 5 suitable brand names first, then use the best one unless I choose another.
+Preferred style:
+
+* simple
+* utility focused
+* image/photo related
+* suitable for domain and AdSense
+  Examples:
+  Image Buddy, Quick Image Tools, Photo ToolKit, Pixel Resize, Snap Compress.
+
+Tasks:
+
+1. Standalone structure audit
+   Check the current `image-tool/` folder and identify:
+
+* all HTML pages
+* CSS files
+* JS files
+* assets
+* broken relative links
+* dependencies on parent The PDF Buddy files
+* references to The PDF Buddy
+* old PixelFlow references
+* duplicate or unused pages
+* missing legal/support pages
+* missing sitemap/robots files
+
+2. Create standalone site structure
+   Prepare the folder so it can run as a standalone static website on Vercel.
+   Recommended clean routes:
+
+* `/`
+* `/image-compressor`
+* `/image-resizer`
+* `/image-converter`
+* `/bulk-image-tools`
+* `/compress-image-under-100kb`
+* `/compress-image-under-200kb`
+* `/resize-image-for-online-form`
+* `/compress-photo-for-government-form`
+* `/convert-webp-to-jpg`
+* `/png-to-jpg`
+* `/jpg-to-png`
+* `/passport-photo-resizer`
+* `/about`
+* `/contact`
+* `/privacy-policy`
+* `/terms`
+* `/sitemap`
+
+If some tools are not implemented yet, create polished placeholder pages only if they are useful and honest. Do not claim a tool works if it does not.
+
+3. SEO setup
+   For every public page:
+
+* unique title
+* unique meta description
+* one H1
+* clean canonical URL placeholder using the future domain variable
+* Open Graph tags
+* Twitter card tags
+* favicon reference
+* robots meta index, follow only for useful pages
+
+Avoid duplicate titles and duplicate H1s.
+
+4. Homepage design
+   Create a polished image utility homepage with:
+
+* clear hero section
+* search/discovery section
+* tool cards
+* categories
+* “popular image tools” section
+* “for forms and documents” section
+* “privacy-first browser-side tools” section
+* FAQ
+* footer with legal links
+
+5. AdSense approval readiness
+   Add or improve:
+
+* About page
+* Contact page
+* Privacy Policy
+* Terms page
+* clear navigation
+* footer links
+* useful content around tools
+* no fake claims
+* no misleading ads
+* no empty pages
+* no broken pages
+
+Do not add AdSense code yet unless I provide publisher ID.
+
+6. Long-tail keyword plan
+   Create a practical long-tail keyword mapping file:
+   `seo-keyword-map.md`
+
+For each page, include:
+
+* target keyword
+* secondary keywords
+* search intent
+* recommended URL
+* title
+* meta description
+* internal links to add
+* priority: High / Medium / Low
+
+Focus on useful queries like:
+
+* compress image under 100kb
+* compress image under 200kb
+* resize image for online form
+* compress photo for government form
+* resize passport photo online
+* convert webp to jpg online
+* png to jpg converter
+* jpg to png converter
+* bulk image compressor online
+* image compressor for email
+
+7. Internal linking
+   Add strong internal linking:
+
+* homepage to all main tools
+* all tools back to homepage
+* all tools to related tools
+* compressor to resizer/converter/bulk tools
+* resizer to passport/form pages
+* converter to WebP/JPG/PNG pages
+* footer to all major categories and legal pages
+
+Use descriptive anchor text.
+
+8. Sitemap and robots
+   Create:
+
+* `sitemap.xml`
+* `sitemap.html`
+* `robots.txt`
+
+Use placeholder domain:
+`https://example.com`
+and make it easy to replace later with the real domain.
+
+Sitemap should include only clean, useful, indexable URLs.
+
+9. Vercel readiness
+   Add or confirm:
+
+* `vercel.json` if needed for clean routes
+* redirects/rewrites for `.html` files to clean URLs
+* no server dependency if static
+* all links work on Vercel
+* 404 page if useful
+
+10. Testing
+    Create a Playwright smoke test plan or script if possible:
+
+* all routes return 200
+* main tool UI visible
+* no The PDF Buddy references
+* no PixelFlow references
+* title/meta/H1 exists
+* one canonical per page
+* no broken internal links
+* sitemap URLs match pages
+* mobile viewport works
+
+11. Final output
+    Give me:
+
+A. Recommended brand name
+B. What files were changed/created
+C. Standalone readiness status
+D. SEO readiness status
+E. AdSense readiness status
+F. Vercel deployment steps
+G. Remaining issues
+H. Exact commands to run locally
+I. Exact git add/commit commands
+J. What to do after Vercel deployment

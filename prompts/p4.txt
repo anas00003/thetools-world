@@ -1,0 +1,371 @@
+Act as a senior website architect, technical SEO expert, AdSense approval specialist, and Vercel deployment expert.
+
+Project folder:
+`D:\image-tool`
+
+Production domain:
+`https://thetools.world`
+
+New brand:
+`TheTools.World`
+
+Current state:
+
+* The site is currently branded as ToolPilot.
+* It was previously prepared as a standalone static utility website.
+* Current live category is image tools.
+* It has 18 public pages.
+* It uses Vercel/static deployment.
+* AdSense code is not added yet.
+
+Goal:
+Rebrand and restructure the project from ToolPilot to TheTools.World and prepare it for global SEO, AdSense approval, Search Console, Vercel deployment, and future expansion into multiple utility categories.
+
+Important rules:
+
+* Do not touch The PDF Buddy project.
+* Do not add AdSense code yet.
+* Do not create fake tools.
+* Do not claim PDF/text/AI/calculator/QR/developer tools are live unless they actually exist.
+* Do not create indexable coming-soon pages.
+* Do not add fake testimonials, fake users, “trusted by millions,” “#1,” or unverified claims.
+* Do not keyword stuff.
+* Do not create thin doorway pages.
+* Keep image tools as the first live category.
+* Make the site look complete, useful, polished, and trustworthy.
+* Keep all changes low-risk and production-safe.
+
+Branding rules:
+Use brand as:
+`TheTools.World`
+
+Use domain as:
+`https://thetools.world`
+
+Use temporary contact email:
+`pdfbuddy73@gmail.com`
+
+Use tagline:
+`Free online tools for images, files, text, and everyday tasks.`
+
+Use honest homepage positioning:
+`TheTools.World is starting with fast browser-side image tools, with more file, text, calculator, QR, AI, and developer utilities planned.`
+
+Do not say future tools are available unless they exist.
+
+Tasks:
+
+1. Global brand and domain replacement
+   Search and rewrite naturally:
+
+* `ToolPilot` → `TheTools.World`
+* `toolpilot` → suitable lowercase project reference such as `thetoolsworld`
+* `https://toolpilot.vercel.app` → `https://thetools.world`
+* `https://toolpilot.example` → `https://thetools.world`
+* `ImagePilot` → remove/replace if found
+* `imagepilot` → remove/replace if found
+* `PixelFlow` / `pixelflow` → remove/replace if found
+* `The PDF Buddy` / `PDF Buddy` → remove if found in public site files
+
+Do not blindly replace if the sentence becomes awkward. Rewrite naturally.
+
+2. Project naming and structure
+   Update project metadata:
+
+* `package.json` name should become something like `thetools-world`
+* README should describe TheTools.World
+* Vercel/deployment docs should mention `thetools.world`
+* Tests should validate TheTools.World branding
+* Build script should use the new brand/domain
+* Favicon/logo should reflect TheTools.World if text/logo exists
+
+Keep static project structure simple:
+
+* root HTML pages
+* `assets/`
+* `tools/`
+* `tests/`
+* `sitemap.xml`
+* `robots.txt`
+* `vercel.json`
+* `README.md`
+
+Do not create unnecessary framework migration.
+
+3. Homepage restructuring
+   Update `index.html` to position TheTools.World as a broad global utility hub.
+
+Homepage must include:
+
+* clear hero section
+* search/discovery area
+* live Image Tools category
+* tool cards for all current image tools
+* “More tools planned” section as non-indexable text/cards only
+* privacy-first/browser-side processing note
+* FAQ section
+* footer with legal links
+* contact/support link
+
+Current live category:
+Image Tools
+
+Future planned categories may be shown only as non-linked or disabled cards:
+
+* PDF Tools
+* Text Tools
+* Calculators
+* QR Tools
+* AI Tools
+* Developer Tools
+
+Do not add future category pages to sitemap.
+
+4. Public live pages
+   Keep and polish these live pages:
+
+* `/`
+* `/image-compressor`
+* `/image-resizer`
+* `/image-converter`
+* `/bulk-image-tools`
+* `/compress-image-under-100kb`
+* `/compress-image-under-200kb`
+* `/resize-image-for-online-form`
+* `/compress-photo-for-government-form`
+* `/convert-webp-to-jpg`
+* `/png-to-jpg`
+* `/jpg-to-png`
+* `/passport-photo-resizer`
+* `/about`
+* `/contact`
+* `/privacy-policy`
+* `/terms`
+* `/sitemap`
+
+For every page:
+
+* unique title
+* unique meta description
+* exactly one H1
+* clean canonical using `https://thetools.world`
+* OG title/description/url
+* Twitter card tags
+* useful intro
+* how-to/use-case section where relevant
+* related tools section where relevant
+* FAQ where relevant
+* no fake claims
+* no keyword stuffing
+* no empty or thin pages
+
+5. SEO system
+   Update every SEO-related reference:
+
+* canonical URLs
+* Open Graph URLs
+* Twitter card URLs
+* schema if present
+* sitemap.xml
+* sitemap.html
+* robots.txt
+* footer links
+* internal links
+* README
+* seo-keyword-map.md
+* standalone-audit.md
+* tests
+
+Sitemap must include only clean, useful, indexable URLs.
+Do not include `.html` duplicates.
+Do not include noindex/legacy/redirect-only pages.
+
+Robots.txt should include:
+`Sitemap: https://thetools.world/sitemap.xml`
+
+6. Clean routes and Vercel
+   Verify/update `vercel.json`:
+
+* clean routes work without `.html`
+* `.html` duplicate URLs redirect to clean URLs where possible
+* legacy duplicate/noindex pages do not become indexable
+* 404 page exists
+* no route conflict
+
+Expected clean URLs:
+
+* `/image-compressor`
+* `/image-resizer`
+* `/image-converter`
+* `/bulk-image-tools`
+* `/compress-image-under-100kb`
+* `/compress-image-under-200kb`
+* `/resize-image-for-online-form`
+* `/compress-photo-for-government-form`
+* `/convert-webp-to-jpg`
+* `/png-to-jpg`
+* `/jpg-to-png`
+* `/passport-photo-resizer`
+
+7. AdSense approval readiness
+   Make the site AdSense-ready structurally:
+
+* About page is honest and brand-specific.
+* Contact page uses `pdfbuddy73@gmail.com`.
+* Privacy Policy mentions cookies, analytics, ads, and third-party services generally.
+* Terms page is readable.
+* Navigation is clear.
+* Footer includes About, Contact, Privacy Policy, Terms, Sitemap.
+* No misleading download buttons.
+* No empty ad boxes.
+* No “Advertisement (Your Ad Here)” text.
+* No ad-click encouragement.
+* Tool pages have useful content.
+* Site looks complete even before AdSense code.
+
+8. Internal linking
+   Ensure:
+
+* homepage links to all live image tools
+* each live tool links to related tools
+* compressor pages link to resizer/converter/bulk tools
+* resizer pages link to form/photo/passport pages
+* converter pages link to WebP/JPG/PNG tools
+* sitemap.html links to all public indexable pages
+* footer links to main live tools and legal pages
+* no internal links point to `.html`
+* no internal links point to old ToolPilot/ImagePilot URLs
+
+9. Long-tail SEO map
+   Update or create `seo-keyword-map.md`.
+
+Include:
+
+* page URL
+* primary keyword
+* secondary keywords
+* search intent
+* page type
+* internal links to add
+* priority
+* future expansion category
+
+Prioritize:
+
+* image compressor
+* image resizer
+* compress image under 100kb
+* compress image under 200kb
+* resize image for online form
+* compress photo for government form
+* convert webp to jpg
+* png to jpg
+* jpg to png
+* passport photo resizer
+* bulk image tools
+
+Also add future roadmap keywords, but do not create pages yet:
+
+* PDF compressor
+* JPG to PDF
+* word counter
+* age calculator
+* QR code generator
+* JSON formatter
+* resume builder
+* AI email writer
+
+10. Performance and UX
+    Check:
+
+* mobile responsive layout
+* clear upload/input areas
+* clear buttons
+* error states or graceful failure
+* no layout overlap
+* no heavy unnecessary assets
+* no broken scripts
+* no console-breaking issues
+* client-side processing/privacy wording is honest
+* accessibility labels where practical
+* consistent brand/design across pages
+
+11. Files to check/update
+    Review/update:
+
+* all public HTML pages
+* `assets/styles.css`
+* `assets/app.js`
+* `assets/favicon.svg`
+* `tools/build-site.js`
+* `tools/static-server.mjs`
+* `tests/smoke-static.mjs`
+* `package.json`
+* `README.md`
+* `sitemap.xml`
+* `robots.txt`
+* `seo-keyword-map.md`
+* `standalone-audit.md`
+* `vercel.json`
+* `404.html`
+
+12. Verification commands
+    Run:
+    `cd D:\image-tool`
+    `npm.cmd run build`
+    `npm.cmd run test:smoke`
+
+Search full project, excluding prompts if needed, for:
+
+* `ToolPilot`
+* `toolpilot`
+* `ImagePilot`
+* `imagepilot`
+* `PixelFlow`
+* `pixelflow`
+* `The PDF Buddy`
+* `PDF Buddy`
+* `toolpilot.vercel.app`
+* `toolpilot.example`
+* `example.com`
+* `Advertisement (Your Ad Here)`
+* `trusted by`
+* `millions`
+* `#1`
+* `.html` internal links
+
+13. Final output
+    Give me:
+
+A. Final verdict:
+PASS / PASS WITH MINOR FIXES / FAIL
+
+B. Files changed
+
+C. Exact brand/domain changes made
+
+D. Project structure changes made
+
+E. SEO readiness result
+
+F. AdSense readiness result
+
+G. Vercel readiness result
+
+H. Internal linking result
+
+I. Long-tail keyword map summary
+
+J. Remaining placeholders, if any
+
+K. Commands run and results
+
+L. Exact git commands
+
+M. Exact Vercel domain connection steps for `thetools.world`
+
+N. Final live verification checklist
+
+O. Search Console setup plan after domain is live
+
+P. AdSense application readiness checklist

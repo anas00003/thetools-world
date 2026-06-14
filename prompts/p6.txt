@@ -1,0 +1,282 @@
+Act as a senior deployment engineer, Vercel expert, technical SEO auditor, and launch manager.
+
+Project:
+TheTools.World
+
+Local folder:
+D:\image-tool
+
+Production domain:
+https://thetools.world
+
+Current status:
+
+* Foundation operating system is created.
+* 18 public pages exist.
+* Build passes.
+* Smoke test passes.
+* Sitemap has 18 clean URLs.
+* No internal `.html` links.
+* No old branding or fake claims found.
+* Folder is not yet a Git repo.
+* AdSense code must NOT be added yet.
+
+Goal:
+Prepare, commit, push, deploy to Vercel, connect `thetools.world`, and verify the live website safely.
+
+Important rules:
+
+* Work only inside `D:\image-tool`.
+* Do not touch The PDF Buddy project.
+* Do not add AdSense code.
+* Do not create new pages.
+* Do not change SEO/content unless required for deployment correctness.
+* Do not add fake claims or placeholders.
+* Keep changes deployment-focused only.
+
+Step 1: Final local verification
+Run:
+
+`cd D:\image-tool`
+`npm.cmd run build`
+`npm.cmd run test:smoke`
+
+Then check:
+
+* sitemap.xml exists
+* robots.txt exists
+* vercel.json exists
+* package.json exists
+* README.md exists
+* no `node_modules` should be committed
+* no `.env` or secret files should be committed
+
+Step 2: Create `.gitignore` if missing
+Create or verify `.gitignore` includes:
+
+`node_modules/`
+`.env`
+`.env.local`
+`.vercel/`
+`dist/`
+`build/`
+`*.log`
+`npm-debug.log*`
+`yarn-debug.log*`
+`yarn-error.log*`
+
+Do not exclude actual public HTML files, assets, sitemap.xml, robots.txt, vercel.json, README.md, research/roadmap/seo/monetization/launch/analytics/reports files.
+
+Step 3: Initialize Git repo
+If `D:\image-tool` is not a Git repo, run:
+
+`git init`
+`git status --short`
+
+Then stage:
+
+`git add .`
+
+Check staged files:
+
+`git diff --cached --name-only`
+
+Confirm no unwanted files like:
+
+* node_modules
+* .env
+* .vercel
+* temp files
+* logs
+
+If clean, commit:
+
+`git commit -m "Launch TheTools.World foundation site"`
+
+Set main branch:
+
+`git branch -M main`
+
+Step 4: GitHub push guidance
+If no GitHub remote exists, tell me to create a new GitHub repo named:
+
+`thetools-world`
+
+Then give me the exact commands:
+
+`git remote add origin https://github.com/YOUR_USERNAME/thetools-world.git`
+`git push -u origin main`
+
+If a remote already exists, verify it with:
+
+`git remote -v`
+
+Then push:
+
+`git push`
+
+Step 5: Vercel deployment settings
+Tell me exact Vercel settings:
+
+Framework Preset:
+`Other`
+
+Build Command:
+`npm.cmd run build`
+
+Output Directory:
+`.`
+
+Install Command:
+default or blank
+
+Root Directory:
+repo root
+
+Also verify that `vercel.json` supports:
+
+* clean URLs
+* `.html` redirects
+* 404 page
+* sitemap.xml
+* robots.txt
+
+Step 6: Domain connection plan
+After Vercel deployment succeeds, guide me to connect domain:
+
+In Vercel:
+Project → Settings → Domains
+
+Add:
+`thetools.world`
+`www.thetools.world`
+
+Preferred canonical:
+`https://thetools.world`
+
+Redirect:
+`https://www.thetools.world` → `https://thetools.world`
+
+At domain registrar:
+Add the DNS records exactly as Vercel shows.
+
+Usually:
+
+* apex domain may need A record
+* www may need CNAME
+* domain ownership may need TXT record
+
+Do not guess DNS values. Tell me to copy exact values shown by Vercel.
+
+Wait until:
+
+* DNS configured
+* SSL active
+* both apex and www work
+* preferred redirect works
+
+Step 7: Live verification checklist
+After domain is live, verify these URLs:
+
+`https://thetools.world/`
+`https://thetools.world/image-compressor`
+`https://thetools.world/image-resizer`
+`https://thetools.world/image-converter`
+`https://thetools.world/bulk-image-tools`
+`https://thetools.world/compress-image-under-100kb`
+`https://thetools.world/compress-image-under-200kb`
+`https://thetools.world/resize-image-for-online-form`
+`https://thetools.world/compress-photo-for-government-form`
+`https://thetools.world/convert-webp-to-jpg`
+`https://thetools.world/png-to-jpg`
+`https://thetools.world/jpg-to-png`
+`https://thetools.world/passport-photo-resizer`
+`https://thetools.world/about`
+`https://thetools.world/contact`
+`https://thetools.world/privacy-policy`
+`https://thetools.world/terms`
+`https://thetools.world/sitemap`
+`https://thetools.world/sitemap.xml`
+`https://thetools.world/robots.txt`
+
+For each, verify:
+
+* HTTP 200
+* correct title
+* correct canonical
+* no old brand references
+* mobile usable
+* no broken layout
+
+Step 8: Redirect verification
+Check sample duplicate `.html` URLs:
+
+`https://thetools.world/image-compressor.html`
+`https://thetools.world/image-resizer.html`
+`https://thetools.world/image-converter.html`
+`https://thetools.world/about.html`
+`https://thetools.world/contact.html`
+
+Expected:
+
+* 301 or 308 redirect to clean URL
+* no duplicate indexable `.html` pages
+
+Step 9: Functional tool verification
+Manually verify at least one flow:
+
+* image compressor upload/process/download
+* image resizer upload/process/download
+* image converter upload/process/download
+* mobile viewport tool controls visible
+
+Do not add AdSense yet.
+
+Step 10: Search Console setup plan
+After live verification passes:
+
+1. Add Google Search Console Domain Property:
+   `thetools.world`
+
+2. Verify via DNS TXT record.
+
+3. Submit sitemap:
+   `https://thetools.world/sitemap.xml`
+
+4. Inspect and request indexing for:
+   `/`
+   `/image-compressor`
+   `/image-resizer`
+   `/compress-image-under-100kb`
+   `/passport-photo-resizer`
+   `/resize-image-for-online-form`
+
+5. Do not submit `.html` URLs.
+
+Step 11: Final output
+Give me:
+
+A. Final verdict:
+PASS / PASS WITH MINOR FIXES / FAIL
+
+B. Commands run and results
+
+C. Files changed
+
+D. Git repo status
+
+E. GitHub push status or exact pending steps
+
+F. Vercel deployment status or exact pending steps
+
+G. Domain/DNS status or exact pending steps
+
+H. Live verification result or checklist to perform manually
+
+I. Search Console setup steps
+
+J. AdSense readiness status
+
+K. What not to do next
+
+L. Exact next prompt after deployment

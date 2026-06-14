@@ -1,0 +1,355 @@
+Rename the standalone website from `ImagePilot` to a broader utility tools brand.
+
+Use new brand name:
+`ToolPilot`
+
+Current folder:
+`D:\image-tool`
+
+Reason:
+The website should not be limited only to image tools. In the future, it may include image tools, PDF tools, text tools, AI tools, calculators, QR tools, resume tools, business tools, and student tools.
+
+Goal:
+Update the standalone site so it becomes a broader utility tools website, while keeping the current image tools as the first live category.
+
+Important rules:
+
+* Do not touch The PDF Buddy website.
+* Do not use The PDF Buddy branding.
+* Do not use PixelFlow branding.
+* Do not call the site ImagePilot anymore.
+* Do not add AdSense code yet.
+* Do not create fake tools that do not work.
+* Do not create thin doorway pages.
+* Do not add fake testimonials, fake numbers, or unverified claims.
+* Do not keyword stuff.
+* Keep current image tools working.
+
+Tasks:
+
+1. Global brand rename
+   Search and update:
+
+* `ImagePilot`
+* `imagepilot`
+* `Image Pilot`
+
+Replace with:
+
+* `ToolPilot`
+* `toolpilot`
+* `ToolPilot`
+
+Rewrite sentences naturally. Do not blindly replace if the sentence becomes awkward.
+
+2. Update homepage positioning
+   Change the homepage from image-only branding to broader utility-tools branding.
+
+Use honest positioning like:
+`ToolPilot is a free online utility tools hub for image, document, text, and everyday web tools.`
+
+Also mention honestly:
+`We are starting with fast browser-side image tools, with more useful tools planned soon.`
+
+Do not claim PDF, text, calculator, or AI tools are already available unless they actually exist.
+
+3. Keep image tools as the first live category
+   Keep these current pages working:
+
+* `image-compressor.html`
+* `image-resizer.html`
+* `image-converter.html`
+* `bulk-image-tools.html`
+* `compress-image-under-100kb.html`
+* `compress-image-under-200kb.html`
+* `resize-image-for-online-form.html`
+* `compress-photo-for-government-form.html`
+* `convert-webp-to-jpg.html`
+* `png-to-jpg.html`
+* `jpg-to-png.html`
+* `passport-photo-resizer.html`
+
+4. Update navigation
+   Main active category:
+
+* Image Tools
+
+Future categories can be mentioned as “coming soon” only if they are not linked as indexable pages:
+
+* PDF Tools — Coming soon
+* Text Tools — Coming soon
+* Calculators — Coming soon
+* AI Tools — Coming soon
+
+Do not add coming-soon pages to sitemap.
+
+5. Update SEO titles and meta descriptions
+   Update branding across:
+
+* title tags
+* meta descriptions
+* Open Graph tags
+* Twitter card tags
+* schema if present
+* footer
+* legal pages
+* sitemap.html
+* package.json
+* README/deployment notes if present
+* seo-keyword-map.md
+* standalone-audit.md
+
+Homepage title example:
+`ToolPilot – Free Online Utility Tools for Images, Documents and More`
+
+Homepage meta example:
+`Use ToolPilot for free browser-side image tools and everyday online utilities. Compress, resize and convert images with more useful tools planned.`
+
+Image tool pages should still target image keywords.
+
+6. Update legal/support pages
+   Update:
+
+* `about.html`
+* `contact.html`
+* `privacy-policy.html`
+* `terms.html`
+
+Make them reflect ToolPilot as a growing utility tools website, not ImagePilot as only an image website.
+
+7. Update configuration/support files
+   Check and update where needed:
+
+* `package.json`
+* `assets/styles.css`
+* `assets/app.js`
+* `tools/build-site.js`
+* `tests/smoke-static.mjs`
+* `sitemap.xml`
+* `sitemap.html`
+* `robots.txt`
+* `vercel.json`
+* `seo-keyword-map.md`
+* `standalone-audit.md`
+
+8. Do not create new future tool pages yet
+   Do not create PDF/text/calculator/AI pages unless they are real and useful.
+   Only mention future categories on homepage/about page as planned expansion.
+
+9. Run verification
+   Run:
+   `cd D:\image-tool`
+   `npm.cmd run build`
+   `npm.cmd run test:smoke`
+
+Search for:
+
+* `ImagePilot`
+* `imagepilot`
+* `Image Pilot`
+* `The PDF Buddy`
+* `PixelFlow`
+* `pixelflow`
+* `Advertisement (Your Ad Here)`
+* `trusted by`
+* `millions`
+* `#1`
+
+10. Final output
+    Give me:
+
+A. Final verdict
+B. Files changed
+C. Exact brand changes made
+D. SEO changes made
+E. Whether image tools still work
+F. Whether future utility expansion is clean
+G. Remaining placeholders
+H. Commands run and results
+I. Exact next prompt for final pre-deployment audit
+
+
+
+Now perform a final pre-deployment audit for the standalone ToolPilot static website located at `D:\image-tool`.
+
+Context:
+
+* This is now a standalone utility tools website.
+* Brand name: ToolPilot.
+* Image tools are the first live category.
+* The site will be deployed separately on Vercel.
+* Placeholder domain may still be present.
+* Placeholder emails may still exist.
+* AdSense code is not added yet.
+
+Goal:
+Confirm ToolPilot is production-ready, SEO-ready, AdSense-approval-ready, and Vercel-ready before pushing to GitHub and deploying.
+
+Strict rules:
+
+* Do not touch The PDF Buddy website.
+* Do not use ImagePilot branding.
+* Do not use PixelFlow branding.
+* Do not add AdSense code yet.
+* Do not add fake testimonials, fake user numbers, fake “trusted by millions” claims, or unverified claims.
+* Do not create thin doorway pages.
+* Do not over-optimize or keyword stuff.
+* Keep changes clean, useful, and low-risk.
+
+Audit and fix these items:
+
+1. Branding check
+   Search full project for:
+
+* ImagePilot
+* imagepilot
+* Image Pilot
+* The PDF Buddy
+* PDF Buddy
+* PixelFlow
+* pixelflow
+* example.com
+* [hello@example.com](mailto:hello@example.com)
+* localhost
+* test domain references
+
+Replace only where appropriate.
+Keep ToolPilot branding consistent across all pages.
+
+2. Domain placeholder readiness
+   Create or confirm one easy-to-change domain configuration.
+   Use placeholder:
+   `https://toolpilot.example`
+
+Check:
+
+* canonical URLs
+* Open Graph URLs
+* Twitter card URLs
+* sitemap.xml
+* robots.txt
+* footer links
+* legal pages
+* contact email
+
+3. SEO audit
+   For every public page, verify:
+
+* unique title
+* unique meta description
+* exactly one H1
+* clean canonical
+* index, follow only on useful pages
+* OG title/description
+* Twitter card tags
+* no duplicate title/H1 groups
+* no empty meta descriptions
+* no keyword stuffing
+* content matches search intent
+
+4. AdSense approval readiness
+   Check:
+
+* About page is useful and honest.
+* Contact page has realistic contact method.
+* Privacy Policy mentions cookies/analytics/ads in a general safe way.
+* Terms page exists and is readable.
+* Navigation is clear.
+* Footer includes legal pages.
+* No misleading download buttons.
+* No empty ad boxes.
+* No “Advertisement (Your Ad Here)” placeholder.
+* Tool pages have enough useful content.
+* Site does not look unfinished.
+
+5. Tool usability
+   For each tool page, check:
+
+* user can understand the tool immediately
+* upload/input area is visible
+* buttons are clear
+* error states exist or fail gracefully
+* mobile layout is usable
+* related tools section exists
+* FAQ or helpful content exists
+* browser-side/privacy wording is honest
+
+6. Internal linking
+   Check:
+
+* homepage links to all major live tools
+* all tool pages link back to related tools
+* footer links to main tools and legal pages
+* sitemap.html links to all public pages
+* no broken internal links
+* no `.html` links if clean routes are intended
+* legacy duplicates redirect/noindex correctly
+
+7. Vercel readiness
+   Check:
+
+* `vercel.json` works for clean routes
+* `.html` duplicates redirect or rewrite safely
+* 404 page exists
+* build command works:
+  `npm.cmd run build`
+* smoke test works:
+  `npm.cmd run test:smoke`
+* local dev works:
+  `npm.cmd run dev`
+
+8. Files and repo readiness
+   Check:
+
+* no unnecessary large files
+* no temp files
+* no node_modules committed
+* no .env or secrets
+* package.json scripts are correct
+* README or deployment note exists if useful
+
+9. Run commands
+   Run:
+   `cd D:\image-tool`
+   `npm.cmd run build`
+   `npm.cmd run test:smoke`
+
+Also run searches for:
+
+* `ImagePilot`
+* `The PDF Buddy`
+* `PixelFlow`
+* `pixelflow`
+* `example.com`
+* `hello@example.com`
+* `Advertisement (Your Ad Here)`
+* `trusted by`
+* `millions`
+* `best`
+* `#1`
+
+10. Final output
+    Give me:
+
+A. Final verdict:
+PASS / PASS WITH MINOR FIXES / FAIL
+
+B. Files changed
+
+C. Exact fixes made
+
+D. SEO readiness result
+
+E. AdSense approval readiness result
+
+F. Vercel readiness result
+
+G. Remaining placeholders to replace before production
+
+H. Exact GitHub setup commands
+
+I. Exact Vercel deployment settings
+
+J. Final live verification checklist
+
+K. Search Console setup plan after deployment

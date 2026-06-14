@@ -1,0 +1,428 @@
+Act as a 20+ year senior website architect, technical SEO strategist, AdSense approval specialist, product growth expert, and Vercel deployment engineer.
+
+You are taking over the project from here.
+
+Project name:
+TheTools.World
+
+Production domain:
+https://thetools.world
+
+Local project folder:
+D:\image-tool
+
+Build environment:
+VS Code + MCP Codex
+
+Current status:
+
+* The site has been rebranded to TheTools.World.
+* It is a standalone static website.
+* Image tools are currently the only live/indexable category.
+* Future categories like PDF tools, text tools, calculators, QR tools, AI tools, and developer tools are planned but should not be created as indexable pages until real tools exist.
+* The site already has public pages, sitemap.xml, robots.txt, vercel.json, README.md, SEO keyword map, smoke tests, and legal pages.
+* AdSense code is not added yet.
+* Domain thetools.world may not be connected yet.
+* Goal is to build a serious global utility tools platform with long-term SEO, traffic, AdSense readiness, and scalable growth.
+
+Mission:
+Start the professional website growth journey step by step.
+
+Do not randomly create pages. First build the system, audit the foundation, prepare launch, then create pages based on real keyword demand and distinct user intent.
+
+Important rules:
+
+* Do not touch The PDF Buddy project.
+* Work only inside D:\image-tool.
+* Do not add AdSense code yet.
+* Do not create fake tools.
+* Do not create indexable coming-soon pages.
+* Do not add fake testimonials, fake user counts, “trusted by millions,” “#1,” or unverified claims.
+* Do not keyword stuff.
+* Do not create thin doorway pages.
+* Do not remove useful existing image tool pages.
+* Every new page must have a real purpose and distinct search intent.
+* Keep the site clean, fast, mobile-friendly, and trustworthy.
+* If something is risky for SEO, indexing, AdSense, or user trust, flag it before changing.
+
+First objective:
+Create a complete launch and growth operating system for TheTools.World before adding new tools.
+
+Step 1: Full project audit
+Audit the current project and report:
+
+* all public pages
+* clean URLs
+* titles
+* meta descriptions
+* H1s
+* canonicals
+* sitemap inclusion
+* robots status
+* internal links
+* related tools sections
+* FAQ/how-to sections
+* legal pages
+* broken links
+* duplicate titles/H1/meta
+* old brand references
+* placeholder references
+* .html internal links
+* Vercel routing issues
+* AdSense readiness risks
+* indexing risks
+* mobile/UX risks
+* performance risks
+
+Run:
+npm.cmd run build
+npm.cmd run test:smoke
+
+Also search for:
+
+* ToolPilot
+* ImagePilot
+* PixelFlow
+* The PDF Buddy
+* toolpilot
+* imagepilot
+* example.com
+* toolpilot.vercel.app
+* Advertisement (Your Ad Here)
+* trusted by
+* millions
+* #1
+* .html internal links
+
+Step 2: Create operating folders
+Create these folders if they do not exist:
+
+* research
+* roadmap
+* seo
+* monetization
+* launch
+* analytics
+* reports
+* prompts
+
+Step 3: Create competitor research framework
+Create:
+research/competitor-analysis-template.md
+
+Include competitor groups:
+
+* Image utility sites
+* PDF utility sites
+* Calculator sites
+* Text tool sites
+* Developer tool sites
+* AI utility sites
+
+Include competitors to study:
+
+* TinyWow
+* iLoveIMG
+* iLovePDF
+* SmallPDF
+* PDF24
+* Squoosh
+* CompressJPEG
+* ImageResizer
+* Calculator.net
+* RapidTables
+* UnitConverters.net
+* OmniCalculator
+* Convertio
+* FreeConvert
+* ToolsMonk
+
+For each competitor, define fields to collect:
+
+* competitor name
+* category
+* URL
+* tool name
+* target keyword
+* page title
+* meta description
+* H1
+* content sections
+* FAQ present or not
+* schema present or not
+* ad placement
+* internal linking pattern
+* related tools
+* mobile UX notes
+* speed/performance notes
+* monetization notes
+* backlink opportunity ideas
+* what TheTools.World can do better
+
+Step 4: Create keyword research process
+Create:
+research/keyword-research-process.md
+
+Explain how to collect keyword data from:
+
+* Google Keyword Planner
+* Google Trends
+* Google autocomplete
+* People Also Ask
+* Ahrefs free keyword tools
+* Search Console after launch
+* competitor pages
+
+Create a keyword scoring model from 1 to 5 for:
+
+* search intent clarity
+* traffic potential
+* competition difficulty
+* monetization value
+* tool feasibility
+* content uniqueness
+* internal linking fit
+* AdSense safety
+
+Classify keywords as:
+
+* Build now
+* Build later
+* Merge into existing page
+* Avoid
+
+Step 5: Create page expansion roadmap
+Create:
+roadmap/page-expansion-plan.md
+
+Build the roadmap in phases:
+
+Phase 1: Image tools
+Phase 2: PDF tools
+Phase 3: Text tools
+Phase 4: Calculators
+Phase 5: QR tools
+Phase 6: Developer tools
+Phase 7: AI tools
+
+For each phase include:
+
+* planned URL
+* tool requirement
+* primary keyword
+* secondary keywords
+* search intent
+* content sections required
+* related internal links
+* schema recommendation
+* priority
+* build difficulty
+* monetization potential
+
+Do not create the pages yet. Only create the roadmap.
+
+Step 6: Create technical SEO checklist
+Create:
+seo/technical-seo-checklist.md
+
+Include:
+
+* crawlability
+* indexability
+* canonical checks
+* sitemap checks
+* robots.txt checks
+* redirects
+* clean URLs
+* no .html internal links
+* duplicate title/meta/H1 detection
+* Core Web Vitals
+* mobile UX
+* accessibility
+* schema
+* broken links
+* internal link depth
+* page speed
+* image optimization
+* 404 handling
+* Search Console monitoring
+
+Step 7: Create AdSense readiness checklist
+Create:
+monetization/adsense-readiness-checklist.md
+
+Include:
+
+* About page
+* Contact page
+* Privacy Policy
+* Terms page
+* clear navigation
+* useful original content
+* no copied content
+* no empty pages
+* no misleading download buttons
+* no fake ad placeholders
+* no ad-click encouragement
+* mobile usability
+* no prohibited content
+* enough content around tools
+* when to apply
+* what not to do before approval
+
+Step 8: Create launch checklist
+Create:
+launch/thetools-world-launch-checklist.md
+
+Include:
+
+* Git repo setup
+* GitHub push
+* Vercel import
+* build settings
+* domain connection
+* DNS setup
+* SSL check
+* www/non-www redirect
+* sitemap live check
+* robots live check
+* legal page live check
+* image tool functionality checks
+* mobile checks
+* Search Console setup
+* Analytics setup
+* post-launch indexing checks
+
+Step 9: Create first 30-day growth plan
+Create:
+roadmap/first-30-days-growth-plan.md
+
+Include:
+
+Day 1–2:
+
+* deploy
+* connect domain
+* verify SSL
+* verify routes
+* submit sitemap
+* inspect top URLs
+
+Day 3–7:
+
+* monitor indexing
+* fix crawl/index issues
+* improve internal links
+* check Page indexing report
+* check if sitemap discovered
+
+Day 8–15:
+
+* research keywords
+* review competitors
+* create only 5 high-intent image pages/tools if useful
+
+Day 16–30:
+
+* improve CTR
+* add helpful guides
+* create tutorials
+* start backlink/distribution plan
+* review Search Console queries
+* decide next category
+
+Step 10: Create analytics and measurement plan
+Create:
+analytics/measurement-plan.md
+
+Include:
+
+* Google Search Console setup
+* Google Analytics setup
+* Microsoft Clarity or similar heatmap tool
+* page-level tracking
+* tool usage events
+* upload/start/completion/error events
+* outbound click events
+* future AdSense RPM tracking
+* weekly dashboard metrics
+* decision rules for improving pages
+
+Step 11: Create first manual data collection sheet
+Create:
+research/manual-keyword-data-needed.md
+
+Tell me exactly what keyword data I need to collect manually and feed back.
+
+Include these seed keywords:
+
+* image compressor
+* image resizer
+* compress image under 100kb
+* compress image under 200kb
+* compress jpg under 100kb
+* resize image for online form
+* resize signature to 20kb
+* passport photo resizer
+* convert webp to jpg
+* png to jpg
+* jpg to png
+* bulk image compressor
+* pdf compressor
+* jpg to pdf
+* word counter
+* age calculator
+* qr code generator
+* json formatter
+
+Ask for:
+
+* Google Keyword Planner screenshots/export
+* Google Trends comparison screenshots
+* top 10 Google result URLs for each keyword
+* Search Console data after launch
+
+Step 12: Create executive report
+Create:
+reports/journey-start-report.md
+
+This report must include:
+A. Current site status
+B. Technical readiness
+C. SEO readiness
+D. AdSense readiness
+E. Launch readiness
+F. Competitor research plan
+G. Keyword research plan
+H. First 30-day roadmap
+I. Biggest risks
+J. Exact next actions
+K. What not to do
+L. What data user must provide manually
+M. Next prompt to run after this phase
+
+Step 13: Final output in chat
+After all files are created and checks are run, give me:
+
+A. Final verdict:
+PASS / PASS WITH MINOR FIXES / FAIL
+
+B. Files created
+
+C. Files changed
+
+D. Checks run and results
+
+E. Current biggest SEO risks
+
+F. Current biggest AdSense risks
+
+G. Whether site is ready for GitHub/Vercel/domain connection
+
+H. Exact next commands to run
+
+I. Exact next prompt to deploy
+
+J. What keyword/competitor data I need to collect manually
+
+K. First 5 pages/tools we should consider after launch, but do not build them yet

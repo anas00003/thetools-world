@@ -1,0 +1,191 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/image-compressor.html",
+      "destination": "/image-compressor",
+      "permanent": true
+    },
+    {
+      "source": "/image-resizer.html",
+      "destination": "/image-resizer",
+      "permanent": true
+    },
+    {
+      "source": "/image-converter.html",
+      "destination": "/image-converter",
+      "permanent": true
+    },
+    {
+      "source": "/bulk-image-tools.html",
+      "destination": "/bulk-image-tools",
+      "permanent": true
+    },
+    {
+      "source": "/compress-image-under-100kb.html",
+      "destination": "/compress-image-under-100kb",
+      "permanent": true
+    },
+    {
+      "source": "/compress-image-under-200kb.html",
+      "destination": "/compress-image-under-200kb",
+      "permanent": true
+    },
+    {
+      "source": "/resize-image-for-online-form.html",
+      "destination": "/resize-image-for-online-form",
+      "permanent": true
+    },
+    {
+      "source": "/compress-photo-for-government-form.html",
+      "destination": "/compress-photo-for-government-form",
+      "permanent": true
+    },
+    {
+      "source": "/convert-webp-to-jpg.html",
+      "destination": "/convert-webp-to-jpg",
+      "permanent": true
+    },
+    {
+      "source": "/png-to-jpg.html",
+      "destination": "/png-to-jpg",
+      "permanent": true
+    },
+    {
+      "source": "/jpg-to-png.html",
+      "destination": "/jpg-to-png",
+      "permanent": true
+    },
+    {
+      "source": "/passport-photo-resizer.html",
+      "destination": "/passport-photo-resizer",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.html",
+      "destination": "/sitemap",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-use.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/resizer.html",
+      "destination": "/image-resizer",
+      "permanent": true
+    },
+    {
+      "source": "/index1.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/faq.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/help-center.html",
+      "destination": "/contact",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/image-compressor",
+      "destination": "/image-compressor.html"
+    },
+    {
+      "source": "/image-resizer",
+      "destination": "/image-resizer.html"
+    },
+    {
+      "source": "/image-converter",
+      "destination": "/image-converter.html"
+    },
+    {
+      "source": "/bulk-image-tools",
+      "destination": "/bulk-image-tools.html"
+    },
+    {
+      "source": "/compress-image-under-100kb",
+      "destination": "/compress-image-under-100kb.html"
+    },
+    {
+      "source": "/compress-image-under-200kb",
+      "destination": "/compress-image-under-200kb.html"
+    },
+    {
+      "source": "/resize-image-for-online-form",
+      "destination": "/resize-image-for-online-form.html"
+    },
+    {
+      "source": "/compress-photo-for-government-form",
+      "destination": "/compress-photo-for-government-form.html"
+    },
+    {
+      "source": "/convert-webp-to-jpg",
+      "destination": "/convert-webp-to-jpg.html"
+    },
+    {
+      "source": "/png-to-jpg",
+      "destination": "/png-to-jpg.html"
+    },
+    {
+      "source": "/jpg-to-png",
+      "destination": "/jpg-to-png.html"
+    },
+    {
+      "source": "/passport-photo-resizer",
+      "destination": "/passport-photo-resizer.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.html"
+    }
+  ]
+}
