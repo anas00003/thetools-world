@@ -136,12 +136,79 @@ const routes = [
   {
     route: "/compress-image-under-200kb",
     file: "compress-image-under-200kb.html",
-    title: "Compress Image Under 200KB Online",
-    description: "Compress photos toward a 200KB target using local browser processing and adjustable output quality.",
-    h1: "Compress image under 200KB",
+    title: "Compress Image to 200KB Online | TheTools.World",
+    description: "Compress JPG, PNG, or WebP images toward a 200KB limit for forms, portals, documents, and email. Adjust quality and width in your browser.",
+    h1: "Compress image to 200KB online",
+    displayTitle: "Compress image under 200KB",
+    displayDescription: "Compress photos toward a 200KB target for forms, portals, and document upload limits.",
     kind: "compressor",
     targetKb: 200,
-    intro: "Prepare photos for portals that require files below 200KB. If a large image cannot fit cleanly, resize it before compressing.",
+    intro: "Use this page when an upload form, document portal, application, profile page, or email attachment needs an image close to or under 200KB. Choose your image, keep the 200KB target, and adjust quality or width until the downloaded file fits your requirement.",
+    heroNote: "Exact final size depends on the original image, dimensions, visual detail, format, and quality. This tool uses the browser workflow for the current image processing task.",
+    toolNotes: [
+      "Supported inputs: JPG, PNG, and WebP.",
+      "Downloads are prepared as JPG for smaller output.",
+      "Exact final size is not guaranteed.",
+      "If the result is still above 200KB, reduce quality or max width and try again.",
+    ],
+    guide: {
+      title: "How to compress an image to 200KB",
+      steps: [
+        "Choose a JPG, PNG, or WebP image.",
+        "Keep the target size set to 200KB.",
+        "Start with the default quality.",
+        "Download the compressed image and check the final file size.",
+        "If it is still above 200KB, reduce quality or max width and try again.",
+      ],
+      note: "For upload portals, compare the final image against the official file size, dimensions, and format requirements before submitting.",
+    },
+    extraSections: [
+      {
+        title: "How to get closer to the 200KB limit",
+        body: `<p>Large phone photos often need width reduction before compression. Lowering quality reduces file size, but it can soften fine details. JPG is usually smaller for photos than PNG, while screenshots, certificates, or graphics with text may need a higher quality setting for readability.</p><p>If a form has both file-size and pixel-dimension rules, use the <a href="/resize-image-for-online-form">resize image for online form</a> tool first, then compress the resized image toward 200KB.</p>`,
+      },
+      {
+        title: "What if the image is still above 200KB?",
+        body: `<ul>
+        <li>Reduce max width, for example from 1600px to 1400px, 1200px, or 1000px.</li>
+        <li>Lower quality gradually and check the downloaded file after each try.</li>
+        <li>Use the <a href="/image-resizer">image resizer</a> first if the original dimensions are very large.</li>
+        <li>Use the <a href="/compress-image-under-100kb">compress image under 100KB</a> page if the upload portal needs a smaller file.</li>
+        <li>Always check the official upload rules before submitting because some forms also require a specific format or dimension.</li>
+      </ul>`,
+      },
+      {
+        title: "Common 200KB upload uses",
+        body: `<p>A 200KB image limit is common for online application forms, document portals, profile photo uploads, email attachments, and school, job, service, or account forms. For photo-specific portal requirements, the <a href="/passport-photo-resizer">passport photo resizer</a> and <a href="/compress-photo-for-government-form">compress photo for government form</a> pages can help you prepare dimensions and file size together.</p>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can every image be compressed to exactly 200KB?",
+        answer: "No. Exact size depends on the original image, dimensions, detail, and quality. The tool helps you get close to or under the limit when possible.",
+      },
+      {
+        question: "Which image formats are supported?",
+        answer: "JPG, PNG, and WebP uploads are supported by the browser tool. Compressed downloads are prepared as JPG for smaller file sizes.",
+      },
+      {
+        question: "What should I do if my image is still bigger than 200KB?",
+        answer: "Lower quality, reduce max width, or resize the image before compressing. Check the final file size before uploading.",
+      },
+      {
+        question: "Should I use 100KB or 200KB compression?",
+        answer: "Use the limit required by the form or portal. If it says under 200KB, this page is the better starting point. If it says under 100KB, use the 100KB page.",
+      },
+      {
+        question: "Is this suitable for online forms and document portals?",
+        answer: "It can help prepare file size, but you should compare the result with the official portal size, dimension, and format rules.",
+      },
+      {
+        question: "Are my images uploaded to a server?",
+        answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
+      },
+    ],
+    relatedRoutes: ["/image-compressor", "/compress-image-under-100kb", "/image-resizer", "/resize-image-for-online-form"],
     priority: "0.8",
   },
   {
