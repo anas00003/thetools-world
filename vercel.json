@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.thetools.world"
+        }
+      ],
+      "destination": "https://thetools.world/:path*",
+      "permanent": true
+    },
+    {
       "source": "/image-compressor.html",
       "destination": "/image-compressor",
       "permanent": true
