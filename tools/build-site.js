@@ -62,12 +62,75 @@ const routes = [
   {
     route: "/compress-image-under-100kb",
     file: "compress-image-under-100kb.html",
-    title: "Compress Image Under 100KB Online",
-    description: "Use a browser-side compressor with a 100KB target for forms, portals, and document upload limits.",
-    h1: "Compress image under 100KB",
+    title: "Compress Image to 100KB Online | TheTools.World",
+    description: "Compress JPG, PNG, or WebP images toward a 100KB limit for forms, portals, documents, and email. Adjust quality and width in your browser.",
+    h1: "Compress image to 100KB online",
+    displayTitle: "Compress image under 100KB",
+    displayDescription: "Use a browser-side compressor with a 100KB target for forms, portals, and document upload limits.",
     kind: "compressor",
     targetKb: 100,
-    intro: "Aim for a 100KB image limit with adjustable quality. Results depend on original dimensions and content, so resize first if needed.",
+    intro: "Use this page when a form, portal, document upload, or email attachment needs an image close to or under 100KB. Choose your image, keep the 100KB target, and adjust quality or width until the downloaded file fits your requirement.",
+    heroNote: "Exact final size depends on the original image, dimensions, visual detail, format, and quality. This tool uses the browser workflow for the current image processing task.",
+    toolNotes: [
+      "Supported inputs: JPG, PNG, and WebP.",
+      "Downloads are prepared as JPG for smaller output.",
+      "Exact final size is not guaranteed.",
+      "If the result is still above 100KB, reduce quality or max width and try again.",
+    ],
+    guide: {
+      title: "How to compress an image to 100KB",
+      steps: [
+        "Choose a JPG, PNG, or WebP image.",
+        "Keep the target size set to 100KB.",
+        "Start with the default quality.",
+        "Download the compressed image and check the final file size.",
+        "If it is still above 100KB, reduce quality or max width and try again.",
+      ],
+      note: "For upload portals, compare the final image against the official file size, dimensions, and format requirements before submitting.",
+    },
+    extraSections: [
+      {
+        title: "How to get closer to the 100KB limit",
+        body: `<p>Large phone photos often need width reduction before compression. Lowering quality reduces file size, but it can soften fine details. JPG is usually smaller for photos than PNG, while screenshots or graphics with text may need a balance between size and readability.</p>`,
+      },
+      {
+        title: "What if the image is still above 100KB?",
+        body: `<ul>
+        <li>Reduce max width, for example from 1600px to 1200px or 1000px.</li>
+        <li>Lower quality gradually and check the downloaded file after each try.</li>
+        <li>Use the <a href="/image-resizer">image resizer</a> first if the original dimensions are very large.</li>
+        <li>Use the <a href="/compress-image-under-200kb">compress image under 200KB</a> page if the upload portal allows a higher limit.</li>
+        <li>Always check the official upload rules before submitting.</li>
+      </ul>`,
+      },
+      {
+        title: "Common 100KB upload uses",
+        body: `<p>A 100KB image limit is common for online application forms, document portals, profile photo uploads, email attachments, and school, job, service, or account forms. If your form also has width and height rules, use the <a href="/resize-image-for-online-form">resize image for online form</a> tool or the <a href="/passport-photo-resizer">passport photo resizer</a> before compressing.</p>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can every image be compressed to exactly 100KB?",
+        answer: "No. Exact size depends on the original image, dimensions, detail, and quality. The tool helps you get close to or under the limit when possible.",
+      },
+      {
+        question: "Which image formats are supported?",
+        answer: "JPG, PNG, and WebP uploads are supported by the browser tool. Compressed downloads are prepared as JPG for smaller file sizes.",
+      },
+      {
+        question: "What should I do if my image is still bigger than 100KB?",
+        answer: "Lower quality, reduce max width, or resize the image before compressing. Check the final file size before uploading.",
+      },
+      {
+        question: "Is this suitable for online forms and document portals?",
+        answer: "It can help prepare file size, but you should compare the result with the official portal size, dimension, and format rules.",
+      },
+      {
+        question: "Are my images uploaded to a server?",
+        answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
+      },
+    ],
+    relatedRoutes: ["/image-compressor", "/compress-image-under-200kb", "/image-resizer", "/resize-image-for-online-form"],
     priority: "0.8",
   },
   {
@@ -248,6 +311,19 @@ function nav(active) {
 
 function head(page) {
   const canonical = `${domain}${page.route === "/" ? "" : page.route}`;
+  const faqSchema = page.faq ? `
+  <script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: page.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  })}</script>` : "";
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -266,7 +342,7 @@ function head(page) {
   <meta name="twitter:title" content="${page.title}">
   <meta name="twitter:description" content="${page.description}">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css">${faqSchema}
 </head>
 <body data-tool="${page.kind}" data-target-kb="${page.targetKb || ""}" data-output="${page.output || ""}" data-preset="${page.preset || ""}">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -326,8 +402,8 @@ function footer() {
 function card(page, note) {
   return `<a class="tool-card" href="${rel(page)}">
     <span class="tool-icon">${icon(page.kind === "compressor" ? "compress" : page.kind === "resizer" ? "resize" : page.kind === "converter" ? "convert" : page.kind)}</span>
-    <strong>${page.h1}</strong>
-    <span>${note || page.description}</span>
+    <strong>${page.displayTitle || page.h1}</strong>
+    <span>${note || page.displayDescription || page.description}</span>
   </a>`;
 }
 
@@ -375,7 +451,7 @@ function homePage(page) {
     <section class="search-section" aria-labelledby="find-tool">
       <h2 id="find-tool">Find the right image tool</h2>
       <input id="tool-search" class="search-input" type="search" placeholder="Search compress, resize, WebP, passport, online form" aria-label="Search image tools">
-      <div class="quick-links">${[...mainTools, ...formTools, ...converterTools].map((p) => `<a data-search-item href="${rel(p)}">${p.h1}</a>`).join("")}</div>
+      <div class="quick-links">${[...mainTools, ...formTools, ...converterTools].map((p) => `<a data-search-item href="${rel(p)}">${p.displayTitle || p.h1}</a>`).join("")}</div>
     </section>
     <section class="section" aria-labelledby="popular-tools">
       <div class="section-heading"><p class="eyebrow">Popular image tools</p><h2 id="popular-tools">Start with a common task</h2></div>
@@ -405,8 +481,9 @@ ${footer()}`;
 
 function toolUi(page) {
   if (page.kind === "compressor") {
+    const notes = page.toolNotes ? `<div class="tool-notes">${page.toolNotes.map((note) => `<p>${note}</p>`).join("")}</div>` : "";
     return `<section class="tool-panel" aria-labelledby="tool-title">
-      <div class="tool-intro"><h2 id="tool-title">Compress settings</h2><p>${page.intro}</p></div>
+      <div class="tool-intro"><h2 id="tool-title">Compress settings</h2><p>${page.intro}</p>${notes}</div>
       <form class="tool-form" data-compressor>
         <label>Choose image<input type="file" accept="image/*" data-file></label>
         <label>Quality <span data-quality-label>75%</span><input type="range" min="30" max="95" value="75" data-quality></label>
@@ -457,20 +534,13 @@ function toolUi(page) {
 }
 
 function related(page) {
-  const items = page.kind === "converter" ? converterTools : page.kind === "resizer" ? formTools : mainTools.concat(formTools.slice(0, 2));
+  const items = page.relatedRoutes ? page.relatedRoutes.map((route) => routes.find((item) => item.route === route)).filter(Boolean) : page.kind === "converter" ? converterTools : page.kind === "resizer" ? formTools : mainTools.concat(formTools.slice(0, 2));
   return `<section class="section" aria-labelledby="related-tools"><h2 id="related-tools">Related tools</h2><div class="card-grid compact">${items.filter((p) => p.route !== page.route).slice(0, 4).map((p) => card(p)).join("")}</div></section>`;
 }
 
-function toolPage(page) {
-  return `${head(page)}
-  <main id="main">
-    <section class="page-hero">
-      <p class="eyebrow">${brand} tool</p>
-      <h1>${page.h1}</h1>
-      <p>${page.intro}</p>
-    </section>
-    ${toolUi(page)}
-    <section class="section guide">
+function guide(page) {
+  if (!page.guide) {
+    return `<section class="section guide">
       <h2>How to use this tool</h2>
       <ol>
         <li>Select an image from your device.</li>
@@ -478,8 +548,51 @@ function toolPage(page) {
         <li>Download the processed copy and keep your original file unchanged.</li>
       </ol>
       <p>For upload portals, compare the final image against the official file size, dimensions, and format requirements before submitting.</p>
+    </section>`;
+  }
+  const content = page.guide;
+  return `<section class="section guide">
+      <h2>${content.title}</h2>
+      <ol>
+        ${content.steps.map((step) => `<li>${step}</li>`).join("")}
+      </ol>
+      <p>${content.note}</p>
+    </section>`;
+}
+
+function extraSections(page) {
+  if (!page.extraSections) return "";
+  return page.extraSections.map((section) => `<section class="section guide">
+      <h2>${section.title}</h2>
+      ${section.body}
+    </section>`).join("");
+}
+
+function faq(page) {
+  if (!page.faq) return "";
+  return `<section class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
+      ${page.faq.map((item) => `<details><summary>${item.question}</summary><p>${item.answer}</p></details>`).join("")}
+    </section>`;
+}
+
+function toolPage(page) {
+  const heroNote = page.heroNote ? `
+      <p>${page.heroNote}</p>` : "";
+  const extras = page.extraSections ? `
+    ${extraSections(page)}` : "";
+  const pageFaq = page.faq ? `
+    ${faq(page)}` : "";
+  return `${head(page)}
+  <main id="main">
+    <section class="page-hero">
+      <p class="eyebrow">${brand} tool</p>
+      <h1>${page.h1}</h1>
+      <p>${page.intro}</p>${heroNote}
     </section>
-    ${related(page)}
+    ${toolUi(page)}
+    ${guide(page)}${extras}
+    ${related(page)}${pageFaq}
   </main>
 ${footer()}`;
 }
@@ -490,7 +603,7 @@ function infoPage(page) {
     contact: `<p>For support, corrections, accessibility issues, privacy questions, or tool suggestions, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p><p>Please include the page URL, browser, device type, and a short description of the issue.</p>`,
     privacy: `<p>The current image tools use browser APIs to process selected files locally. ${brand} does not require accounts for these tools.</p><p>The site may later include additional utility categories. Cookies may be used for basic site preferences or standard browser behavior. Analytics, advertising, and other third-party services are not required for the current image tools, but may be added in the future to understand site usage or support the website.</p><p>If analytics, ads, or third-party services are added, this policy should be updated with provider names, cookie behavior, and opt-out information where available.</p><p>Contact: <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
     terms: `<p>Use ${brand} only for lawful utility tasks. You are responsible for checking whether processed files satisfy third-party upload requirements.</p><p>The tools are provided as-is without a guarantee that every image or future utility output can meet a specific file size, format, or platform requirement.</p><p>Do not use the website to process files you do not have permission to use, and do not rely on the tools as legal, financial, medical, or official government advice.</p><p>Contact: <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
-    sitemap: `<div class="sitemap-list">${routes.filter((p) => p.route !== "/sitemap").map((p) => `<a href="${rel(p)}">${p.h1}</a>`).join("")}</div>`,
+    sitemap: `<div class="sitemap-list">${routes.filter((p) => p.route !== "/sitemap").map((p) => `<a href="${rel(p)}">${p.displayTitle || p.h1}</a>`).join("")}</div>`,
   };
   return `${head(page)}
   <main id="main">
@@ -593,6 +706,7 @@ if(bulk){bulk.addEventListener("submit",async e=>{e.preventDefault();const box=$
 }
 
 function keywordMap() {
+  const cell = (value) => String(value).replace(/\|/g, "\\|");
   const rows = [
     ["/image-compressor", "image compressor online", "compress image for email, reduce image size", "Compress images with quality control", "Tool page", "High", "Image Tools"],
     ["/image-resizer", "image resizer online", "resize image by pixels, resize photo online", "Resize dimensions", "Tool page", "High", "Image Tools"],
@@ -620,7 +734,7 @@ function keywordMap() {
   return `# TheTools.World SEO Keyword Map\n\nProduction domain: ${domain}\n\n${brand} is a broader utility tools brand. Current indexable tool pages focus on image utilities because those are the only live tools in this folder.\n\n| Page URL | Primary keyword | Secondary keywords | Search intent | Page type | Title | Meta description | Internal links to add | Priority | Future expansion category |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n${rows.map(([route, target, secondary, intent, pageType, priority, category]) => {
     const page = routes.find((p) => p.route === route);
     const links = route.includes("compress") ? "/image-resizer, /image-converter, /bulk-image-tools" : route.includes("resize") || route.includes("passport") ? "/image-compressor, /resize-image-for-online-form, /passport-photo-resizer" : "/image-compressor, /image-resizer, /bulk-image-tools";
-    return `| ${domain}${route} | ${target} | ${secondary} | ${intent} | ${pageType} | ${page.title} | ${page.description} | ${links} | ${priority} | ${category} |`;
+    return `| ${domain}${route} | ${target} | ${secondary} | ${intent} | ${pageType} | ${cell(page.title)} | ${cell(page.description)} | ${links} | ${priority} | ${category} |`;
   }).join("\n")}\n\n## Future Roadmap Keywords\n\nThese are planning targets only. They should not be added to the sitemap or navigation as live pages until real tools exist.\n\n| Keyword | Future category | Intent | Publishing note |\n| --- | --- | --- | --- |\n${roadmap.map((row) => `| ${row[0]} | ${row[1]} | ${row[2]} | ${row[3]} |`).join("\n")}\n`;
 }
 
