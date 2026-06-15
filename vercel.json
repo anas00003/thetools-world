@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.thetools.world"
+        }
+      ],
+      "destination": "https://thetools.world/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

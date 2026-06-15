@@ -540,6 +540,12 @@ function vercelJson() {
   const rewrites = routes.filter((p) => p.route !== "/").map((p) => ({ source: p.route, destination: `/${p.file}` }));
   const redirects = [
     {
+      source: "/",
+      has: [{ type: "host", value: "www.thetools.world" }],
+      destination: "https://thetools.world/",
+      permanent: true,
+    },
+    {
       source: "/:path*",
       has: [{ type: "host", value: "www.thetools.world" }],
       destination: "https://thetools.world/:path*",
