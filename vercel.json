@@ -70,6 +70,21 @@
       "permanent": true
     },
     {
+      "source": "/compress-jpg-to-50kb.html",
+      "destination": "/compress-jpg-to-50kb",
+      "permanent": true
+    },
+    {
+      "source": "/compress-jpg-to-100kb.html",
+      "destination": "/compress-jpg-to-100kb",
+      "permanent": true
+    },
+    {
+      "source": "/compress-jpg-to-200kb.html",
+      "destination": "/compress-jpg-to-200kb",
+      "permanent": true
+    },
+    {
       "source": "/resize-image-for-online-form.html",
       "destination": "/resize-image-for-online-form",
       "permanent": true
@@ -191,6 +206,18 @@
     {
       "source": "/compress-jpg-to-20kb",
       "destination": "/compress-jpg-to-20kb.html"
+    },
+    {
+      "source": "/compress-jpg-to-50kb",
+      "destination": "/compress-jpg-to-50kb.html"
+    },
+    {
+      "source": "/compress-jpg-to-100kb",
+      "destination": "/compress-jpg-to-100kb.html"
+    },
+    {
+      "source": "/compress-jpg-to-200kb",
+      "destination": "/compress-jpg-to-200kb.html"
     },
     {
       "source": "/resize-image-for-online-form",
