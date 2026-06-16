@@ -65,6 +65,11 @@
       "permanent": true
     },
     {
+      "source": "/compress-jpg-to-20kb.html",
+      "destination": "/compress-jpg-to-20kb",
+      "permanent": true
+    },
+    {
       "source": "/resize-image-for-online-form.html",
       "destination": "/resize-image-for-online-form",
       "permanent": true
@@ -182,6 +187,10 @@
     {
       "source": "/compress-image-to-20kb",
       "destination": "/compress-image-to-20kb.html"
+    },
+    {
+      "source": "/compress-jpg-to-20kb",
+      "destination": "/compress-jpg-to-20kb.html"
     },
     {
       "source": "/resize-image-for-online-form",

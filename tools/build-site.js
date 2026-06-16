@@ -381,6 +381,95 @@ const routes = [
     priority: "0.8",
   },
   {
+    route: "/compress-jpg-to-20kb",
+    file: "compress-jpg-to-20kb.html",
+    title: "Compress JPG to 20KB Online | TheTools.World",
+    description: "Compress JPG or JPEG photos toward a 20KB limit for signatures, online forms, small profile uploads, job portals, admission forms, and documents.",
+    h1: "Compress JPG to 20KB online",
+    displayTitle: "Compress JPG to 20KB",
+    displayDescription: "Compress JPG or JPEG photos toward a strict 20KB target for signatures, forms, and small uploads.",
+    kind: "compressor",
+    targetKb: 20,
+    intro: "Use this page when a form, signature upload, job application, admission portal, exam portal, profile upload, or document workflow needs a JPG or JPEG close to or under 20KB. Choose your JPG, keep the 20KB target, and reduce max width or quality until the downloaded file fits your requirement.",
+    heroNote: "20KB is a very small file size. Exact final size depends on the original JPG dimensions, visual detail, compression quality, and upload requirements. The current image processing workflow uses browser APIs for the selected image task.",
+    toolNotes: [
+      "Best for JPG and JPEG photos.",
+      "Compressed downloads are prepared as JPG for smaller output.",
+      "Exact 20KB output is not guaranteed.",
+      "Large JPG photos may need resizing before compression.",
+      "Check signatures and text-heavy images for readability before uploading.",
+    ],
+    guide: {
+      title: "How to compress JPG to 20KB",
+      steps: [
+        "Choose a JPG or JPEG image from your device.",
+        "Keep the target size set to 20KB.",
+        "Start with a smaller max width if the JPG is a large phone or camera photo.",
+        "Compress the image and check the final downloaded file size.",
+        "If the result is still above 20KB, reduce max width or quality and try again.",
+        "Check the downloaded JPG for readability before uploading, especially for signatures or document images.",
+      ],
+      note: "For strict upload portals, compare the downloaded JPG against the official file size, dimensions, format, and readability requirements before submitting.",
+    },
+    extraSections: [
+      {
+        title: "What this JPG 20KB compressor is for",
+        body: `<p>This page is for JPG and JPEG photos that need a strict 20KB upload limit. It can help with signatures, small profile images, document portals, online forms, school or job applications, admission forms, exam portals, and account forms.</p><p>JPG usually compresses photos more efficiently than PNG, but 20KB may still be too strict for large or detailed photos. If a form accepts a larger file, you may get better quality with <a href="/compress-image-to-50kb">compress image to 50KB</a>, <a href="/compress-image-under-100kb">compress image under 100KB</a>, or <a href="/compress-image-under-200kb">compress image under 200KB</a>.</p>`,
+      },
+      {
+        title: "How to get closer to 20KB",
+        body: `<p>Resize large JPG photos before expecting a 20KB result. Reduce max width first for photos from phones or cameras, then lower quality gradually so the image does not become unnecessarily soft.</p><p>For signatures, keep enough contrast and check the final image after download. For document or text-heavy images, readability matters more than forcing the file smaller than the upload rule requires.</p>`,
+      },
+      {
+        title: "What if the JPG is still above 20KB?",
+        body: `<ul>
+        <li>Reduce max width, for example from 1600px to 1000px, 800px, 600px, or lower if the upload rules allow it.</li>
+        <li>Lower quality step by step and compare the downloaded file size.</li>
+        <li>Use the <a href="/image-resizer">image resizer</a> first if the JPG dimensions are large.</li>
+        <li>Use <a href="/compress-image-to-50kb">compress image to 50KB</a>, <a href="/compress-image-under-100kb">compress image under 100KB</a>, or <a href="/compress-image-under-200kb">compress image under 200KB</a> if the upload portal allows a larger file and quality matters.</li>
+        <li>Use <a href="/compress-image-to-20kb">compress image to 20KB</a> if your input is PNG, WebP, or a mixed image format.</li>
+        <li>Check official upload rules before submitting because some forms also specify dimensions, format, background, or photo type.</li>
+      </ul>`,
+      },
+      {
+        title: "JPG vs PNG for strict compression",
+        body: `<p>JPG is often better for photos because it can produce smaller files at acceptable visual quality. PNG can stay larger, especially for detailed screenshots, transparent graphics, or images with sharp text.</p><p>If your upload rule accepts JPG or JPEG, this page is the focused starting point. If your file is PNG or WebP, use the broader <a href="/image-compressor">image compressor</a> or the general <a href="/compress-image-to-20kb">compress image to 20KB</a> page.</p>`,
+      },
+      {
+        title: "Common upload uses",
+        body: `<p>A 20KB JPG target is common for signature uploads, small profile photos, online application forms, job application portals, admission or exam portals, school, service, or account forms, and document workflows that require JPG or JPEG. If your form also has pixel-dimension rules, use the <a href="/resize-image-for-online-form">resize image for online form</a> tool first. For passport-style dimensions, start with the <a href="/passport-photo-resizer">passport photo resizer</a>.</p>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can every JPG be compressed to exactly 20KB?",
+        answer: "No. Exact output depends on the original JPG dimensions, detail, quality, and compression limits. The tool helps you get close to or under 20KB when possible.",
+      },
+      {
+        question: "Is JPG better than PNG for 20KB compression?",
+        answer: "Often yes for photos. JPG usually creates smaller photo files than PNG, but text-heavy images and signatures still need readability checks.",
+      },
+      {
+        question: "What should I do if my JPG is still above 20KB?",
+        answer: "Reduce max width, lower quality gradually, or resize the JPG first. Check the final downloaded file size and readability.",
+      },
+      {
+        question: "Can I use this for signatures or online forms?",
+        answer: "Yes, it can help prepare JPG signatures, small profile images, or form uploads, but you must compare the result with official size, dimension, format, and readability rules.",
+      },
+      {
+        question: "Are images uploaded to a server?",
+        answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
+      },
+      {
+        question: "Should I resize before compressing?",
+        answer: "If the JPG is a large phone or camera photo, resizing first can make it easier to get close to 20KB while keeping the result usable.",
+      },
+    ],
+    relatedRoutes: ["/compress-image-to-20kb", "/image-compressor", "/image-resizer", "/compress-image-to-50kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/passport-photo-resizer"],
+    priority: "0.8",
+  },
+  {
     route: "/resize-image-for-online-form",
     file: "resize-image-for-online-form.html",
     title: "Resize Image for Online Form Uploads",
@@ -506,7 +595,7 @@ const mainTools = routes.filter((page) =>
   ["/image-compressor", "/image-resizer", "/image-converter", "/bulk-image-tools"].includes(page.route)
 );
 const formTools = routes.filter((page) =>
-  ["/compress-image-to-20kb", "/compress-image-to-50kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/compress-photo-for-government-form", "/passport-photo-resizer"].includes(page.route)
+  ["/compress-image-to-20kb", "/compress-jpg-to-20kb", "/compress-image-to-50kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/compress-photo-for-government-form", "/passport-photo-resizer"].includes(page.route)
 );
 const converterTools = routes.filter((page) =>
   ["/convert-webp-to-jpg", "/png-to-jpg", "/jpg-to-png"].includes(page.route)
@@ -949,6 +1038,7 @@ function keywordMap() {
     ["/image-converter", "image converter online", "jpg png webp converter", "Change image format", "Tool page", "High", "Image Tools"],
     ["/bulk-image-tools", "bulk image compressor online", "bulk resize images, multiple image compressor", "Process many images", "Tool page", "Medium", "Image Tools"],
     ["/compress-image-to-20kb", "compress image to 20kb", "compress image under 20kb, image compressor 20kb, compress jpg to 20kb", "Meet strict upload size limit", "Long-tail tool page", "High", "Image Tools"],
+    ["/compress-jpg-to-20kb", "compress jpg to 20kb", "compress jpeg to 20kb, reduce jpg size to 20kb, jpg compressor 20kb", "Meet strict JPG upload size limit", "Long-tail tool page", "High", "Image Tools"],
     ["/compress-image-to-50kb", "compress image to 50kb", "compress image under 50kb, image compressor 50kb, compress jpg to 50kb", "Meet upload size limit", "Long-tail tool page", "High", "Image Tools"],
     ["/compress-image-under-100kb", "compress image under 100kb", "photo under 100 kb, reduce image to 100kb", "Meet upload size limit", "Long-tail tool page", "High", "Image Tools"],
     ["/compress-image-under-200kb", "compress image under 200kb", "photo under 200 kb, image compressor 200kb", "Meet upload size limit", "Long-tail tool page", "High", "Image Tools"],
