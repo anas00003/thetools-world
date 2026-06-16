@@ -27,6 +27,7 @@ const routes = [
     h1: "Image compressor online",
     kind: "compressor",
     intro: "Reduce image file size before uploading, emailing, or adding photos to a website. Processing happens in your browser.",
+    relatedRoutes: ["/compress-image-to-50kb", "/compress-image-to-20kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/image-resizer"],
     priority: "0.9",
   },
   {
@@ -57,6 +58,90 @@ const routes = [
     h1: "Bulk image tools",
     kind: "bulk",
     intro: "Handle groups of photos with repeatable settings. Your files stay in your browser while previews and downloads are prepared locally.",
+    priority: "0.8",
+  },
+  {
+    route: "/compress-image-to-50kb",
+    file: "compress-image-to-50kb.html",
+    title: "Compress Image to 50KB Online | TheTools.World",
+    description: "Compress JPG, PNG, or WebP images toward a 50KB limit for online forms, profile photos, document portals, small uploads, and email.",
+    h1: "Compress image to 50KB online",
+    displayTitle: "Compress image to 50KB",
+    displayDescription: "Compress images toward a 50KB target for online forms, profile photos, document portals, and email.",
+    kind: "compressor",
+    targetKb: 50,
+    intro: "Use this page when an online form, profile upload, document portal, small upload, or email attachment needs an image close to or under 50KB. Choose your image, keep the 50KB target, and adjust width or quality until the downloaded file fits your requirement.",
+    heroNote: "Exact final size depends on the original image, dimensions, visual detail, format, and quality. The current image processing workflow uses browser APIs for the selected image task.",
+    toolNotes: [
+      "Supported inputs: JPG, PNG, and WebP.",
+      "Downloads are prepared as JPG for smaller output.",
+      "Exact 50KB output is not guaranteed.",
+      "Very large photos may need resizing before compression.",
+    ],
+    guide: {
+      title: "How to compress an image to 50KB",
+      steps: [
+        "Choose a JPG, PNG, or WebP image from your device.",
+        "Keep the target size set to 50KB.",
+        "Start with the default quality and max-width settings.",
+        "Compress the image and check the final file size.",
+        "If the result is still above 50KB, reduce max width or quality and try again.",
+        "Check the final image for readability before uploading.",
+      ],
+      note: "For upload portals, compare the final image against the official file size, dimensions, format, and readability requirements before submitting.",
+    },
+    extraSections: [
+      {
+        title: "What this 50KB compressor is for",
+        body: `<p>A 50KB image target can help with profile photos, form uploads, small portal images, email attachments, and document systems with strict upload limits. It is strict, but usually more photo-friendly than a 20KB target.</p><p>Large photos may still need resizing before compression. If your form allows a larger file, you may get better quality with <a href="/compress-image-under-100kb">compress image under 100KB</a> or <a href="/compress-image-under-200kb">compress image under 200KB</a>.</p>`,
+      },
+      {
+        title: "How to get closer to 50KB",
+        body: `<p>Resize very large photos before expecting a 50KB result. If the image comes from a phone or camera, reduce max width first, then lower quality gradually so the result does not become unnecessarily soft.</p><p>JPG usually works better for photos because it can create smaller outputs. PNG may be better for graphics, but can stay larger than JPG. Text-heavy images, forms, certificates, and signatures should be checked for readability after compression.</p>`,
+      },
+      {
+        title: "What if the image is still above 50KB?",
+        body: `<ul>
+        <li>Reduce max width, for example from 1600px to 1200px, 1000px, 800px, or lower if the upload rules allow it.</li>
+        <li>Lower quality step by step and compare the downloaded file size.</li>
+        <li>Use the <a href="/image-resizer">image resizer</a> first if the original dimensions are very large.</li>
+        <li>Use <a href="/compress-image-to-20kb">compress image to 20KB</a> only if the upload portal requires a very small file.</li>
+        <li>Use <a href="/compress-image-under-100kb">compress image under 100KB</a> or <a href="/compress-image-under-200kb">compress image under 200KB</a> if the upload portal allows a larger file and quality matters.</li>
+        <li>Check official upload rules before submitting because some forms also specify dimensions, format, or photo type.</li>
+      </ul>`,
+      },
+      {
+        title: "Common 50KB upload uses",
+        body: `<p>A 50KB target is often useful for online application forms, profile photo uploads, document portals, small account images, email attachments, and school, job, service, or account forms. It can be a better fit for small photos where 20KB is too aggressive.</p><p>If your form also has pixel-dimension rules, use the <a href="/resize-image-for-online-form">resize image for online form</a> tool first. For passport-style photo dimensions, start with the <a href="/passport-photo-resizer">passport photo resizer</a>, then compress only if the official instructions allow it.</p>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can every image be compressed to exactly 50KB?",
+        answer: "No. Exact output depends on the original image, dimensions, detail, format, and quality. The tool helps you get close to or under 50KB when possible.",
+      },
+      {
+        question: "What should I do if my image is still above 50KB?",
+        answer: "Reduce max width, lower quality gradually, or resize the image first. Check the final downloaded file size.",
+      },
+      {
+        question: "Is 50KB better than 20KB for photos?",
+        answer: "Often yes. A 50KB target usually preserves more detail than 20KB, but you should follow the upload limit required by your form or portal.",
+      },
+      {
+        question: "Can I use this for online forms?",
+        answer: "Yes, it can help prepare image file size for forms, but you must compare the result with the official size, dimension, and format rules.",
+      },
+      {
+        question: "Which formats are supported?",
+        answer: "JPG, PNG, and WebP uploads are supported by the browser tool. Compressed downloads are prepared as JPG for smaller file sizes.",
+      },
+      {
+        question: "Are images uploaded to a server?",
+        answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
+      },
+    ],
+    relatedRoutes: ["/image-compressor", "/image-resizer", "/compress-image-to-20kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/passport-photo-resizer"],
     priority: "0.8",
   },
   {
@@ -99,6 +184,7 @@ const routes = [
         <li>Reduce max width, for example from 1600px to 1200px or 1000px.</li>
         <li>Lower quality gradually and check the downloaded file after each try.</li>
         <li>Use the <a href="/image-resizer">image resizer</a> first if the original dimensions are very large.</li>
+        <li>Use the <a href="/compress-image-to-50kb">compress image to 50KB</a> page if the upload portal needs a smaller file.</li>
         <li>Use the <a href="/compress-image-under-200kb">compress image under 200KB</a> page if the upload portal allows a higher limit.</li>
         <li>Always check the official upload rules before submitting.</li>
       </ul>`,
@@ -130,7 +216,7 @@ const routes = [
         answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
       },
     ],
-    relatedRoutes: ["/compress-image-to-20kb", "/compress-image-under-200kb", "/image-resizer", "/resize-image-for-online-form"],
+    relatedRoutes: ["/compress-image-to-50kb", "/compress-image-to-20kb", "/compress-image-under-200kb", "/image-resizer", "/resize-image-for-online-form"],
     priority: "0.8",
   },
   {
@@ -173,7 +259,7 @@ const routes = [
         <li>Reduce max width, for example from 1600px to 1400px, 1200px, or 1000px.</li>
         <li>Lower quality gradually and check the downloaded file after each try.</li>
         <li>Use the <a href="/image-resizer">image resizer</a> first if the original dimensions are very large.</li>
-        <li>Use the <a href="/compress-image-under-100kb">compress image under 100KB</a> page if the upload portal needs a smaller file.</li>
+        <li>Use the <a href="/compress-image-under-100kb">compress image under 100KB</a> or <a href="/compress-image-to-50kb">compress image to 50KB</a> page if the upload portal needs a smaller file.</li>
         <li>Always check the official upload rules before submitting because some forms also require a specific format or dimension.</li>
       </ul>`,
       },
@@ -208,7 +294,7 @@ const routes = [
         answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
       },
     ],
-    relatedRoutes: ["/compress-image-to-20kb", "/compress-image-under-100kb", "/image-resizer", "/resize-image-for-online-form"],
+    relatedRoutes: ["/compress-image-to-50kb", "/compress-image-to-20kb", "/compress-image-under-100kb", "/image-resizer", "/resize-image-for-online-form"],
     priority: "0.8",
   },
   {
@@ -244,7 +330,7 @@ const routes = [
     extraSections: [
       {
         title: "What this 20KB compressor is for",
-        body: `<p>This page is for strict upload limits where a small image needs to fit close to or under 20KB. It can help with signatures, icons, small profile images, school or job forms, service portals, and document systems that reject larger files.</p><p>If you need a general-purpose compressor with more visual quality, start with the <a href="/image-compressor">image compressor</a> or use the larger <a href="/compress-image-under-100kb">compress image under 100KB</a> page.</p>`,
+        body: `<p>This page is for strict upload limits where a small image needs to fit close to or under 20KB. It can help with signatures, icons, small profile images, school or job forms, service portals, and document systems that reject larger files.</p><p>If you need a general-purpose compressor with more visual quality, start with the <a href="/image-compressor">image compressor</a> or use the larger <a href="/compress-image-to-50kb">compress image to 50KB</a> or <a href="/compress-image-under-100kb">compress image under 100KB</a> page.</p>`,
       },
       {
         title: "How to get closer to the 20KB limit",
@@ -291,7 +377,7 @@ const routes = [
         answer: "The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready.",
       },
     ],
-    relatedRoutes: ["/image-compressor", "/image-resizer", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/passport-photo-resizer"],
+    relatedRoutes: ["/image-compressor", "/image-resizer", "/compress-image-to-50kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/passport-photo-resizer"],
     priority: "0.8",
   },
   {
@@ -420,7 +506,7 @@ const mainTools = routes.filter((page) =>
   ["/image-compressor", "/image-resizer", "/image-converter", "/bulk-image-tools"].includes(page.route)
 );
 const formTools = routes.filter((page) =>
-  ["/compress-image-to-20kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/compress-photo-for-government-form", "/passport-photo-resizer"].includes(page.route)
+  ["/compress-image-to-20kb", "/compress-image-to-50kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/resize-image-for-online-form", "/compress-photo-for-government-form", "/passport-photo-resizer"].includes(page.route)
 );
 const converterTools = routes.filter((page) =>
   ["/convert-webp-to-jpg", "/png-to-jpg", "/jpg-to-png"].includes(page.route)
@@ -863,6 +949,7 @@ function keywordMap() {
     ["/image-converter", "image converter online", "jpg png webp converter", "Change image format", "Tool page", "High", "Image Tools"],
     ["/bulk-image-tools", "bulk image compressor online", "bulk resize images, multiple image compressor", "Process many images", "Tool page", "Medium", "Image Tools"],
     ["/compress-image-to-20kb", "compress image to 20kb", "compress image under 20kb, image compressor 20kb, compress jpg to 20kb", "Meet strict upload size limit", "Long-tail tool page", "High", "Image Tools"],
+    ["/compress-image-to-50kb", "compress image to 50kb", "compress image under 50kb, image compressor 50kb, compress jpg to 50kb", "Meet upload size limit", "Long-tail tool page", "High", "Image Tools"],
     ["/compress-image-under-100kb", "compress image under 100kb", "photo under 100 kb, reduce image to 100kb", "Meet upload size limit", "Long-tail tool page", "High", "Image Tools"],
     ["/compress-image-under-200kb", "compress image under 200kb", "photo under 200 kb, image compressor 200kb", "Meet upload size limit", "Long-tail tool page", "High", "Image Tools"],
     ["/resize-image-for-online-form", "resize image for online form", "resize photo for form, form image resizer", "Prepare form upload", "Long-tail tool page", "High", "Image Tools"],
