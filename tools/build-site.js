@@ -1394,23 +1394,16 @@ function keywordMap() {
 function faviconSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TheTools.World icon">
   <defs>
-    <linearGradient id="g" x1="10" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1668f2"/>
-      <stop offset=".58" stop-color="#0ba7d7"/>
-      <stop offset="1" stop-color="#23c6a8"/>
-    </linearGradient>
-    <linearGradient id="shine" x1="18" y1="8" x2="50" y2="52" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff" stop-opacity=".34"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    <linearGradient id="g" x1="8" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#155df5"/>
+      <stop offset=".52" stop-color="#078fc9"/>
+      <stop offset="1" stop-color="#19c6ac"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="15" fill="url(#g)"/>
-  <path d="M15 17.5h34M15 31.5h34M15 45.5h34M18.5 14v35M32 14v35M45.5 14v35" stroke="#fff" stroke-opacity=".16" stroke-width="2"/>
-  <path d="M12 16c7-6 19-8 32-4 4 1 7 3 9 5v17c-7 0-13 2-18 6-8 6-17 8-25 6V23c0-3 1-5 2-7Z" fill="url(#shine)"/>
-  <path d="M16 20h32v8H37v19h-9V28H16v-8Z" fill="#f8fbff"/>
-  <path d="M25 20h9l5 15 5-15h9L43 47h-8l-5-15-5 15h-8L25 20Z" fill="#e9fffb"/>
-  <path d="M49 11.5l3.5 3.5-5 5-3.5-3.5 5-5Z" fill="#07395a" fill-opacity=".55"/>
-  <circle cx="49" cy="15" r="2.2" fill="#fff"/>
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="url(#g)"/>
+  <path d="M17 18h30M17 32h30M17 46h30" stroke="#fff" stroke-opacity=".14" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="900" letter-spacing="-1" fill="#fff">TW</text>
+  <path d="M48 12l4 4-5.5 5.5-4-4L48 12Z" fill="#062a46" fill-opacity=".32"/>
 </svg>
 `;
 }
@@ -1423,25 +1416,17 @@ function horizontalLogoSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 48" role="img" aria-label="TheTools.World">
   <defs>
     <linearGradient id="g" x1="7" y1="5" x2="43" y2="43" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1668f2"/>
-      <stop offset=".58" stop-color="#0ba7d7"/>
-      <stop offset="1" stop-color="#23c6a8"/>
-    </linearGradient>
-    <linearGradient id="shine" x1="14" y1="7" x2="39" y2="39" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff" stop-opacity=".34"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      <stop stop-color="#155df5"/>
+      <stop offset=".52" stop-color="#078fc9"/>
+      <stop offset="1" stop-color="#19c6ac"/>
     </linearGradient>
   </defs>
   <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#g)"/>
-  <path d="M12 14h24M12 24h24M12 34h24M15 11v26M24 11v26M33 11v26" stroke="#fff" stroke-opacity=".16" stroke-width="1.6"/>
-  <path d="M10 13c5-4 14-6 23-3 3 1 5 2 7 4v12c-5 0-10 2-14 5-5 4-12 6-18 4V18c0-2 .5-4 2-5Z" fill="url(#shine)"/>
-  <path d="M11 16h26v6h-9v15h-7V22H11v-6Z" fill="#f8fbff"/>
-  <path d="M18 16h7l4 12 4-12h7l-8 21h-6l-4-12-4 12h-6l6-21Z" fill="#e9fffb"/>
-  <path d="M37 8.5l3 3-4.2 4.2-3-3 4.2-4.2Z" fill="#07395a" fill-opacity=".55"/>
-  <circle cx="37" cy="11.5" r="1.8" fill="#fff"/>
-  <text x="58" y="31" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="800" letter-spacing="0" fill="#162235">TheTools</text>
-  <circle cx="161" cy="29" r="2.4" fill="#0ba7a5"/>
-  <text x="167" y="31" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="800" letter-spacing="0" fill="#0ba7a5">World</text>
+  <path d="M13 15h22M13 24h22M13 33h22" stroke="#fff" stroke-opacity=".14" stroke-width="2.2" stroke-linecap="round"/>
+  <text x="24" y="32" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" letter-spacing="-.8" fill="#fff">TW</text>
+  <path d="M37 8.5l3 3-4.4 4.4-3-3 4.4-4.4Z" fill="#062a46" fill-opacity=".32"/>
+  <text x="58" y="31" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="850" letter-spacing="0" fill="#162235">TheTools</text>
+  <text x="160" y="31" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="850" letter-spacing="0" fill="#079b9b">.World</text>
 </svg>
 `;
 }
