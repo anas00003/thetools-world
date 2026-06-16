@@ -1,0 +1,17 @@
+{
+  "name": "TheTools.World",
+  "short_name": "TheTools",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f8fb3",
+  "icons": [
+    {
+      "src": "/assets/site-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

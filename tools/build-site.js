@@ -884,7 +884,15 @@ function icon(name) {
 }
 
 function brandMark() {
-  return `<span class="brand-mark">TW</span>`;
+  return `<img class="brand-mark" src="/assets/logo.svg" width="40" height="40" alt="" aria-hidden="true">`;
+}
+
+function brandLogo() {
+  return `<img class="brand-logo" src="/assets/logo-horizontal.svg" width="236" height="48" alt="${brand}">`;
+}
+
+function brandName() {
+  return `<span class="brand-name"><span>TheTools</span><span class="brand-tld">.World</span></span>`;
 }
 
 function nav(active) {
@@ -902,6 +910,28 @@ function nav(active) {
 
 function head(page) {
   const canonical = `${domain}${page.route === "/" ? "" : page.route}`;
+  const siteSchema = `
+  <script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${domain}/#organization`,
+        name: brand,
+        url: `${domain}/`,
+        logo: `${domain}/assets/logo.svg`,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${domain}/#website`,
+        name: brand,
+        url: `${domain}/`,
+        publisher: {
+          "@id": `${domain}/#organization`,
+        },
+      },
+    ],
+  })}</script>`;
   const faqSchema = page.faq ? `
   <script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
@@ -923,6 +953,7 @@ function head(page) {
   <title>${page.title}</title>
   <meta name="description" content="${page.description}">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0f8fb3">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${brand}">
@@ -933,12 +964,15 @@ function head(page) {
   <meta name="twitter:title" content="${page.title}">
   <meta name="twitter:description" content="${page.description}">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/styles.css">${faqSchema}
+  <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/styles.css">${siteSchema}${faqSchema}
 </head>
 <body data-tool="${page.kind}" data-target-kb="${page.targetKb || ""}" data-output="${page.output || ""}" data-preset="${page.preset || ""}">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="/" aria-label="${brand} home">${brandMark()}<span>${brand}</span></a>
+    <a class="brand" href="/" aria-label="${brand} home">${brandMark()}${brandName()}</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary">${nav(page.route)}</nav>
   </header>`;
@@ -948,7 +982,7 @@ function footer() {
   return `<footer class="site-footer">
     <div class="footer-grid">
       <div>
-        <a class="brand footer-brand" href="/">${brandMark()}<span>${brand}</span></a>
+        <a class="brand footer-brand" href="/" aria-label="${brand} home">${brandMark()}${brandName()}</a>
         <p>${tagline} Image tools are live now, with more useful categories planned carefully over time.</p>
       </div>
       <div>
@@ -1219,6 +1253,8 @@ function legacyPage(item) {
   <meta http-equiv="refresh" content="0; url=${item.to}">
   <link rel="canonical" href="${domain}${item.to === "/" ? "" : item.to}">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0f8fb3">
 </head>
 <body>
   <p>This page moved to <a href="${item.to}">${item.to}</a>.</p>
@@ -1238,6 +1274,26 @@ function sitemapXml() {
 
 function robots() {
   return `User-agent: *\nAllow: /\n\nSitemap: ${domain}/sitemap.xml\n`;
+}
+
+function webManifest() {
+  return `${JSON.stringify({
+    name: brand,
+    short_name: "TheTools",
+    start_url: "/",
+    scope: "/",
+    display: "standalone",
+    background_color: "#ffffff",
+    theme_color: "#0f8fb3",
+    icons: [
+      {
+        src: "/assets/site-icon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "any maskable",
+      },
+    ],
+  }, null, 2)}\n`;
 }
 
 function vercelJson() {
@@ -1263,7 +1319,7 @@ function vercelJson() {
 
 function css() {
   const base = `:root{color-scheme:light;--ink:#273044;--muted:#5e6a7d;--line:#d9e2ef;--soft:#f5f8fb;--paper:#ffffff;--brand:#246c94;--brand-2:#29a7ce;--accent:#f4a261;--good:#2a9d8f;--shadow:0 20px 50px rgba(39,48,68,.12)}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}a{color:inherit}.skip-link{position:absolute;left:-999px}.skip-link:focus{left:1rem;top:1rem;background:#fff;padding:.75rem;z-index:5}.site-header{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem clamp(1rem,4vw,3rem);background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.brand{display:inline-flex;align-items:center;gap:.6rem;font-weight:800;text-decoration:none}.brand-mark{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:8px;background:var(--brand);color:#fff;font-size:.8rem;letter-spacing:0}.site-nav{display:flex;gap:.35rem;align-items:center}.site-nav a{padding:.55rem .75rem;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:700}.site-nav a.active,.site-nav a:hover{background:var(--soft);color:var(--ink)}.nav-toggle{display:none}.hero,.page-hero{padding:clamp(3rem,8vw,6rem) clamp(1rem,4vw,3rem);max-width:1180px;margin:auto}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.8fr);gap:3rem;align-items:center}.eyebrow{text-transform:uppercase;font-size:.78rem;letter-spacing:.08em;color:var(--brand);font-weight:800;margin:0 0 .75rem}h1{font-size:clamp(2.35rem,6vw,4.8rem);line-height:1.02;margin:0 0 1rem;letter-spacing:0}h2{font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.15;margin:0 0 1rem;letter-spacing:0}h3{margin:.25rem 0}.hero p,.page-hero p{font-size:1.1rem;color:var(--muted);max-width:66ch}.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.75rem 1rem;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:800;cursor:pointer}.button.primary{background:var(--brand);border-color:var(--brand);color:#fff}.button.secondary{background:#fff;color:var(--ink)}.hero-panel{background:linear-gradient(145deg,#eaf8fb,#fff7ee);border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:var(--shadow)}.preview-frame{aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#fff;position:relative}.preview-sky{position:absolute;inset:0;background:linear-gradient(#79c7d9 0 48%,#f3d392 48% 70%,#2a9d8f 70%)}.preview-grid{position:absolute;inset:1rem;border:2px solid rgba(255,255,255,.8);background:repeating-linear-gradient(90deg,transparent 0 32%,rgba(255,255,255,.7) 33% 34%),repeating-linear-gradient(0deg,transparent 0 32%,rgba(255,255,255,.7) 33% 34%)}.preview-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}.preview-stats span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.8rem;text-align:center;font-weight:800}.category-strip,.search-section,.section,.tool-panel,.content-page,.privacy-band{max-width:1180px;margin:0 auto 2rem;padding:clamp(1rem,4vw,2rem)}.category-strip{padding-top:0}.category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem}.category-grid a,.category-grid span{display:grid;gap:.25rem;border:1px solid var(--line);border-radius:8px;padding:1rem;text-decoration:none;background:#fff}.category-grid em{font-style:normal;color:var(--muted)}.planned-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem}.planned-grid span{border:1px solid var(--line);border-radius:8px;padding:1rem;background:#fff;color:var(--muted);font-weight:800}.search-section{background:var(--soft);border-block:1px solid var(--line);max-width:none}.search-section h2,.search-section input,.quick-links{max-width:1180px;margin-left:auto;margin-right:auto}.search-input{display:block;width:100%;border:1px solid var(--line);border-radius:8px;min-height:52px;padding:0 1rem;font-size:1rem}.quick-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.quick-links a{border:1px solid var(--line);background:#fff;border-radius:8px;padding:.55rem .75rem;text-decoration:none}.section-heading{max-width:760px}.card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.card-grid.compact{grid-template-columns:repeat(3,minmax(0,1fr))}.tool-card{display:flex;flex-direction:column;gap:.7rem;min-height:170px;padding:1.1rem;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:#fff}.tool-card:hover{border-color:var(--brand);box-shadow:var(--shadow)}.tool-card span:last-child{color:var(--muted)}.tool-icon{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:8px;background:#e5f6fb;color:var(--brand);font-weight:900}.band{max-width:none;background:#fbf7f0;border-block:1px solid #eadbc6}.band>*{max-width:1180px;margin-left:auto;margin-right:auto}.privacy-band{display:grid;grid-template-columns:1fr 1fr;gap:2rem;background:#eaf8fb;border:1px solid var(--line);border-radius:8px}.faq details{border-top:1px solid var(--line);padding:1rem 0}.faq summary{font-weight:800;cursor:pointer}.page-hero{text-align:left;padding-bottom:1rem}.tool-panel{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem;border:1px solid var(--line);border-radius:8px;background:var(--soft)}.tool-form{display:grid;gap:1rem}.tool-form label{display:grid;gap:.35rem;font-weight:800}.tool-form input,.tool-form select{min-height:44px;border:1px solid var(--line);border-radius:8px;padding:.55rem;background:#fff;font:inherit}.tool-form .checkbox{display:flex;align-items:center;gap:.5rem}.result-box{margin-top:1rem;padding:1rem;border:1px dashed var(--line);border-radius:8px;background:#fff;min-height:72px}.result-box img{max-width:220px;max-height:180px;display:block;margin:.5rem 0;border-radius:8px}.download-list{display:grid;gap:.5rem}.guide ol{padding-left:1.2rem}.content-page{max-width:850px;font-size:1.05rem}.sitemap-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}.sitemap-list a{padding:.8rem;border:1px solid var(--line);border-radius:8px;text-decoration:none}.site-footer{margin-top:3rem;padding:2rem clamp(1rem,4vw,3rem);background:#273044;color:#fff}.footer-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:2rem}.site-footer a,.site-footer span{display:block;color:#e9f2fb;text-decoration:none;margin:.35rem 0}.site-footer h2{font-size:1rem;margin:0 0 .75rem}.footer-note{max-width:1180px;margin:2rem auto 0;color:#b9c6d8}@media (max-width:850px){.nav-toggle{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:8px;min-height:40px;padding:.5rem}.site-nav{display:none;position:absolute;left:1rem;right:1rem;top:4.5rem;background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}.site-nav.open{display:flex}.hero,.tool-panel,.privacy-band{grid-template-columns:1fr}.card-grid,.card-grid.compact,.footer-grid,.sitemap-list,.category-grid{grid-template-columns:1fr}h1{font-size:2.4rem}.hero{padding-top:2rem}.site-header{position:relative}}`;
-  return base + `.tool-panel{box-shadow:0 16px 34px rgba(39,48,68,.07)}.tool-intro{align-self:start}.tool-form{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem}.tool-form input,.tool-form select,.button,.result-box{max-width:100%}.result-box{overflow-wrap:anywhere}.result-box.is-error{border-color:#d66;background:#fff6f4;color:#853227}.result-box.is-success{border-color:#9fd6c8;background:#f4fffb}.tool-card{transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease}.tool-card:hover{transform:translateY(-2px)}.guide{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.privacy-band{box-shadow:0 10px 28px rgba(36,108,148,.08)}@media (max-width:850px){html,body{max-width:100%;overflow-x:hidden}.hero,.page-hero,.section,.tool-panel,.content-page,.privacy-band,.category-strip{width:100%;max-width:100%;padding-left:1rem;padding-right:1rem}.tool-panel{margin-left:0;margin-right:0;border-left:0;border-right:0;border-radius:0}.tool-form{padding:.9rem}.tool-form input[type="file"]{width:100%;font-size:.95rem}.tool-form input[type="range"]{width:100%;min-width:0}.button{width:100%;white-space:normal;text-align:center}.result-box img{max-width:100%;height:auto}.download-list a{overflow-wrap:anywhere}.footer-grid{gap:1.25rem}.site-footer{padding-left:1rem;padding-right:1rem}}`;
+  return base + `.brand-logo{display:block;width:clamp(10.5rem,22vw,14.75rem);height:auto;max-height:3rem}.brand-mark{display:block;flex:0 0 auto;width:2.35rem;height:2.35rem;border-radius:8px;background:transparent}.brand-name{display:inline-flex;align-items:baseline;color:#162235;font-size:1.18rem;font-weight:900;line-height:1;white-space:nowrap}.brand-tld{color:#0ba7a5}.site-header .brand{min-width:0}.site-footer .brand{display:inline-flex;align-items:center}.footer-brand .brand-name{color:#fff}.footer-brand .brand-tld{color:#59dfd2}.tool-panel{box-shadow:0 16px 34px rgba(39,48,68,.07)}.tool-intro{align-self:start}.tool-form{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem}.tool-form input,.tool-form select,.button,.result-box{max-width:100%}.result-box{overflow-wrap:anywhere}.result-box.is-error{border-color:#d66;background:#fff6f4;color:#853227}.result-box.is-success{border-color:#9fd6c8;background:#f4fffb}.tool-card{transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease}.tool-card:hover{transform:translateY(-2px)}.guide{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.privacy-band{box-shadow:0 10px 28px rgba(36,108,148,.08)}@media (max-width:850px){html,body{max-width:100%;overflow-x:hidden}.hero,.page-hero,.section,.tool-panel,.content-page,.privacy-band,.category-strip{width:100%;max-width:100%;padding-left:1rem;padding-right:1rem}.site-header{gap:.75rem}.brand-name{font-size:1rem}.tool-panel{margin-left:0;margin-right:0;border-left:0;border-right:0;border-radius:0}.tool-form{padding:.9rem}.tool-form input[type="file"]{width:100%;font-size:.95rem}.tool-form input[type="range"]{width:100%;min-width:0}.button{width:100%;white-space:normal;text-align:center}.result-box img{max-width:100%;height:auto}.download-list a{overflow-wrap:anywhere}.footer-grid{gap:1.25rem}.site-footer{padding-left:1rem;padding-right:1rem}}`;
 }
 
 function js() {
@@ -1335,6 +1391,61 @@ function keywordMap() {
   }).join("\n")}\n\n## Future Roadmap Keywords\n\nThese are planning targets only. They should not be added to the sitemap or navigation as live pages until real tools exist.\n\n| Keyword | Future category | Intent | Publishing note |\n| --- | --- | --- | --- |\n${roadmap.map((row) => `| ${row[0]} | ${row[1]} | ${row[2]} | ${row[3]} |`).join("\n")}\n`;
 }
 
+function faviconSvg() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TheTools.World icon">
+  <defs>
+    <linearGradient id="g" x1="10" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1668f2"/>
+      <stop offset=".58" stop-color="#0ba7d7"/>
+      <stop offset="1" stop-color="#23c6a8"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="18" y1="8" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#g)"/>
+  <path d="M15 17.5h34M15 31.5h34M15 45.5h34M18.5 14v35M32 14v35M45.5 14v35" stroke="#fff" stroke-opacity=".16" stroke-width="2"/>
+  <path d="M12 16c7-6 19-8 32-4 4 1 7 3 9 5v17c-7 0-13 2-18 6-8 6-17 8-25 6V23c0-3 1-5 2-7Z" fill="url(#shine)"/>
+  <path d="M16 20h32v8H37v19h-9V28H16v-8Z" fill="#f8fbff"/>
+  <path d="M25 20h9l5 15 5-15h9L43 47h-8l-5-15-5 15h-8L25 20Z" fill="#e9fffb"/>
+  <path d="M49 11.5l3.5 3.5-5 5-3.5-3.5 5-5Z" fill="#07395a" fill-opacity=".55"/>
+  <circle cx="49" cy="15" r="2.2" fill="#fff"/>
+</svg>
+`;
+}
+
+function logoSvg() {
+  return faviconSvg();
+}
+
+function horizontalLogoSvg() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 48" role="img" aria-label="TheTools.World">
+  <defs>
+    <linearGradient id="g" x1="7" y1="5" x2="43" y2="43" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1668f2"/>
+      <stop offset=".58" stop-color="#0ba7d7"/>
+      <stop offset="1" stop-color="#23c6a8"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="14" y1="7" x2="39" y2="39" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#g)"/>
+  <path d="M12 14h24M12 24h24M12 34h24M15 11v26M24 11v26M33 11v26" stroke="#fff" stroke-opacity=".16" stroke-width="1.6"/>
+  <path d="M10 13c5-4 14-6 23-3 3 1 5 2 7 4v12c-5 0-10 2-14 5-5 4-12 6-18 4V18c0-2 .5-4 2-5Z" fill="url(#shine)"/>
+  <path d="M11 16h26v6h-9v15h-7V22H11v-6Z" fill="#f8fbff"/>
+  <path d="M18 16h7l4 12 4-12h7l-8 21h-6l-4-12-4 12h-6l6-21Z" fill="#e9fffb"/>
+  <path d="M37 8.5l3 3-4.2 4.2-3-3 4.2-4.2Z" fill="#07395a" fill-opacity=".55"/>
+  <circle cx="37" cy="11.5" r="1.8" fill="#fff"/>
+  <text x="58" y="31" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="800" letter-spacing="0" fill="#162235">TheTools</text>
+  <circle cx="161" cy="29" r="2.4" fill="#0ba7a5"/>
+  <text x="167" y="31" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="800" letter-spacing="0" fill="#0ba7a5">World</text>
+</svg>
+`;
+}
+
 function smokeTest() {
   return `import fs from "node:fs";
 import path from "node:path";
@@ -1385,6 +1496,12 @@ for (const file of pages) {
   if (!/<meta property="og:title" content="[^"]+">/.test(html)) fail(\`\${file} missing OG title\`);
   if (!/<meta property="og:description" content="[^"]+">/.test(html)) fail(\`\${file} missing OG description\`);
   if (!/<meta name="twitter:card" content="summary_large_image">/.test(html)) fail(\`\${file} missing Twitter card\`);
+  if (!html.includes('href="/assets/favicon.svg"')) fail(\`\${file} missing SVG favicon\`);
+  if (!html.includes('href="/site.webmanifest"')) fail(\`\${file} missing web manifest\`);
+  if (!html.includes('<meta name="theme-color" content="#0f8fb3">')) fail(\`\${file} missing theme color\`);
+  if (!html.includes('"logo":"${domain}/assets/logo.svg"')) fail(\`\${file} missing Organization logo schema\`);
+  if (!html.includes('src="/assets/logo.svg"')) fail(\`\${file} missing brand icon logo\`);
+  if (!html.includes('class="brand-name"')) fail(\`\${file} missing readable brand name\`);
   if (!html.includes("${brand}")) fail(\`\${file} missing ${brand} branding\`);
   if (!html.includes("${domain}")) fail(\`\${file} missing ${domain} reference\`);
   const title = html.match(/<title>([^<]+)<\\/title>/)?.[1]?.trim();
@@ -1401,6 +1518,7 @@ for (const file of pages) {
   const internalLinks = [...html.matchAll(/href="(\\/[^"#?]+)"/g)].map((m) => m[1]);
   for (const href of internalLinks) {
     if (href.startsWith("/assets")) continue;
+    if (href === "/site.webmanifest") continue;
     const target = href === "/" ? "index.html" : href.slice(1) + ".html";
     if (!fs.existsSync(path.join(root, target))) fail(\`\${file} links to missing \${href}\`);
   }
@@ -1412,7 +1530,18 @@ for (const file of legacyPages) {
   const html = fs.readFileSync(full, "utf8");
   if (!/<meta name="robots" content="noindex, follow">/.test(html)) fail(\`\${file} legacy page must be noindex, follow\`);
   if (!/<meta http-equiv="refresh"/.test(html)) fail(\`\${file} legacy page missing refresh redirect\`);
+  if (!html.includes('href="/assets/favicon.svg"')) fail(\`\${file} legacy page missing SVG favicon\`);
+  if (!html.includes('href="/site.webmanifest"')) fail(\`\${file} legacy page missing web manifest\`);
 }
+
+for (const asset of ["assets/favicon.svg", "assets/logo.svg", "assets/logo-horizontal.svg", "assets/site-icon.svg", "assets/apple-touch-icon.svg", "assets/favicon-48.svg", "site.webmanifest"]) {
+  if (!fs.existsSync(path.join(root, asset))) fail(\`\${asset} is missing\`);
+}
+
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "site.webmanifest"), "utf8"));
+if (manifest.name !== "${brand}") fail("manifest has wrong name");
+if (manifest.short_name !== "TheTools") fail("manifest has wrong short_name");
+if (!JSON.stringify(manifest.icons || []).includes("/assets/site-icon.svg")) fail("manifest missing site icon");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 if (!sitemap.includes("${domain}")) fail("sitemap missing ${domain}");
@@ -1448,7 +1577,13 @@ for (const item of legacy) write(item.file, legacyPage(item));
 write("404.html", notFound());
 write("assets/styles.css", css());
 write("assets/app.js", js());
-write("assets/favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TheTools.World"><rect width="64" height="64" rx="14" fill="#246c94"/><text x="32" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#fff">TW</text><circle cx="48" cy="17" r="5" fill="#f4a261"/></svg>\n`);
+write("assets/favicon.svg", faviconSvg());
+write("assets/logo.svg", logoSvg());
+write("assets/logo-horizontal.svg", horizontalLogoSvg());
+write("assets/site-icon.svg", logoSvg());
+write("assets/apple-touch-icon.svg", logoSvg());
+write("assets/favicon-48.svg", faviconSvg());
+write("site.webmanifest", webManifest());
 write("sitemap.xml", sitemapXml());
 write("robots.txt", robots());
 write("vercel.json", vercelJson());

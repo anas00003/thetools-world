@@ -79,6 +79,12 @@ for (const file of pages) {
   if (!/<meta property="og:title" content="[^"]+">/.test(html)) fail(`${file} missing OG title`);
   if (!/<meta property="og:description" content="[^"]+">/.test(html)) fail(`${file} missing OG description`);
   if (!/<meta name="twitter:card" content="summary_large_image">/.test(html)) fail(`${file} missing Twitter card`);
+  if (!html.includes('href="/assets/favicon.svg"')) fail(`${file} missing SVG favicon`);
+  if (!html.includes('href="/site.webmanifest"')) fail(`${file} missing web manifest`);
+  if (!html.includes('<meta name="theme-color" content="#0f8fb3">')) fail(`${file} missing theme color`);
+  if (!html.includes('"logo":"https://thetools.world/assets/logo.svg"')) fail(`${file} missing Organization logo schema`);
+  if (!html.includes('src="/assets/logo.svg"')) fail(`${file} missing brand icon logo`);
+  if (!html.includes('class="brand-name"')) fail(`${file} missing readable brand name`);
   if (!html.includes("TheTools.World")) fail(`${file} missing TheTools.World branding`);
   if (!html.includes("https://thetools.world")) fail(`${file} missing https://thetools.world reference`);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1]?.trim();
@@ -95,6 +101,7 @@ for (const file of pages) {
   const internalLinks = [...html.matchAll(/href="(\/[^"#?]+)"/g)].map((m) => m[1]);
   for (const href of internalLinks) {
     if (href.startsWith("/assets")) continue;
+    if (href === "/site.webmanifest") continue;
     const target = href === "/" ? "index.html" : href.slice(1) + ".html";
     if (!fs.existsSync(path.join(root, target))) fail(`${file} links to missing ${href}`);
   }
@@ -106,7 +113,18 @@ for (const file of legacyPages) {
   const html = fs.readFileSync(full, "utf8");
   if (!/<meta name="robots" content="noindex, follow">/.test(html)) fail(`${file} legacy page must be noindex, follow`);
   if (!/<meta http-equiv="refresh"/.test(html)) fail(`${file} legacy page missing refresh redirect`);
+  if (!html.includes('href="/assets/favicon.svg"')) fail(`${file} legacy page missing SVG favicon`);
+  if (!html.includes('href="/site.webmanifest"')) fail(`${file} legacy page missing web manifest`);
 }
+
+for (const asset of ["assets/favicon.svg", "assets/logo.svg", "assets/logo-horizontal.svg", "assets/site-icon.svg", "assets/apple-touch-icon.svg", "assets/favicon-48.svg", "site.webmanifest"]) {
+  if (!fs.existsSync(path.join(root, asset))) fail(`${asset} is missing`);
+}
+
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "site.webmanifest"), "utf8"));
+if (manifest.name !== "TheTools.World") fail("manifest has wrong name");
+if (manifest.short_name !== "TheTools") fail("manifest has wrong short_name");
+if (!JSON.stringify(manifest.icons || []).includes("/assets/site-icon.svg")) fail("manifest missing site icon");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 if (!sitemap.includes("https://thetools.world")) fail("sitemap missing https://thetools.world");
