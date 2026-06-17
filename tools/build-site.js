@@ -1273,7 +1273,29 @@ function sitemapXml() {
 }
 
 function robots() {
-  return `User-agent: *\nAllow: /\n\nSitemap: ${domain}/sitemap.xml\n`;
+  return `User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: ${domain}/sitemap.xml
+`;
 }
 
 function webManifest() {
