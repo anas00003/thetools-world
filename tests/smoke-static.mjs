@@ -84,6 +84,7 @@ for (const file of pages) {
   if (!html.includes('href="/assets/favicon.svg"')) fail(`${file} missing SVG favicon`);
   if (!html.includes('href="/site.webmanifest"')) fail(`${file} missing web manifest`);
   if (!html.includes('<meta name="theme-color" content="#0f8fb3">')) fail(`${file} missing theme color`);
+  if ((html.match(/<meta name="google-adsense-account" content="ca-pub-1683614506940052">/g) || []).length !== 1) fail(`${file} must have exactly one AdSense ownership meta tag`);
   if (!html.includes('"logo":"https://thetools.world/assets/logo.svg"')) fail(`${file} missing Organization logo schema`);
   if (!html.includes('src="/assets/logo.svg"')) fail(`${file} missing brand icon logo`);
   if (!html.includes('class="brand-name"')) fail(`${file} missing readable brand name`);
@@ -142,6 +143,9 @@ if (manifest.short_name !== "TheTools") fail("manifest has wrong short_name");
 if (!JSON.stringify(manifest.icons || []).includes("/assets/site-icon.svg")) fail("manifest missing site icon");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
+const adsTxtPath = path.join(root, "ads.txt");
+if (!fs.existsSync(adsTxtPath)) fail("ads.txt is missing");
+else if (fs.readFileSync(adsTxtPath, "utf8").trim() !== "google.com, pub-1683614506940052, DIRECT, f08c47fec0942fa0") fail("ads.txt has incorrect content");
 if (!sitemap.includes("https://thetools.world")) fail("sitemap missing https://thetools.world");
 for (const route of [
   "/",
