@@ -21,12 +21,35 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/styles.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-63DE2LM99R"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-63DE2LM99R');
+    (function(){
+      var id = 'G-63DE2LM99R';
+      var loaded = false;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+      window.gtag('js', new Date());
+      window.ttwLoadGA = function(){
+        if (loaded) return;
+        loaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+        script.onload = function(){window.gtag('config', id);};
+        script.onerror = function(){};
+        (document.head || document.documentElement).appendChild(script);
+      };
+      var loadGA = function(){window.ttwLoadGA();};
+      ['pointerdown','keydown','touchstart','scroll'].forEach(function(type){
+        window.addEventListener(type, loadGA, { once: true, passive: true });
+      });
+      var schedule = function(){
+        var delayedLoad = function(){window.setTimeout(loadGA, 4500);};
+        if ('requestIdleCallback' in window) window.requestIdleCallback(delayedLoad, { timeout: 5500 });
+        else delayedLoad();
+      };
+      if (document.readyState === 'complete') schedule();
+      else window.addEventListener('load', schedule, { once: true });
+    })();
   </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://thetools.world/#organization","name":"TheTools.World","url":"https://thetools.world/","logo":"https://thetools.world/assets/logo.svg"},{"@type":"WebSite","@id":"https://thetools.world/#website","name":"TheTools.World","url":"https://thetools.world/","publisher":{"@id":"https://thetools.world/#organization"}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can every JPG be compressed to exactly 100KB?","acceptedAnswer":{"@type":"Answer","text":"No. Exact output depends on the original JPG dimensions, detail, quality, and compression limits. The tool helps you get close to or under 100KB when possible."}},{"@type":"Question","name":"Is 100KB enough for a clear photo?","acceptedAnswer":{"@type":"Answer","text":"Often yes for many upload workflows. A 100KB target usually keeps more detail than 20KB or 50KB, but very large or detailed photos may still need resizing."}},{"@type":"Question","name":"What should I do if my JPG is still above 100KB?","acceptedAnswer":{"@type":"Answer","text":"Reduce max width, lower quality gradually, or resize the JPG first. Check the final downloaded file size before uploading."}},{"@type":"Question","name":"Should I reduce width or quality first?","acceptedAnswer":{"@type":"Answer","text":"For very large photos, reduce width first. Then lower quality gradually so the image does not become softer than necessary."}},{"@type":"Question","name":"Can I use this for forms and document portals?","acceptedAnswer":{"@type":"Answer","text":"Yes, it can help prepare JPG file size for forms and document portals, but you must compare the result with the official size, dimension, and format rules."}},{"@type":"Question","name":"Are images uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"The current image processing workflow uses browser APIs for the selected image task. Avoid closing the page until your download is ready."}}]}</script>

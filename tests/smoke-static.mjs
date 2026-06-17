@@ -61,6 +61,8 @@ let failures = 0;
 const seenTitles = new Map();
 const seenDescriptions = new Map();
 const seenH1s = new Map();
+const gaMeasurementId = "G-63DE2LM99R";
+const appJs = fs.readFileSync(path.join(root, "assets/app.js"), "utf8");
 
 function fail(message) {
   failures += 1;
@@ -87,6 +89,12 @@ for (const file of pages) {
   if (!html.includes('class="brand-name"')) fail(`${file} missing readable brand name`);
   if (!html.includes("TheTools.World")) fail(`${file} missing TheTools.World branding`);
   if (!html.includes("https://thetools.world")) fail(`${file} missing https://thetools.world reference`);
+  if (!html.includes(gaMeasurementId)) fail(`${file} missing GA4 measurement ID`);
+  if (!html.includes("window.ttwLoadGA")) fail(`${file} missing lazy GA loader`);
+  if (/<script[^>]+googletagmanager\.com\/gtag\/js/i.test(html)) fail(`${file} loads gtag.js immediately`);
+  if ((html.match(/gtag\('config', 'G-63DE2LM99R'\)|gtag\("config", "G-63DE2LM99R"\)|gtag\('config', id\)|gtag\("config", id\)/g) || []).length !== 1) fail(`${file} must have exactly one GA4 config call`);
+  if (/GTM-[A-Z0-9]+|googletagmanager\.com\/gtm\.js|googletagmanager\.com\/ns\.html/i.test(html)) fail(`${file} contains Google Tag Manager`);
+  if (/adsbygoogle|pagead2\.googlesyndication\.com/i.test(html)) fail(`${file} contains AdSense code`);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1]?.trim();
   const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1]?.trim();
   const h1 = html.match(/<h1[^>]*>([^<]+)<\/h1>/)?.[1]?.trim();
@@ -106,6 +114,13 @@ for (const file of pages) {
     if (!fs.existsSync(path.join(root, target))) fail(`${file} links to missing ${href}`);
   }
 }
+
+if (!appJs.includes("window.ttwTrackEvent")) fail("assets/app.js missing custom event helper");
+for (const eventName of ["tool_upload_selected", "tool_process_start", "tool_process_success", "tool_process_error", "tool_result_download", "related_tool_click"]) {
+  if (!appJs.includes(eventName)) fail(`assets/app.js missing ${eventName}`);
+}
+if (!appJs.includes("window.ttwLoadGA")) fail("assets/app.js does not call lazy GA loader");
+if (/file_name|file_path|file_content|file_contents|raw_error/i.test(appJs)) fail("assets/app.js includes unsafe GA parameter names");
 
 for (const file of legacyPages) {
   const full = path.join(root, file);

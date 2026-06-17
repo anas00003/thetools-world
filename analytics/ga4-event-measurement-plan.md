@@ -4,8 +4,9 @@ Measurement ID: `G-63DE2LM99R`
 
 ## Base setup
 
-- GA4 is installed with the async `gtag.js` script.
-- The tag is generated into the shared page head through `tools/build-site.js`.
+- GA4 is installed with a lazy loader generated into the shared page head through `tools/build-site.js`.
+- The external `gtag.js` script is not loaded during initial render. A small inline bootstrap defines `window.dataLayer`, a safe queuing `window.gtag`, and `window.ttwLoadGA()`.
+- `window.ttwLoadGA()` injects `gtag.js` once on the first meaningful interaction or after the page load idle delay.
 - Google Tag Manager is not used.
 - AdSense is not added.
 - The site should keep exactly one GA4 config call per public page.

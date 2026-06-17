@@ -912,12 +912,35 @@ function nav(active) {
 function head(page) {
   const canonical = `${domain}${page.route === "/" ? "" : page.route}`;
   const gaTag = `
-  <script async src="https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${gaMeasurementId}');
+    (function(){
+      var id = '${gaMeasurementId}';
+      var loaded = false;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+      window.gtag('js', new Date());
+      window.ttwLoadGA = function(){
+        if (loaded) return;
+        loaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+        script.onload = function(){window.gtag('config', id);};
+        script.onerror = function(){};
+        (document.head || document.documentElement).appendChild(script);
+      };
+      var loadGA = function(){window.ttwLoadGA();};
+      ['pointerdown','keydown','touchstart','scroll'].forEach(function(type){
+        window.addEventListener(type, loadGA, { once: true, passive: true });
+      });
+      var schedule = function(){
+        var delayedLoad = function(){window.setTimeout(loadGA, 4500);};
+        if ('requestIdleCallback' in window) window.requestIdleCallback(delayedLoad, { timeout: 5500 });
+        else delayedLoad();
+      };
+      if (document.readyState === 'complete') schedule();
+      else window.addEventListener('load', schedule, { once: true });
+    })();
   </script>`;
   const siteSchema = `
   <script type="application/ld+json">${JSON.stringify({
@@ -1379,7 +1402,7 @@ function reductionBucket(inputBytes,outputBytes){if(!inputBytes||!outputBytes||o
 function dimensionBucket(value){const number=safeNumber(value);return !number?"unknown":number<500?"under_500px":number<1000?"500_1000px":number<2000?"1000_2000px":"over_2000px";}
 function timeBucket(start){if(!start||!performance||!performance.now)return "unknown";const ms=performance.now()-start;return ms<500?"under_500ms":ms<1500?"500ms_1_5s":ms<3000?"1_5s_3s":"over_3s";}
 function baseParams(extra={}){const params=Object.assign({tool_id:toolId(),page_path:currentPath()},extra);if(document.body.dataset.targetKb)params.target_kb=Number(document.body.dataset.targetKb);if(document.body.dataset.output)params.output_format=safeFormat(document.body.dataset.output);return params;}
-window.ttwTrackEvent=function(eventName,params={}){try{if(typeof window.gtag!=="function")return;if(!/^[a-z0-9_]{2,40}$/.test(eventName))return;const clean={};Object.entries(params).forEach(([key,value])=>{if(!allowedEventParams.has(key)||value===undefined||value===null||value==="")return;if(typeof value==="number"&&Number.isFinite(value))clean[key]=value;else clean[key]=safeText(value);});window.gtag("event",eventName,clean);}catch(err){}};
+window.ttwTrackEvent=function(eventName,params={}){try{if(!/^[a-z0-9_]{2,40}$/.test(eventName))return;if(typeof window.ttwLoadGA==="function")window.ttwLoadGA();if(typeof window.gtag!=="function")return;const clean={};Object.entries(params).forEach(([key,value])=>{if(!allowedEventParams.has(key)||value===undefined||value===null||value==="")return;if(typeof value==="number"&&Number.isFinite(value))clean[key]=value;else clean[key]=safeText(value);});window.gtag("event",eventName,clean);}catch(err){}};
 function trackProcessError(type,extra={}){window.ttwTrackEvent("tool_process_error",baseParams(Object.assign({error_type:type||"unknown"},extra)));}
 function isSupported(file){return file&&supportedTypes.has((file.type||"").toLowerCase());}
 function setMessage(box,message,type="info"){box.classList.remove("is-error","is-success");if(type==="error")box.classList.add("is-error");if(type==="success")box.classList.add("is-success");box.textContent=message;}
@@ -1513,6 +1536,8 @@ let failures = 0;
 const seenTitles = new Map();
 const seenDescriptions = new Map();
 const seenH1s = new Map();
+const gaMeasurementId = "${gaMeasurementId}";
+const appJs = fs.readFileSync(path.join(root, "assets/app.js"), "utf8");
 
 function fail(message) {
   failures += 1;
@@ -1539,6 +1564,12 @@ for (const file of pages) {
   if (!html.includes('class="brand-name"')) fail(\`\${file} missing readable brand name\`);
   if (!html.includes("${brand}")) fail(\`\${file} missing ${brand} branding\`);
   if (!html.includes("${domain}")) fail(\`\${file} missing ${domain} reference\`);
+  if (!html.includes(gaMeasurementId)) fail(\`\${file} missing GA4 measurement ID\`);
+  if (!html.includes("window.ttwLoadGA")) fail(\`\${file} missing lazy GA loader\`);
+  if (/<script[^>]+googletagmanager\\.com\\/gtag\\/js/i.test(html)) fail(\`\${file} loads gtag.js immediately\`);
+  if ((html.match(/gtag\\('config', 'G-63DE2LM99R'\\)|gtag\\("config", "G-63DE2LM99R"\\)|gtag\\('config', id\\)|gtag\\("config", id\\)/g) || []).length !== 1) fail(\`\${file} must have exactly one GA4 config call\`);
+  if (/GTM-[A-Z0-9]+|googletagmanager\\.com\\/gtm\\.js|googletagmanager\\.com\\/ns\\.html/i.test(html)) fail(\`\${file} contains Google Tag Manager\`);
+  if (/adsbygoogle|pagead2\\.googlesyndication\\.com/i.test(html)) fail(\`\${file} contains AdSense code\`);
   const title = html.match(/<title>([^<]+)<\\/title>/)?.[1]?.trim();
   const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1]?.trim();
   const h1 = html.match(/<h1[^>]*>([^<]+)<\\/h1>/)?.[1]?.trim();
@@ -1558,6 +1589,13 @@ for (const file of pages) {
     if (!fs.existsSync(path.join(root, target))) fail(\`\${file} links to missing \${href}\`);
   }
 }
+
+if (!appJs.includes("window.ttwTrackEvent")) fail("assets/app.js missing custom event helper");
+for (const eventName of ["tool_upload_selected", "tool_process_start", "tool_process_success", "tool_process_error", "tool_result_download", "related_tool_click"]) {
+  if (!appJs.includes(eventName)) fail(\`assets/app.js missing \${eventName}\`);
+}
+if (!appJs.includes("window.ttwLoadGA")) fail("assets/app.js does not call lazy GA loader");
+if (/file_name|file_path|file_content|file_contents|raw_error/i.test(appJs)) fail("assets/app.js includes unsafe GA parameter names");
 
 for (const file of legacyPages) {
   const full = path.join(root, file);
