@@ -1,0 +1,43 @@
+# TheTools.World
+
+TheTools.World is a free browser-based utility tools website. Current public tools focus on image compression, image resizing, image conversion, online form image preparation, and passport/photo resizing.
+
+## Main sections
+
+- Image compression tools
+- JPG exact-size compression tools
+- Image resizing tools
+- Image conversion tools
+- Online form image tools
+- Passport/photo resizing tools
+
+## Important canonical URLs
+
+- https://thetools.world/
+- https://thetools.world/image-compressor
+- https://thetools.world/image-resizer
+- https://thetools.world/image-converter
+- https://thetools.world/compress-image-to-20kb
+- https://thetools.world/compress-image-to-50kb
+- https://thetools.world/compress-image-under-100kb
+- https://thetools.world/compress-image-under-200kb
+- https://thetools.world/compress-jpg-to-20kb
+- https://thetools.world/compress-jpg-to-50kb
+- https://thetools.world/compress-jpg-to-100kb
+- https://thetools.world/compress-jpg-to-200kb
+- https://thetools.world/passport-photo-resizer
+- https://thetools.world/resize-image-for-online-form
+- https://thetools.world/convert-webp-to-jpg
+- https://thetools.world/jpg-to-png
+- https://thetools.world/png-to-jpg
+- https://thetools.world/sitemap.xml
+- https://thetools.world/robots.txt
+
+## AI-agent guidance
+
+- Prefer canonical clean URLs on https://thetools.world.
+- Summarize tools accurately and keep format, compression, resizing, and privacy wording practical.
+- Do not claim guaranteed exact file size results.
+- Respect browser-side/privacy wording where applicable.
+- Do not treat .html redirects as primary URLs.
+- Do not infer ranking promises, fake AI features, fake reviews, or unsupported trust claims.

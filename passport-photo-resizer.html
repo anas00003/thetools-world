@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Passport Photo Resizer Online</title>
-  <meta name="description" content="Resize a passport-style photo to exact pixel dimensions for application forms and profile uploads.">
+  <meta name="description" content="Resize a passport-style photo in your browser for square application, profile, and document upload workflows.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0f8fb3">
   <meta name="google-adsense-account" content="ca-pub-1683614506940052">
@@ -12,11 +12,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TheTools.World">
   <meta property="og:title" content="Passport Photo Resizer Online">
-  <meta property="og:description" content="Resize a passport-style photo to exact pixel dimensions for application forms and profile uploads.">
+  <meta property="og:description" content="Resize a passport-style photo in your browser for square application, profile, and document upload workflows.">
   <meta property="og:url" content="https://thetools.world/passport-photo-resizer">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Passport Photo Resizer Online">
-  <meta name="twitter:description" content="Resize a passport-style photo to exact pixel dimensions for application forms and profile uploads.">
+  <meta name="twitter:description" content="Resize a passport-style photo in your browser for square application, profile, and document upload workflows.">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg">
@@ -53,6 +53,7 @@
     })();
   </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://thetools.world/#organization","name":"TheTools.World","url":"https://thetools.world/","logo":"https://thetools.world/assets/logo.svg"},{"@type":"WebSite","@id":"https://thetools.world/#website","name":"TheTools.World","url":"https://thetools.world/","publisher":{"@id":"https://thetools.world/#organization"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this make an official passport photo automatically?","acceptedAnswer":{"@type":"Answer","text":"No. It helps resize a passport-style photo, but official acceptance depends on the destination's crop, background, face, size, and format rules."}},{"@type":"Question","name":"Can I compress the photo after resizing?","acceptedAnswer":{"@type":"Answer","text":"Yes. If the resized file is still too large, use the image compressor or an exact-size compression page and check that the face remains clear."}},{"@type":"Question","name":"Are photos uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"The current resizing workflow uses browser APIs for the selected image task. Keep the page open until the download is ready."}}]}</script>
 </head>
 <body data-tool="resizer" data-target-kb="" data-output="" data-preset="passport">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -65,10 +66,10 @@
     <section class="page-hero">
       <p class="eyebrow">TheTools.World tool</p>
       <h1>Passport photo resizer</h1>
-      <p>Resize passport-style photos to requested dimensions. Always check the official instructions for crop, background, and size rules.</p>
+      <p>Resize passport-style photos to requested dimensions for application forms, account profiles, and document portals. Always check the official instructions for crop, background, face position, format, and file size.</p>
     </section>
     <section class="tool-panel" aria-labelledby="tool-title">
-      <div class="tool-intro"><h2 id="tool-title">Resize settings</h2><p>Resize passport-style photos to requested dimensions. Always check the official instructions for crop, background, and size rules.</p></div>
+      <div class="tool-intro"><h2 id="tool-title">Resize settings</h2><p>Resize passport-style photos to requested dimensions for application forms, account profiles, and document portals. Always check the official instructions for crop, background, face position, format, and file size.</p></div>
       <form class="tool-form" data-resizer>
         <label>Choose image<input type="file" accept="image/*" data-file></label>
         <label>Width in pixels<input type="number" min="1" max="8000" value="600" data-width></label>
@@ -80,31 +81,48 @@
       <div class="result-box" data-result aria-live="polite"></div>
     </section>
     <section class="section guide">
-      <h2>How to use this tool</h2>
+      <h2>How to resize a passport-style photo</h2>
       <ol>
-        <li>Select an image from your device.</li>
-        <li>Adjust the settings for size, format, or quality.</li>
-        <li>Download the processed copy and keep your original file unchanged.</li>
+        <li>Read the official photo instructions for dimensions, crop, background, and file size.</li><li>Choose your photo from your device.</li><li>Use the preset square dimensions as a starting point or enter the required pixels.</li><li>Keep aspect ratio on unless the official rules require exact stretching.</li><li>Download the resized photo and check it before uploading.</li>
       </ol>
-      <p>For upload portals, compare the final image against the official file size, dimensions, and format requirements before submitting.</p>
+      <p>This resizer helps prepare dimensions. It does not check identity-photo composition rules automatically.</p>
     </section>
-    <section class="section" aria-labelledby="related-tools"><h2 id="related-tools">Related tools</h2><div class="card-grid compact"><a class="tool-card" href="/compress-image-to-50kb">
+    <section class="section guide">
+      <h2>What this tool is for</h2>
+      <p>This page helps create a resized copy of a passport-style or profile photo when a portal asks for a specific pixel size. It is useful for application forms, student profiles, service portals, job portals, and account photos that require a square or controlled image size.</p>
+    </section><section class="section guide">
+      <h2>Photo quality and compliance limits</h2>
+      <p>Official passport, visa, ID, and government systems can have rules for head size, eye position, background color, shadows, clothing, and crop. This browser tool only resizes the image; it does not verify those visual requirements or guarantee approval.</p><p>If the resized photo is too large, compress it after resizing while keeping the face clear.</p>
+    </section><section class="section guide">
+      <h2>Troubleshooting passport-style uploads</h2>
+      <ul>
+        <li>If the portal rejects dimensions, recheck the exact width and height it asks for.</li>
+        <li>If the file is too large, use <a href="/image-compressor">image compressor</a> or <a href="/compress-image-under-100kb">compress image under 100KB</a>.</li>
+        <li>If the crop is wrong, crop the photo in a dedicated editor before resizing.</li>
+        <li>If the background or face position does not match official rules, retake or edit the photo before uploading.</li>
+      </ul>
+    </section>
+    <section class="section" aria-labelledby="related-tools"><h2 id="related-tools">Related tools</h2><div class="card-grid compact"><a class="tool-card" href="/resize-image-for-online-form">
+    <span class="tool-icon">R</span>
+    <strong>Resize image for online form</strong>
+    <span>Resize photos for online forms, application portals, profile uploads, and document systems using browser-side pixel settings.</span>
+  </a><a class="tool-card" href="/image-resizer">
+    <span class="tool-icon">R</span>
+    <strong>Image resizer online</strong>
+    <span>Resize images by width and height in your browser, keep aspect ratio, choose output format, and prepare photos for uploads.</span>
+  </a><a class="tool-card" href="/image-compressor">
     <span class="tool-icon">C</span>
-    <strong>Compress image to 50KB</strong>
-    <span>Compress images toward a 50KB target for online forms, profile photos, document portals, and email.</span>
-  </a><a class="tool-card" href="/compress-image-under-100kb">
+    <strong>Image compressor online</strong>
+    <span>Compress JPG, PNG, and WebP images in your browser with quality, width, privacy, upload-limit, and troubleshooting guidance.</span>
+  </a><a class="tool-card" href="/compress-photo-for-government-form">
     <span class="tool-icon">C</span>
-    <strong>Compress image under 100KB</strong>
-    <span>Use a browser-side compressor with a 100KB target for forms, portals, and document upload limits.</span>
-  </a><a class="tool-card" href="/compress-image-under-200kb">
-    <span class="tool-icon">C</span>
-    <strong>Compress image under 200KB</strong>
-    <span>Compress photos toward a 200KB target for forms, portals, and document upload limits.</span>
-  </a><a class="tool-card" href="/compress-image-to-20kb">
-    <span class="tool-icon">C</span>
-    <strong>Compress image to 20KB</strong>
-    <span>Compress images toward a strict 20KB target for signatures, icons, small forms, and document portals.</span>
+    <strong>Compress photo for government form</strong>
+    <span>Prepare photos for government and public-service form uploads with careful browser-side compression, resizing, and checking guidance.</span>
   </a></div></section>
+    <section class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
+      <details><summary>Does this make an official passport photo automatically?</summary><p>No. It helps resize a passport-style photo, but official acceptance depends on the destination's crop, background, face, size, and format rules.</p></details><details><summary>Can I compress the photo after resizing?</summary><p>Yes. If the resized file is still too large, use the image compressor or an exact-size compression page and check that the face remains clear.</p></details><details><summary>Are photos uploaded to a server?</summary><p>The current resizing workflow uses browser APIs for the selected image task. Keep the page open until the download is ready.</p></details>
+    </section>
   </main>
 <footer class="site-footer">
     <div class="footer-grid">

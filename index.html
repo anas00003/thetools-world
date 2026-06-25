@@ -53,6 +53,7 @@
     })();
   </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://thetools.world/#organization","name":"TheTools.World","url":"https://thetools.world/","logo":"https://thetools.world/assets/logo.svg"},{"@type":"WebSite","@id":"https://thetools.world/#website","name":"TheTools.World","url":"https://thetools.world/","publisher":{"@id":"https://thetools.world/#organization"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do these tools upload my images?","acceptedAnswer":{"@type":"Answer","text":"The core resize, compress, and convert tools use browser APIs for the selected image task. Keep the page open until your download is ready."}},{"@type":"Question","name":"Can every image meet a strict upload limit?","acceptedAnswer":{"@type":"Answer","text":"No. Very large or detailed images may need resizing before compression, and some limits are too strict for a clear result."}},{"@type":"Question","name":"Which tool should I start with?","acceptedAnswer":{"@type":"Answer","text":"Use the compressor for file-size limits, the resizer for pixel dimensions, the converter for format changes, and exact-size pages when a form gives a specific KB limit."}}]}</script>
 </head>
 <body data-tool="home" data-target-kb="" data-output="" data-preset="">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -66,7 +67,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Utility tools hub</p>
         <h1>Free online tools for images, files, text, and everyday tasks</h1>
-        <p>TheTools.World is starting with fast browser-side image tools, with more file, text, calculator, QR, AI, and developer utilities planned.</p>
+        <p>TheTools.World helps with common image tasks first: compress a large photo, resize to required pixels, convert between JPG, PNG, and WebP, or prepare an image for an upload form. The live tools are browser-based and designed for practical checks before you download.</p>
         <div class="hero-actions">
           <a class="button primary" href="/image-compressor">Compress an image</a>
           <a class="button secondary" href="/image-resizer">Resize a photo</a>
@@ -100,6 +101,26 @@
         <span>PDF Tools</span><span>Text Tools</span><span>Calculators</span><span>QR Tools</span><span>AI Tools</span><span>Developer Tools</span>
       </div>
     </section>
+    <section class="section" aria-labelledby="start-here">
+      <div class="section-heading"><p class="eyebrow">Start here</p><h2 id="start-here">Choose the task that matches your upload problem</h2></div>
+      <div class="card-grid compact">
+        <a class="tool-card" href="/image-compressor">
+    <span class="tool-icon">C</span>
+    <strong>Image compressor online</strong>
+    <span>Use this when the file is too large and you need a smaller download.</span>
+  </a>
+        <a class="tool-card" href="/image-resizer">
+    <span class="tool-icon">R</span>
+    <strong>Image resizer online</strong>
+    <span>Use this when a form asks for width and height in pixels.</span>
+  </a>
+        <a class="tool-card" href="/image-converter">
+    <span class="tool-icon">V</span>
+    <strong>Image converter online</strong>
+    <span>Use this when a portal needs JPG, PNG, or WebP instead of your current format.</span>
+  </a>
+      </div>
+    </section>
     <section class="search-section" aria-labelledby="find-tool">
       <h2 id="find-tool">Find the right image tool</h2>
       <input id="tool-search" class="search-input" type="search" placeholder="Search compress, resize, WebP, passport, online form" aria-label="Search image tools">
@@ -110,19 +131,19 @@
       <div class="card-grid"><a class="tool-card" href="/image-compressor">
     <span class="tool-icon">C</span>
     <strong>Image compressor online</strong>
-    <span>Compress JPG, PNG, and WebP images in your browser with quality controls and instant download.</span>
+    <span>Compress JPG, PNG, and WebP images in your browser with quality, width, privacy, upload-limit, and troubleshooting guidance.</span>
   </a><a class="tool-card" href="/image-resizer">
     <span class="tool-icon">R</span>
     <strong>Image resizer online</strong>
-    <span>Resize images by width and height, keep aspect ratio, and download a smaller copy from your browser.</span>
+    <span>Resize images by width and height in your browser, keep aspect ratio, choose output format, and prepare photos for uploads.</span>
   </a><a class="tool-card" href="/image-converter">
     <span class="tool-icon">V</span>
     <strong>Image converter online</strong>
-    <span>Convert images between JPG, PNG, and WebP formats in your browser with a simple privacy-focused workflow.</span>
+    <span>Convert images between JPG, PNG, and WebP in your browser with format guidance for photos, transparency, forms, and web uploads.</span>
   </a><a class="tool-card" href="/bulk-image-tools">
     <span class="tool-icon">B</span>
     <strong>Bulk image tools</strong>
-    <span>Process multiple images in one browser session for faster resize, compress, and conversion workflows.</span>
+    <span>Process multiple images in one browser session with practical guidance for batches, upload prep, limits, and downloads.</span>
   </a></div>
     </section>
     <section class="section band" aria-labelledby="forms-documents">
@@ -162,15 +183,15 @@
   </a><a class="tool-card" href="/resize-image-for-online-form">
     <span class="tool-icon">R</span>
     <strong>Resize image for online form</strong>
-    <span>Resize photos for online application forms, profile uploads, and document portals using pixel dimensions.</span>
+    <span>Resize photos for online forms, application portals, profile uploads, and document systems using browser-side pixel settings.</span>
   </a><a class="tool-card" href="/compress-photo-for-government-form">
     <span class="tool-icon">C</span>
     <strong>Compress photo for government form</strong>
-    <span>Prepare photos for government and public-service form uploads with image compression and resizing guidance.</span>
+    <span>Prepare photos for government and public-service form uploads with careful browser-side compression, resizing, and checking guidance.</span>
   </a><a class="tool-card" href="/passport-photo-resizer">
     <span class="tool-icon">R</span>
     <strong>Passport photo resizer</strong>
-    <span>Resize a passport-style photo to exact pixel dimensions for application forms and profile uploads.</span>
+    <span>Resize a passport-style photo in your browser for square application, profile, and document upload workflows.</span>
   </a></div>
     </section>
     <section class="section" aria-labelledby="format-tools">
@@ -178,16 +199,20 @@
       <div class="card-grid compact"><a class="tool-card" href="/convert-webp-to-jpg">
     <span class="tool-icon">V</span>
     <strong>Convert WebP to JPG</strong>
-    <span>Convert WebP images to JPG in your browser for apps and websites that do not accept WebP files.</span>
+    <span>Convert WebP images to JPG in your browser for forms, apps, documents, and websites that need a compatible JPG file.</span>
   </a><a class="tool-card" href="/png-to-jpg">
     <span class="tool-icon">V</span>
     <strong>PNG to JPG converter</strong>
-    <span>Convert PNG images to JPG for smaller files and wider upload compatibility.</span>
+    <span>Convert PNG images to JPG for photos, online forms, document portals, email, and smaller compatible image files.</span>
   </a><a class="tool-card" href="/jpg-to-png">
     <span class="tool-icon">V</span>
     <strong>JPG to PNG converter</strong>
-    <span>Convert JPG images to PNG in your browser when you need a PNG copy for design or document workflows.</span>
+    <span>Convert JPG images to PNG in your browser for apps, screenshots, document workflows, and upload portals that request PNG.</span>
   </a></div>
+    </section>
+    <section class="section" aria-labelledby="why-browser-tools">
+      <div class="section-heading"><p class="eyebrow">Practical checks</p><h2 id="why-browser-tools">What to check before using a downloaded image</h2></div>
+      <p>Most upload issues come from a few simple rules: file size, pixel dimensions, format, and readability. After using a tool, open the downloaded file and compare it with the destination's instructions. For photos, check faces and details. For documents or screenshots, check text clarity. For transparent graphics, avoid JPG unless a solid background is acceptable.</p>
     </section>
     <section class="privacy-band" aria-labelledby="privacy-first">
       <div><p class="eyebrow">Privacy-first browser-side tools</p><h2 id="privacy-first">Your selected image files are processed locally by the tool UI.</h2></div>
@@ -195,9 +220,7 @@
     </section>
     <section class="section faq" aria-labelledby="faq-title">
       <h2 id="faq-title">FAQ</h2>
-      <details><summary>Do these tools upload my images?</summary><p>The core resize, compress, and convert tools use browser APIs. Avoid closing the page until your download is ready.</p></details>
-      <details><summary>Can every image be compressed under 100KB?</summary><p>No. Very large or detailed images may need resizing before compression. The tool reports the final size so you can adjust settings.</p></details>
-      <details><summary>Can I use this website for official forms?</summary><p>You can prepare dimensions and file sizes, but always compare the result with the official form instructions before uploading.</p></details>
+      <details><summary>Do these tools upload my images?</summary><p>The core resize, compress, and convert tools use browser APIs for the selected image task. Keep the page open until your download is ready.</p></details><details><summary>Can every image meet a strict upload limit?</summary><p>No. Very large or detailed images may need resizing before compression, and some limits are too strict for a clear result.</p></details><details><summary>Which tool should I start with?</summary><p>Use the compressor for file-size limits, the resizer for pixel dimensions, the converter for format changes, and exact-size pages when a form gives a specific KB limit.</p></details>
     </section>
   </main>
 <footer class="site-footer">

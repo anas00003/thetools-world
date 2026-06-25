@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Image Resizer Online - Resize Photos by Pixel</title>
-  <meta name="description" content="Resize images by width and height, keep aspect ratio, and download a smaller copy from your browser.">
+  <meta name="description" content="Resize images by width and height in your browser, keep aspect ratio, choose output format, and prepare photos for uploads.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0f8fb3">
   <meta name="google-adsense-account" content="ca-pub-1683614506940052">
@@ -12,11 +12,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TheTools.World">
   <meta property="og:title" content="Image Resizer Online - Resize Photos by Pixel">
-  <meta property="og:description" content="Resize images by width and height, keep aspect ratio, and download a smaller copy from your browser.">
+  <meta property="og:description" content="Resize images by width and height in your browser, keep aspect ratio, choose output format, and prepare photos for uploads.">
   <meta property="og:url" content="https://thetools.world/image-resizer">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Image Resizer Online - Resize Photos by Pixel">
-  <meta name="twitter:description" content="Resize images by width and height, keep aspect ratio, and download a smaller copy from your browser.">
+  <meta name="twitter:description" content="Resize images by width and height in your browser, keep aspect ratio, choose output format, and prepare photos for uploads.">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg">
@@ -53,6 +53,7 @@
     })();
   </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://thetools.world/#organization","name":"TheTools.World","url":"https://thetools.world/","logo":"https://thetools.world/assets/logo.svg"},{"@type":"WebSite","@id":"https://thetools.world/#website","name":"TheTools.World","url":"https://thetools.world/","publisher":{"@id":"https://thetools.world/#organization"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I resize to exact pixels?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enter the required width and height, then check the downloaded image against the destination rules."}},{"@type":"Question","name":"Should I keep aspect ratio on?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. Keeping aspect ratio prevents distortion. Disable it only when exact stretched dimensions are required."}},{"@type":"Question","name":"Does resizing also reduce file size?","acceptedAnswer":{"@type":"Answer","text":"Often it does, especially for large photos, but use compression afterward if the file is still above the upload limit."}}]}</script>
 </head>
 <body data-tool="resizer" data-target-kb="" data-output="" data-preset="">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -65,10 +66,10 @@
     <section class="page-hero">
       <p class="eyebrow">TheTools.World tool</p>
       <h1>Image resizer online</h1>
-      <p>Resize photos for forms, profile images, website uploads, and document workflows without sending files to a server.</p>
+      <p>Resize photos for forms, profile images, website uploads, and document workflows without adding a server upload step. Use it when pixel dimensions matter as much as file size.</p>
     </section>
     <section class="tool-panel" aria-labelledby="tool-title">
-      <div class="tool-intro"><h2 id="tool-title">Resize settings</h2><p>Resize photos for forms, profile images, website uploads, and document workflows without sending files to a server.</p></div>
+      <div class="tool-intro"><h2 id="tool-title">Resize settings</h2><p>Resize photos for forms, profile images, website uploads, and document workflows without adding a server upload step. Use it when pixel dimensions matter as much as file size.</p></div>
       <form class="tool-form" data-resizer>
         <label>Choose image<input type="file" accept="image/*" data-file></label>
         <label>Width in pixels<input type="number" min="1" max="8000" value="1200" data-width></label>
@@ -80,31 +81,48 @@
       <div class="result-box" data-result aria-live="polite"></div>
     </section>
     <section class="section guide">
-      <h2>How to use this tool</h2>
+      <h2>How to resize an image</h2>
       <ol>
-        <li>Select an image from your device.</li>
-        <li>Adjust the settings for size, format, or quality.</li>
-        <li>Download the processed copy and keep your original file unchanged.</li>
+        <li>Choose an image from your device.</li><li>Enter the width and height required by your form, website, or document workflow.</li><li>Keep aspect ratio enabled unless the destination explicitly requires exact stretching.</li><li>Choose JPG, PNG, or WebP output based on the destination rules.</li><li>Resize the image, download the result, and check the final dimensions.</li>
       </ol>
-      <p>For upload portals, compare the final image against the official file size, dimensions, and format requirements before submitting.</p>
+      <p>If the resized file is still too large, use the image compressor after resizing.</p>
     </section>
-    <section class="section" aria-labelledby="related-tools"><h2 id="related-tools">Related tools</h2><div class="card-grid compact"><a class="tool-card" href="/compress-image-to-50kb">
+    <section class="section guide">
+      <h2>When resizing matters</h2>
+      <p>Many upload problems are caused by dimensions rather than file size alone. A portal may ask for a square profile photo, a maximum width, or a fixed pixel size. Resizing first can make later compression easier and can prevent unnecessary quality loss.</p>
+    </section><section class="section guide">
+      <h2>Aspect ratio and output format</h2>
+      <p>Keeping aspect ratio prevents faces, products, documents, and graphics from looking stretched. Turn it off only when the destination specifically asks for exact width and height and you understand the visual tradeoff.</p><p>JPG is usually practical for photos, PNG is useful for graphics or screenshots, and WebP can be useful for web workflows when accepted.</p>
+    </section><section class="section guide">
+      <h2>Troubleshooting resize results</h2>
+      <ul>
+        <li>If the result looks stretched, keep aspect ratio enabled and crop elsewhere if needed.</li>
+        <li>If the file is still too large, use <a href="/image-compressor">image compressor</a> after resizing.</li>
+        <li>If an online form rejects the image, compare both dimensions and file size with the form instructions.</li>
+        <li>For passport-style photos, use <a href="/passport-photo-resizer">passport photo resizer</a> first.</li>
+      </ul>
+    </section>
+    <section class="section" aria-labelledby="related-tools"><h2 id="related-tools">Related tools</h2><div class="card-grid compact"><a class="tool-card" href="/resize-image-for-online-form">
+    <span class="tool-icon">R</span>
+    <strong>Resize image for online form</strong>
+    <span>Resize photos for online forms, application portals, profile uploads, and document systems using browser-side pixel settings.</span>
+  </a><a class="tool-card" href="/passport-photo-resizer">
+    <span class="tool-icon">R</span>
+    <strong>Passport photo resizer</strong>
+    <span>Resize a passport-style photo in your browser for square application, profile, and document upload workflows.</span>
+  </a><a class="tool-card" href="/image-compressor">
     <span class="tool-icon">C</span>
-    <strong>Compress image to 50KB</strong>
-    <span>Compress images toward a 50KB target for online forms, profile photos, document portals, and email.</span>
+    <strong>Image compressor online</strong>
+    <span>Compress JPG, PNG, and WebP images in your browser with quality, width, privacy, upload-limit, and troubleshooting guidance.</span>
   </a><a class="tool-card" href="/compress-image-under-100kb">
     <span class="tool-icon">C</span>
     <strong>Compress image under 100KB</strong>
     <span>Use a browser-side compressor with a 100KB target for forms, portals, and document upload limits.</span>
-  </a><a class="tool-card" href="/compress-image-under-200kb">
-    <span class="tool-icon">C</span>
-    <strong>Compress image under 200KB</strong>
-    <span>Compress photos toward a 200KB target for forms, portals, and document upload limits.</span>
-  </a><a class="tool-card" href="/compress-image-to-20kb">
-    <span class="tool-icon">C</span>
-    <strong>Compress image to 20KB</strong>
-    <span>Compress images toward a strict 20KB target for signatures, icons, small forms, and document portals.</span>
   </a></div></section>
+    <section class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
+      <details><summary>Can I resize to exact pixels?</summary><p>Yes. Enter the required width and height, then check the downloaded image against the destination rules.</p></details><details><summary>Should I keep aspect ratio on?</summary><p>Usually yes. Keeping aspect ratio prevents distortion. Disable it only when exact stretched dimensions are required.</p></details><details><summary>Does resizing also reduce file size?</summary><p>Often it does, especially for large photos, but use compression afterward if the file is still above the upload limit.</p></details>
+    </section>
   </main>
 <footer class="site-footer">
     <div class="footer-grid">

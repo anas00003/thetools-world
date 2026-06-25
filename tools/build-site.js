@@ -18,47 +18,254 @@ const routes = [
     description: "TheTools.World starts with free browser-side image tools for compression, resizing, conversion, and upload preparation, with more utilities planned.",
     h1: "Free online tools for images, files, text, and everyday tasks",
     kind: "home",
+    faq: [
+      {
+        question: "Do these tools upload my images?",
+        answer: "The core resize, compress, and convert tools use browser APIs for the selected image task. Keep the page open until your download is ready.",
+      },
+      {
+        question: "Can every image meet a strict upload limit?",
+        answer: "No. Very large or detailed images may need resizing before compression, and some limits are too strict for a clear result.",
+      },
+      {
+        question: "Which tool should I start with?",
+        answer: "Use the compressor for file-size limits, the resizer for pixel dimensions, the converter for format changes, and exact-size pages when a form gives a specific KB limit.",
+      },
+    ],
     priority: "1.0",
   },
   {
     route: "/image-compressor",
     file: "image-compressor.html",
     title: "Image Compressor Online - Reduce Image File Size",
-    description: "Compress JPG, PNG, and WebP images in your browser with quality controls and instant download.",
+    description: "Compress JPG, PNG, and WebP images in your browser with quality, width, privacy, upload-limit, and troubleshooting guidance.",
     h1: "Image compressor online",
     kind: "compressor",
-    intro: "Reduce image file size before uploading, emailing, or adding photos to a website. Processing happens in your browser.",
-    relatedRoutes: ["/compress-image-to-50kb", "/compress-image-to-20kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/image-resizer"],
+    intro: "Reduce image file size before uploading, emailing, or adding photos to a website. Processing happens in your browser, so you can test quality and size settings before downloading a smaller copy.",
+    toolNotes: [
+      "Supported inputs: JPG, PNG, and WebP.",
+      "Compression output is prepared as JPG for smaller photo-friendly files.",
+      "Large images may need width reduction before quality changes are enough.",
+      "Exact output size depends on the original image and settings.",
+    ],
+    guide: {
+      title: "How to compress an image",
+      steps: [
+        "Choose a JPG, PNG, or WebP image from your device.",
+        "Start with the default quality and max-width settings.",
+        "Compress the image and check the downloaded file size.",
+        "If the result is still too large, reduce max width or lower quality gradually.",
+        "Open the downloaded image once to confirm it is clear enough for your use.",
+      ],
+      note: "For forms and portals, compare the final file with the official size, dimension, format, and readability rules before submitting.",
+    },
+    extraSections: [
+      {
+        title: "When to use the image compressor",
+        body: `<p>Use this general compressor when you need a smaller image for email, a website, a profile upload, a document portal, or a form that gives a file-size limit but not a specific target page. It is a flexible starting point when you want to control both quality and maximum width.</p>`,
+      },
+      {
+        title: "Quality and readability tradeoffs",
+        body: `<p>Lower quality usually reduces file size, but it can soften faces, document text, signatures, and small details. Reducing width first often gives a cleaner result for very large phone photos because the image has fewer pixels to store before quality is lowered.</p><p>For text-heavy screenshots or forms, check readability after compression. If the upload portal allows a larger file, use the least aggressive settings that meet the rule.</p>`,
+      },
+      {
+        title: "Troubleshooting compression results",
+        body: `<ul>
+        <li>If the file is still too large, reduce max width before dropping quality too far.</li>
+        <li>If the image looks blurry, try a higher quality setting or a larger size limit.</li>
+        <li>If the portal asks for an exact limit, use a target page such as <a href="/compress-image-to-50kb">compress image to 50KB</a> or <a href="/compress-image-under-100kb">compress image under 100KB</a>.</li>
+        <li>If dimensions matter, resize first with the <a href="/image-resizer">image resizer</a>.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Which image formats can I compress?",
+        answer: "The browser tool supports JPG, PNG, and WebP inputs when your browser can read the selected file.",
+      },
+      {
+        question: "Will every image become small enough?",
+        answer: "Not always. Very large, detailed, or text-heavy images may need width reduction or a less strict upload limit.",
+      },
+      {
+        question: "Are selected images uploaded to a server?",
+        answer: "The current image compression workflow uses browser APIs for the selected image task. Keep the page open until the download is ready.",
+      },
+    ],
+    relatedRoutes: ["/compress-image-to-50kb", "/compress-image-to-20kb", "/compress-image-under-100kb", "/compress-image-under-200kb", "/image-resizer", "/image-converter"],
     priority: "0.9",
   },
   {
     route: "/image-resizer",
     file: "image-resizer.html",
     title: "Image Resizer Online - Resize Photos by Pixel",
-    description: "Resize images by width and height, keep aspect ratio, and download a smaller copy from your browser.",
+    description: "Resize images by width and height in your browser, keep aspect ratio, choose output format, and prepare photos for uploads.",
     h1: "Image resizer online",
     kind: "resizer",
-    intro: "Resize photos for forms, profile images, website uploads, and document workflows without sending files to a server.",
+    intro: "Resize photos for forms, profile images, website uploads, and document workflows without adding a server upload step. Use it when pixel dimensions matter as much as file size.",
+    guide: {
+      title: "How to resize an image",
+      steps: [
+        "Choose an image from your device.",
+        "Enter the width and height required by your form, website, or document workflow.",
+        "Keep aspect ratio enabled unless the destination explicitly requires exact stretching.",
+        "Choose JPG, PNG, or WebP output based on the destination rules.",
+        "Resize the image, download the result, and check the final dimensions.",
+      ],
+      note: "If the resized file is still too large, use the image compressor after resizing.",
+    },
+    extraSections: [
+      {
+        title: "When resizing matters",
+        body: `<p>Many upload problems are caused by dimensions rather than file size alone. A portal may ask for a square profile photo, a maximum width, or a fixed pixel size. Resizing first can make later compression easier and can prevent unnecessary quality loss.</p>`,
+      },
+      {
+        title: "Aspect ratio and output format",
+        body: `<p>Keeping aspect ratio prevents faces, products, documents, and graphics from looking stretched. Turn it off only when the destination specifically asks for exact width and height and you understand the visual tradeoff.</p><p>JPG is usually practical for photos, PNG is useful for graphics or screenshots, and WebP can be useful for web workflows when accepted.</p>`,
+      },
+      {
+        title: "Troubleshooting resize results",
+        body: `<ul>
+        <li>If the result looks stretched, keep aspect ratio enabled and crop elsewhere if needed.</li>
+        <li>If the file is still too large, use <a href="/image-compressor">image compressor</a> after resizing.</li>
+        <li>If an online form rejects the image, compare both dimensions and file size with the form instructions.</li>
+        <li>For passport-style photos, use <a href="/passport-photo-resizer">passport photo resizer</a> first.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can I resize to exact pixels?",
+        answer: "Yes. Enter the required width and height, then check the downloaded image against the destination rules.",
+      },
+      {
+        question: "Should I keep aspect ratio on?",
+        answer: "Usually yes. Keeping aspect ratio prevents distortion. Disable it only when exact stretched dimensions are required.",
+      },
+      {
+        question: "Does resizing also reduce file size?",
+        answer: "Often it does, especially for large photos, but use compression afterward if the file is still above the upload limit.",
+      },
+    ],
+    relatedRoutes: ["/resize-image-for-online-form", "/passport-photo-resizer", "/image-compressor", "/compress-image-under-100kb", "/image-converter"],
     priority: "0.9",
   },
   {
     route: "/image-converter",
     file: "image-converter.html",
     title: "Image Converter Online - Convert JPG PNG WebP",
-    description: "Convert images between JPG, PNG, and WebP formats in your browser with a simple privacy-focused workflow.",
+    description: "Convert images between JPG, PNG, and WebP in your browser with format guidance for photos, transparency, forms, and web uploads.",
     h1: "Image converter online",
     kind: "converter",
-    intro: "Change image formats for compatibility, smaller file sizes, transparent images, and web publishing.",
+    intro: "Change image formats for compatibility, smaller file sizes, transparent images, and web publishing. The converter works with JPG, PNG, and WebP inputs supported by your browser and prepares the selected output locally in the page.",
+    guide: {
+      title: "How to convert an image format",
+      steps: [
+        "Choose a JPG, PNG, or WebP image from your device.",
+        "Select the output format: JPG, PNG, or WebP.",
+        "Convert the image in your browser.",
+        "Download the converted copy and keep your original file unchanged.",
+        "Open the result once before uploading it to a form, website, or document portal.",
+      ],
+      note: "Use the format requested by the receiving website or form. If no format is specified, choose based on the image type and file-size needs.",
+    },
+    extraSections: [
+      {
+        title: "What this image converter does",
+        body: `<p>This page helps you create a new copy of an image in another common web format. It is useful when an upload form accepts only JPG, when a design workflow asks for PNG, or when a web project benefits from WebP.</p><p>The current tool supports JPG, PNG, and WebP where the browser can decode the source image and export the selected output format.</p>`,
+      },
+      {
+        title: "When to use JPG, PNG, or WebP",
+        body: `<ul>
+        <li><strong>JPG</strong> is usually a good choice for photos, scanned images, and upload forms that need broad compatibility or smaller files.</li>
+        <li><strong>PNG</strong> is useful for screenshots, graphics, text-heavy images, and workflows that require a PNG file.</li>
+        <li><strong>WebP</strong> can be useful for web publishing when the destination supports it and smaller web image files matter.</li>
+      </ul>`,
+      },
+      {
+        title: "Quality, transparency, and upload notes",
+        body: `<p>Converting format does not improve the original image quality. If a JPG is blurry before conversion, saving it as PNG will not recover detail that was already lost.</p><p>When saving to JPG, transparent areas are flattened because JPG does not support transparency. For logos or graphics that need transparency, use PNG or WebP when the destination accepts it.</p><p>For online forms, check both the file format and the size limit. If the converted image is too large, use the <a href="/image-compressor">image compressor</a> or an exact-size page such as <a href="/compress-image-under-100kb">compress image under 100KB</a>.</p>`,
+      },
+      {
+        title: "Troubleshooting conversion results",
+        body: `<ul>
+        <li>If the file does not load, confirm it is a JPG, PNG, or WebP image rather than a PDF or document.</li>
+        <li>If a portal rejects the result, compare the required format, file size, and dimensions with the downloaded file.</li>
+        <li>If the image is too large after conversion, compress or resize it before uploading.</li>
+        <li>If transparency matters, avoid JPG output and choose PNG or WebP when allowed.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Which formats can I convert?",
+        answer: "The browser tool supports JPG, PNG, and WebP images when your browser can read the selected file and export the chosen output format.",
+      },
+      {
+        question: "Does converting an image improve quality?",
+        answer: "No. Conversion creates a new file format, but it cannot restore detail or sharpness missing from the original image.",
+      },
+      {
+        question: "Are selected images uploaded to a server?",
+        answer: "The current image conversion workflow uses browser APIs for the selected image task. Keep the page open until the download is ready.",
+      },
+    ],
+    relatedRoutes: ["/convert-webp-to-jpg", "/png-to-jpg", "/jpg-to-png", "/image-compressor", "/image-resizer"],
     priority: "0.9",
   },
   {
     route: "/bulk-image-tools",
     file: "bulk-image-tools.html",
     title: "Bulk Image Tools - Resize and Compress Multiple Images",
-    description: "Process multiple images in one browser session for faster resize, compress, and conversion workflows.",
+    description: "Process multiple images in one browser session with practical guidance for batches, upload prep, limits, and downloads.",
     h1: "Bulk image tools",
     kind: "bulk",
-    intro: "Handle groups of photos with repeatable settings. Your files stay in your browser while previews and downloads are prepared locally.",
+    intro: "Handle groups of photos with repeatable settings. Your files stay in your browser while downloads are prepared locally, which is useful when several images need the same approximate size or width.",
+    guide: {
+      title: "How to process multiple images",
+      steps: [
+        "Choose several images from your device.",
+        "Set the max width and quality you want to apply to the batch.",
+        "Prepare the downloads in the browser.",
+        "Download each processed image and check the sizes before submitting them.",
+        "Use single-image tools for files that need a strict individual target.",
+      ],
+      note: "Batch processing is best for repeatable settings. Use exact-size pages when each file must meet a specific upload limit.",
+    },
+    extraSections: [
+      {
+        title: "When bulk tools help",
+        body: `<p>Bulk processing is useful for product photos, gallery images, class or event photos, website uploads, and repeated document workflows where every image can use similar settings. It saves time compared with processing each image separately.</p>`,
+      },
+      {
+        title: "Batch limitations",
+        body: `<p>Different images can respond differently to the same quality and width settings. A detailed photo may remain larger than a simple image, so check each downloaded file before uploading. For strict limits, process the difficult images again with a target page.</p>`,
+      },
+      {
+        title: "Troubleshooting batch downloads",
+        body: `<ul>
+        <li>If one image is still too large, use <a href="/image-compressor">image compressor</a> or an exact-size page for that file.</li>
+        <li>If a website needs exact dimensions, resize images first with <a href="/image-resizer">image resizer</a>.</li>
+        <li>If format matters, use <a href="/image-converter">image converter</a> for the affected files.</li>
+        <li>Keep originals until all uploads are accepted.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can I process many images at once?",
+        answer: "Yes. The bulk tool applies repeatable settings to selected images in the browser, then prepares downloads.",
+      },
+      {
+        question: "Will every batch image have the same file size?",
+        answer: "No. File size varies by original dimensions, detail, and image content even when the same settings are used.",
+      },
+      {
+        question: "When should I use a single-image tool instead?",
+        answer: "Use a single-image compressor or resizer when one file must meet a strict size, dimension, or format requirement.",
+      },
+    ],
+    relatedRoutes: ["/image-compressor", "/image-resizer", "/image-converter", "/compress-image-under-100kb"],
     priority: "0.8",
   },
   {
@@ -740,73 +947,367 @@ const routes = [
     route: "/resize-image-for-online-form",
     file: "resize-image-for-online-form.html",
     title: "Resize Image for Online Form Uploads",
-    description: "Resize photos for online application forms, profile uploads, and document portals using pixel dimensions.",
+    description: "Resize photos for online forms, application portals, profile uploads, and document systems using browser-side pixel settings.",
     h1: "Resize image for online form",
     kind: "resizer",
     preset: "form",
-    intro: "Set exact width and height requirements before uploading to a form. Keep a copy of your original file for future edits.",
+    intro: "Set width and height requirements before uploading to a form. This helps when a portal asks for dimensions such as a square profile photo, a maximum width, or a specific pixel size.",
+    guide: {
+      title: "How to resize an image for an online form",
+      steps: [
+        "Read the form instructions for width, height, format, and file size.",
+        "Choose your image from your device.",
+        "Enter the requested pixel width and height.",
+        "Keep aspect ratio enabled unless the form requires exact dimensions.",
+        "Download the resized image and compare it with the form rules before uploading.",
+      ],
+      note: "If the form also has a file-size limit, compress the resized image afterward.",
+    },
+    extraSections: [
+      {
+        title: "What problem this solves",
+        body: `<p>Online forms often reject images because the dimensions are too large, too small, or not shaped correctly. This page helps prepare a copy with the pixel size requested by the form while keeping your original file unchanged.</p>`,
+      },
+      {
+        title: "Common form situations",
+        body: `<p>Use this tool for profile photos, application images, school portals, job forms, account images, document portals, and service forms that mention width and height. It does not verify official rules automatically, so the form instructions should always be the final source.</p>`,
+      },
+      {
+        title: "Quality and privacy notes",
+        body: `<p>Very small dimensions can make faces, signatures, or document text hard to read. Check the downloaded image before uploading. The current resizing workflow uses browser APIs for the selected image task.</p>`,
+      },
+      {
+        title: "Troubleshooting form upload issues",
+        body: `<ul>
+        <li>If the portal rejects the file, check dimensions, file size, and format separately.</li>
+        <li>If the resized image is still too large, use <a href="/image-compressor">image compressor</a>.</li>
+        <li>If a strict file limit is listed, try <a href="/compress-image-to-50kb">compress image to 50KB</a> or <a href="/compress-image-under-100kb">compress image under 100KB</a>.</li>
+        <li>If the photo is passport-style, use <a href="/passport-photo-resizer">passport photo resizer</a> for a square starting point.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Can this match every online form requirement?",
+        answer: "No. It helps prepare dimensions, but you must compare the downloaded file with the form's current size, format, and quality rules.",
+      },
+      {
+        question: "Should I resize or compress first?",
+        answer: "Resize first when the form gives pixel dimensions. Compress afterward if the resized image is still too large.",
+      },
+      {
+        question: "Are images uploaded to a server?",
+        answer: "The current resizing workflow uses browser APIs for the selected image task. Keep the page open until the download is ready.",
+      },
+    ],
+    relatedRoutes: ["/image-resizer", "/image-compressor", "/passport-photo-resizer", "/compress-image-to-50kb", "/compress-image-under-100kb"],
     priority: "0.8",
   },
   {
     route: "/compress-photo-for-government-form",
     file: "compress-photo-for-government-form.html",
     title: "Compress Photo for Government Form Uploads",
-    description: "Prepare photos for government and public-service form uploads with image compression and resizing guidance.",
+    description: "Prepare photos for government and public-service form uploads with careful browser-side compression, resizing, and checking guidance.",
     h1: "Compress photo for government form",
     kind: "compressor",
     targetKb: 200,
-    intro: "Government portals often use strict size limits. Use this page to resize first when dimensions are too large, then compress.",
+    intro: "Government and public-service portals often use strict photo size and dimension limits. This page helps prepare a smaller photo copy, but the official portal instructions should always decide the final requirements.",
+    heroNote: "This tool helps prepare images; it does not guarantee acceptance by any government, passport, visa, license, exam, school, or service portal.",
+    toolNotes: [
+      "Supported inputs: JPG, PNG, and WebP.",
+      "Downloads are prepared as JPG for smaller output.",
+      "Exact output size is not guaranteed.",
+      "Check official file size, dimensions, background, and format rules before submitting.",
+    ],
+    guide: {
+      title: "How to compress a photo for a government form",
+      steps: [
+        "Read the portal's photo instructions before changing the image.",
+        "Choose your photo from your device.",
+        "Resize first if the portal lists pixel dimensions or maximum width.",
+        "Compress the photo and check the final file size.",
+        "Open the downloaded file and confirm the face, text, or document details are still readable.",
+        "Compare the result with the official portal rules before uploading.",
+      ],
+      note: "If a portal asks for a smaller size than 200KB, use a stricter exact-size page only after checking readability.",
+    },
+    extraSections: [
+      {
+        title: "What this page helps with",
+        body: `<p>This page is for users preparing photos for portals that mention file-size limits, upload size, image format, or dimensions. It can help with application-style uploads, public-service forms, education portals, job portals, and account photo workflows.</p>`,
+      },
+      {
+        title: "Readability and official rules",
+        body: `<p>Government and public-service forms can reject photos for reasons beyond file size, including background, crop, face position, shadows, format, or dimensions. Compression can reduce size, but it cannot confirm those official visual rules.</p><p>Use the least aggressive compression that meets the portal's limit so the photo remains clear.</p>`,
+      },
+      {
+        title: "Troubleshooting government form uploads",
+        body: `<ul>
+        <li>If the file is too large, reduce width first, then lower quality gradually.</li>
+        <li>If the portal lists exact dimensions, use <a href="/resize-image-for-online-form">resize image for online form</a> before compressing.</li>
+        <li>If the portal asks for a passport-style square image, start with <a href="/passport-photo-resizer">passport photo resizer</a>.</li>
+        <li>If the portal requires a smaller limit, try <a href="/compress-image-under-100kb">compress image under 100KB</a> or <a href="/compress-image-to-50kb">compress image to 50KB</a>.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Does this guarantee a government form will accept my photo?",
+        answer: "No. It helps prepare file size and dimensions, but official acceptance depends on the portal's current rules and visual requirements.",
+      },
+      {
+        question: "What should I check before uploading?",
+        answer: "Check file size, dimensions, format, background, crop, face clarity, text readability where relevant, and any official portal instructions.",
+      },
+      {
+        question: "Are selected photos uploaded to a server?",
+        answer: "The current compression workflow uses browser APIs for the selected image task. Keep the page open until the download is ready.",
+      },
+    ],
+    relatedRoutes: ["/resize-image-for-online-form", "/passport-photo-resizer", "/image-compressor", "/compress-image-under-100kb", "/compress-image-to-50kb"],
     priority: "0.8",
   },
   {
     route: "/convert-webp-to-jpg",
     file: "convert-webp-to-jpg.html",
     title: "Convert WebP to JPG Online",
-    description: "Convert WebP images to JPG in your browser for apps and websites that do not accept WebP files.",
+    description: "Convert WebP images to JPG in your browser for forms, apps, documents, and websites that need a compatible JPG file.",
     h1: "Convert WebP to JPG",
     kind: "converter",
     output: "image/jpeg",
-    intro: "Use JPG when you need broad compatibility and do not need transparency in the final image.",
+    intro: "Use JPG when you need broad compatibility and do not need transparency in the final image. This page is focused on WebP files that must be accepted by older apps, online forms, or document workflows.",
+    guide: {
+      title: "How to convert WebP to JPG",
+      steps: [
+        "Choose a WebP image from your device.",
+        "Keep JPG selected as the output format.",
+        "Convert the image in your browser.",
+        "Download the JPG copy.",
+        "Check the result before uploading it to the app, portal, or form that rejected WebP.",
+      ],
+      note: "If the destination has a file-size limit, check the downloaded JPG size before submitting it.",
+    },
+    extraSections: [
+      {
+        title: "Why convert WebP to JPG",
+        body: `<p>WebP is common on modern websites, but some document portals, email workflows, editing apps, and older upload forms still ask for JPG or JPEG. Converting to JPG gives you a more widely accepted copy while leaving the original WebP file unchanged.</p>`,
+      },
+      {
+        title: "Compatibility and form-upload uses",
+        body: `<p>This tool can help when an online form rejects a WebP file, when a document system asks for JPG, or when you need to attach an image in a format a recipient can open easily. It is also useful for profile images, application forms, school portals, service portals, and basic image-sharing workflows.</p>`,
+      },
+      {
+        title: "Quality and transparency notes",
+        body: `<p>JPG is designed for photos and broad compatibility. It does not support transparency, so transparent WebP areas may become a solid background in the JPG result. For graphics that must keep transparency, use PNG or WebP if the destination accepts it.</p><p>JPG output can also be larger than the original WebP. If the JPG is too large for a portal, use the <a href="/image-compressor">image compressor</a>, <a href="/compress-image-to-50kb">compress image to 50KB</a>, or <a href="/compress-image-under-100kb">compress image under 100KB</a>.</p>`,
+      },
+      {
+        title: "Troubleshooting WebP to JPG conversion",
+        body: `<ul>
+        <li>If the file does not open, confirm it is a valid WebP image.</li>
+        <li>If the JPG is too large, compress or resize the result before uploading.</li>
+        <li>If the background changed, the original WebP may have used transparency that JPG cannot keep.</li>
+        <li>If a form still rejects the file, check whether it also requires specific dimensions or a smaller file size.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Why would a website reject a WebP image?",
+        answer: "Some older apps, forms, and document portals accept only JPG, JPEG, or PNG files even though WebP is common on the web.",
+      },
+      {
+        question: "Will transparent WebP areas stay transparent in JPG?",
+        answer: "No. JPG does not support transparency, so transparent areas may be flattened to a solid background.",
+      },
+      {
+        question: "What should I do if the JPG is too large?",
+        answer: "Compress the JPG, reduce image dimensions, or use an exact-size compression page when the upload portal has a strict file-size limit.",
+      },
+    ],
+    relatedRoutes: ["/image-converter", "/jpg-to-png", "/png-to-jpg", "/image-compressor"],
     priority: "0.8",
   },
   {
     route: "/png-to-jpg",
     file: "png-to-jpg.html",
     title: "PNG to JPG Converter Online",
-    description: "Convert PNG images to JPG for smaller files and wider upload compatibility.",
+    description: "Convert PNG images to JPG for photos, online forms, document portals, email, and smaller compatible image files.",
     h1: "PNG to JPG converter",
     kind: "converter",
     output: "image/jpeg",
-    intro: "JPG is often smaller than PNG for photos. Transparent PNG areas will be filled with a white background.",
+    intro: "JPG is often smaller than PNG for photos and is accepted by many upload portals. Transparent PNG areas will be filled with a solid background because JPG does not support transparency.",
+    guide: {
+      title: "How to convert PNG to JPG",
+      steps: [
+        "Choose a PNG image from your device.",
+        "Keep JPG selected as the output format.",
+        "Convert the image in the browser.",
+        "Download the JPG copy.",
+        "Check the background, readability, dimensions, and file size before uploading.",
+      ],
+      note: "For forms with strict file-size limits, compress the JPG result if it is still too large.",
+    },
+    extraSections: [
+      {
+        title: "Why convert PNG to JPG",
+        body: `<p>PNG is useful for screenshots, graphics, and transparency, but it can be larger than needed for photo-style images. JPG is often a better fit for profile photos, scanned images, email attachments, and portals that only accept JPG or JPEG.</p>`,
+      },
+      {
+        title: "When JPG is better",
+        body: `<p>Use JPG when the image is mostly photographic, when broad compatibility matters, or when a form requires JPG. JPG compression can reduce file size compared with PNG, especially for camera photos or scanned photo-style images.</p>`,
+      },
+      {
+        title: "Transparency and quality warnings",
+        body: `<p>If your PNG has transparent areas, the JPG result cannot keep that transparency. Those areas may become a solid background. If transparency is required for a logo, sticker, or design asset, keep PNG or use another accepted transparent format.</p><p>Converting to JPG can also introduce compression. Check text-heavy screenshots and small details before submitting the result.</p>`,
+      },
+      {
+        title: "Troubleshooting PNG to JPG results",
+        body: `<ul>
+        <li>If the JPG looks too large, use the <a href="/image-compressor">image compressor</a> or resize the image first.</li>
+        <li>If the background changed, the source PNG likely included transparency.</li>
+        <li>If text looks soft, try using PNG when the destination allows it.</li>
+        <li>If a portal rejects the result, check whether it has separate size, dimension, or color-background rules.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Does PNG to JPG make every file smaller?",
+        answer: "Not always, but JPG is often smaller for photos and scanned photo-style images. Results depend on the original image.",
+      },
+      {
+        question: "What happens to transparent PNG backgrounds?",
+        answer: "JPG does not support transparency, so transparent areas may become a solid background in the converted file.",
+      },
+      {
+        question: "Can I use the JPG for online forms?",
+        answer: "Yes, if the form accepts JPG. Check the final file size, dimensions, and image readability before submitting.",
+      },
+    ],
+    relatedRoutes: ["/image-converter", "/convert-webp-to-jpg", "/jpg-to-png", "/image-compressor"],
     priority: "0.8",
   },
   {
     route: "/jpg-to-png",
     file: "jpg-to-png.html",
     title: "JPG to PNG Converter Online",
-    description: "Convert JPG images to PNG in your browser when you need a PNG copy for design or document workflows.",
+    description: "Convert JPG images to PNG in your browser for apps, screenshots, document workflows, and upload portals that request PNG.",
     h1: "JPG to PNG converter",
     kind: "converter",
     output: "image/png",
-    intro: "PNG is useful for screenshots, graphics, and workflows that specifically request PNG files.",
+    intro: "PNG is useful for screenshots, graphics, and workflows that specifically request PNG files. Converting a JPG to PNG creates a PNG copy, but it does not restore quality already lost in the JPG.",
+    guide: {
+      title: "How to convert JPG to PNG",
+      steps: [
+        "Choose a JPG or JPEG image from your device.",
+        "Keep PNG selected as the output format.",
+        "Convert the image in your browser.",
+        "Download the PNG copy.",
+        "Check the result before using it in a form, document, or design workflow.",
+      ],
+      note: "PNG output can be larger than JPG, so check the file size when an upload portal has limits.",
+    },
+    extraSections: [
+      {
+        title: "Why convert JPG to PNG",
+        body: `<p>Some apps, forms, screenshots, design tasks, or document workflows request PNG files. This converter creates a PNG copy from a JPG so you can meet a format requirement without changing the original file.</p>`,
+      },
+      {
+        title: "What PNG is useful for",
+        body: `<p>PNG is commonly used for screenshots, graphics, diagrams, text-heavy images, and images that need a lossless-style saved copy after editing. It is not always the smallest choice for photos, but it is a common requirement in design and document workflows.</p>`,
+      },
+      {
+        title: "Important quality and transparency notes",
+        body: `<p>JPG to PNG conversion does not bring back detail that was lost when the image became JPG. If the JPG has compression marks, blur, or low resolution, the PNG copy will preserve those visible limits.</p><p>Converting JPG to PNG also does not create true transparency. If the JPG background is white, the PNG will still have that visible background unless it is edited separately in another tool.</p>`,
+      },
+      {
+        title: "Troubleshooting JPG to PNG conversion",
+        body: `<ul>
+        <li>If the PNG is larger than expected, use JPG when the destination allows it or compress the result.</li>
+        <li>If a form rejects the PNG, check whether it requires a smaller file size or exact dimensions.</li>
+        <li>If you need transparent background removal, this converter alone is not a background-removal tool.</li>
+        <li>If the image looks blurry, start from a higher-quality original if one is available.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Does converting JPG to PNG improve image quality?",
+        answer: "No. PNG output cannot restore detail, sharpness, or color information that is missing from the JPG source.",
+      },
+      {
+        question: "Will JPG to PNG create transparency?",
+        answer: "No. A JPG has no real transparency, so the PNG copy keeps the visible background from the JPG.",
+      },
+      {
+        question: "Why is my PNG larger than the JPG?",
+        answer: "PNG can be larger for photo-style images. Use PNG when the destination asks for it or when its format benefits matter.",
+      },
+    ],
+    relatedRoutes: ["/image-converter", "/png-to-jpg", "/convert-webp-to-jpg", "/image-resizer"],
     priority: "0.8",
   },
   {
     route: "/passport-photo-resizer",
     file: "passport-photo-resizer.html",
     title: "Passport Photo Resizer Online",
-    description: "Resize a passport-style photo to exact pixel dimensions for application forms and profile uploads.",
+    description: "Resize a passport-style photo in your browser for square application, profile, and document upload workflows.",
     h1: "Passport photo resizer",
     kind: "resizer",
     preset: "passport",
-    intro: "Resize passport-style photos to requested dimensions. Always check the official instructions for crop, background, and size rules.",
+    intro: "Resize passport-style photos to requested dimensions for application forms, account profiles, and document portals. Always check the official instructions for crop, background, face position, format, and file size.",
+    guide: {
+      title: "How to resize a passport-style photo",
+      steps: [
+        "Read the official photo instructions for dimensions, crop, background, and file size.",
+        "Choose your photo from your device.",
+        "Use the preset square dimensions as a starting point or enter the required pixels.",
+        "Keep aspect ratio on unless the official rules require exact stretching.",
+        "Download the resized photo and check it before uploading.",
+      ],
+      note: "This resizer helps prepare dimensions. It does not check identity-photo composition rules automatically.",
+    },
+    extraSections: [
+      {
+        title: "What this tool is for",
+        body: `<p>This page helps create a resized copy of a passport-style or profile photo when a portal asks for a specific pixel size. It is useful for application forms, student profiles, service portals, job portals, and account photos that require a square or controlled image size.</p>`,
+      },
+      {
+        title: "Photo quality and compliance limits",
+        body: `<p>Official passport, visa, ID, and government systems can have rules for head size, eye position, background color, shadows, clothing, and crop. This browser tool only resizes the image; it does not verify those visual requirements or guarantee approval.</p><p>If the resized photo is too large, compress it after resizing while keeping the face clear.</p>`,
+      },
+      {
+        title: "Troubleshooting passport-style uploads",
+        body: `<ul>
+        <li>If the portal rejects dimensions, recheck the exact width and height it asks for.</li>
+        <li>If the file is too large, use <a href="/image-compressor">image compressor</a> or <a href="/compress-image-under-100kb">compress image under 100KB</a>.</li>
+        <li>If the crop is wrong, crop the photo in a dedicated editor before resizing.</li>
+        <li>If the background or face position does not match official rules, retake or edit the photo before uploading.</li>
+      </ul>`,
+      },
+    ],
+    faq: [
+      {
+        question: "Does this make an official passport photo automatically?",
+        answer: "No. It helps resize a passport-style photo, but official acceptance depends on the destination's crop, background, face, size, and format rules.",
+      },
+      {
+        question: "Can I compress the photo after resizing?",
+        answer: "Yes. If the resized file is still too large, use the image compressor or an exact-size compression page and check that the face remains clear.",
+      },
+      {
+        question: "Are photos uploaded to a server?",
+        answer: "The current resizing workflow uses browser APIs for the selected image task. Keep the page open until the download is ready.",
+      },
+    ],
+    relatedRoutes: ["/resize-image-for-online-form", "/image-resizer", "/image-compressor", "/compress-photo-for-government-form", "/compress-image-under-100kb"],
     priority: "0.7",
   },
   {
     route: "/about",
     file: "about.html",
-    title: "About TheTools.World",
-    description: "Learn about TheTools.World, a growing utility website starting with practical browser-side image tools.",
+    title: "About TheTools.World | Free Browser-Side Utility Tools",
+    description: "Learn what TheTools.World is, why it exists, and how its browser-side image tools help with compression, resizing, conversion, and uploads.",
     h1: "About TheTools.World",
     kind: "about",
     priority: "0.6",
@@ -814,8 +1315,8 @@ const routes = [
   {
     route: "/contact",
     file: "contact.html",
-    title: "Contact TheTools.World",
-    description: "Contact TheTools.World for support, corrections, accessibility issues, privacy questions, and tool suggestions.",
+    title: "Contact TheTools.World | Feedback and Tool Requests",
+    description: "Contact TheTools.World for tool feedback, bug reports, privacy questions, accessibility issues, and practical image-tool requests.",
     h1: "Contact TheTools.World",
     kind: "contact",
     priority: "0.6",
@@ -1072,7 +1573,7 @@ function homePage(page) {
       <div class="hero-copy">
         <p class="eyebrow">Utility tools hub</p>
         <h1>${page.h1}</h1>
-        <p>${brand} is starting with fast browser-side image tools, with more file, text, calculator, QR, AI, and developer utilities planned.</p>
+        <p>${brand} helps with common image tasks first: compress a large photo, resize to required pixels, convert between JPG, PNG, and WebP, or prepare an image for an upload form. The live tools are browser-based and designed for practical checks before you download.</p>
         <div class="hero-actions">
           <a class="button primary" href="/image-compressor">Compress an image</a>
           <a class="button secondary" href="/image-resizer">Resize a photo</a>
@@ -1106,6 +1607,14 @@ function homePage(page) {
         <span>PDF Tools</span><span>Text Tools</span><span>Calculators</span><span>QR Tools</span><span>AI Tools</span><span>Developer Tools</span>
       </div>
     </section>
+    <section class="section" aria-labelledby="start-here">
+      <div class="section-heading"><p class="eyebrow">Start here</p><h2 id="start-here">Choose the task that matches your upload problem</h2></div>
+      <div class="card-grid compact">
+        ${card(routes.find((p) => p.route === "/image-compressor"), "Use this when the file is too large and you need a smaller download.")}
+        ${card(routes.find((p) => p.route === "/image-resizer"), "Use this when a form asks for width and height in pixels.")}
+        ${card(routes.find((p) => p.route === "/image-converter"), "Use this when a portal needs JPG, PNG, or WebP instead of your current format.")}
+      </div>
+    </section>
     <section class="search-section" aria-labelledby="find-tool">
       <h2 id="find-tool">Find the right image tool</h2>
       <input id="tool-search" class="search-input" type="search" placeholder="Search compress, resize, WebP, passport, online form" aria-label="Search image tools">
@@ -1123,15 +1632,17 @@ function homePage(page) {
       <div class="section-heading"><p class="eyebrow">Format converters</p><h2 id="format-tools">Switch between JPG, PNG, and WebP</h2></div>
       <div class="card-grid compact">${converterTools.map((p) => card(p)).join("")}</div>
     </section>
+    <section class="section" aria-labelledby="why-browser-tools">
+      <div class="section-heading"><p class="eyebrow">Practical checks</p><h2 id="why-browser-tools">What to check before using a downloaded image</h2></div>
+      <p>Most upload issues come from a few simple rules: file size, pixel dimensions, format, and readability. After using a tool, open the downloaded file and compare it with the destination's instructions. For photos, check faces and details. For documents or screenshots, check text clarity. For transparent graphics, avoid JPG unless a solid background is acceptable.</p>
+    </section>
     <section class="privacy-band" aria-labelledby="privacy-first">
       <div><p class="eyebrow">Privacy-first browser-side tools</p><h2 id="privacy-first">Your selected image files are processed locally by the tool UI.</h2></div>
       <p>${brand} does not require account creation and does not add server upload steps to the core image tools. Some services, such as analytics or ads, may use standard web technologies if added later and will be disclosed in the privacy policy.</p>
     </section>
     <section class="section faq" aria-labelledby="faq-title">
       <h2 id="faq-title">FAQ</h2>
-      <details><summary>Do these tools upload my images?</summary><p>The core resize, compress, and convert tools use browser APIs. Avoid closing the page until your download is ready.</p></details>
-      <details><summary>Can every image be compressed under 100KB?</summary><p>No. Very large or detailed images may need resizing before compression. The tool reports the final size so you can adjust settings.</p></details>
-      <details><summary>Can I use this website for official forms?</summary><p>You can prepare dimensions and file sizes, but always compare the result with the official form instructions before uploading.</p></details>
+      ${page.faq.map((item) => `<details><summary>${item.question}</summary><p>${item.answer}</p></details>`).join("")}
     </section>
   </main>
 ${footer()}`;
@@ -1256,12 +1767,58 @@ ${footer()}`;
 }
 
 function infoPage(page) {
+  const categoryBlock = (title, pages) => `<h2>${title}</h2><div class="sitemap-list">${pages.map((p) => `<a href="${rel(p)}">${p.displayTitle || p.h1}</a>`).join("")}</div>`;
   const blocks = {
-    about: `<p>${brand} is a standalone utility tools website with the tagline: ${tagline}</p><p>The first live category is Image Tools, including compression, resizing, format conversion, bulk processing, and upload preparation pages for common form requirements.</p><p>The broader plan is to add useful file, text, calculator, QR, AI, and developer utilities only when those tools are real, useful, and ready to publish. The site avoids unverifiable claims and keeps expansion honest.</p><p>The goal is simple: publish useful tools, clear instructions, accessible navigation, and honest privacy information before monetization.</p>`,
-    contact: `<p>For support, corrections, accessibility issues, privacy questions, or tool suggestions, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p><p>Please include the page URL, browser, device type, and a short description of the issue.</p>`,
-    privacy: `<p>The current image tools use browser APIs to process selected files locally. ${brand} does not require accounts for these tools.</p><p>The site may use analytics tools to understand traffic, improve pages, and measure tool usage. These tools may use cookies or similar technologies. Analytics events for image tools should use safe buckets and tool/page labels, not uploaded file names or file content.</p><p>Advertising and other third-party services are not required for the current image tools, but may be added in the future to support the website. If ads or additional third-party services are added, this policy should be updated with provider names, cookie behavior, and opt-out information where available.</p><p>Contact: <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
-    terms: `<p>Use ${brand} only for lawful utility tasks. You are responsible for checking whether processed files satisfy third-party upload requirements.</p><p>The tools are provided as-is without a guarantee that every image or future utility output can meet a specific file size, format, or platform requirement.</p><p>Do not use the website to process files you do not have permission to use, and do not rely on the tools as legal, financial, medical, or official government advice.</p><p>Contact: <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
-    sitemap: `<div class="sitemap-list">${routes.filter((p) => p.route !== "/sitemap").map((p) => `<a href="${rel(p)}">${p.displayTitle || p.h1}</a>`).join("")}</div>`,
+    about: `<h2>What ${brand} is</h2>
+      <p>${brand} is a standalone utility tools website for practical browser-based tasks. The live site currently focuses on image tools: compression, resizing, format conversion, exact-size compression targets, passport/photo preparation, and online form image preparation.</p>
+      <h2>Why it was created</h2>
+      <p>Many everyday uploads fail for simple reasons: the file is too large, the dimensions are wrong, or the portal asks for a different image format. This site was created to make those tasks easier with direct tools, plain instructions, and clean canonical pages instead of confusing download flows.</p>
+      <h2>Who it helps</h2>
+      <p>The tools are meant for students, job applicants, small business owners, form users, website editors, and anyone who needs to prepare an image before sending it somewhere else. Each page explains the limits of the task so users can compare the result with the official requirements of the destination site.</p>
+      <h2>Current tools</h2>
+      <p>The current tool set includes <a href="/image-compressor">image compression</a>, <a href="/image-resizer">image resizing</a>, <a href="/image-converter">image conversion</a>, <a href="/bulk-image-tools">bulk image tools</a>, exact-size compression pages, <a href="/resize-image-for-online-form">online form image resizing</a>, and <a href="/passport-photo-resizer">passport-style photo resizing</a>.</p>
+      <h2>Browser-side and privacy-focused processing</h2>
+      <p>The live image tools use browser APIs for the selected image task. The site does not require login or membership for these tools, and the analytics event design avoids uploaded file names, file content, and personal document details.</p>
+      <h2>Tool quality principles</h2>
+      <p>Pages should be useful without ads, avoid fake trust claims, explain tradeoffs clearly, and avoid promises the tools cannot honestly make. More utility categories may be added only when real tools and accurate support content are ready.</p>
+      <h2>Useful starting points</h2>
+      <p><a href="/image-compressor">Compress an image</a>, <a href="/compress-image-to-50kb">compress image to 50KB</a>, <a href="/compress-jpg-to-100kb">compress JPG to 100KB</a>, <a href="/image-converter">convert image format</a>, or browse the <a href="/sitemap">HTML sitemap</a>.</p>`,
+    contact: `<h2>What you can contact about</h2>
+      <p>For tool feedback, corrections, accessibility issues, privacy questions, bug reports, or practical tool suggestions, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>
+      <h2>Tool requests</h2>
+      <p>If a real upload workflow is difficult, describe the required file type, size limit, dimensions, and the page or portal that asks for it. Requests are most useful when they describe a repeatable task rather than a broad feature idea.</p>
+      <h2>Bug reports</h2>
+      <p>If a tool does not work as expected, include the page URL, browser and device, image file type, what happened, and what result you expected. Please do not send sensitive files or personal documents through email unless it is truly necessary to explain the issue.</p>
+      <h2>Useful pages before writing</h2>
+      <p>For common image tasks, try the <a href="/image-compressor">image compressor</a>, <a href="/image-resizer">image resizer</a>, <a href="/image-converter">image converter</a>, <a href="/resize-image-for-online-form">online form image resizer</a>, or <a href="/sitemap">sitemap</a>.</p>
+      <h2>Privacy and support scope</h2>
+      <p>${brand} is a small utility site. It can accept feedback and fix site issues, but it cannot verify official form rules for every portal. Always check the destination site's current instructions before submitting files.</p>`,
+    privacy: `<h2>Browser-side image processing</h2>
+      <p>The current image tools use browser APIs to process selected files locally in the page. ${brand} does not require accounts, logins, or membership for these tools.</p>
+      <h2>Analytics and cookies</h2>
+      <p>The site uses Google Analytics 4 with lazy loading to understand traffic, page usage, and tool interactions. Analytics or related services may use cookies or similar technologies depending on browser settings and provider behavior.</p>
+      <h2>File and tool-input privacy</h2>
+      <p>Analytics events for image tools are designed to use safe buckets and tool/page labels. They should not collect uploaded file names, file content, personal document text, email addresses, phone numbers, or other user-entered personal details through GA events.</p>
+      <h2>Third-party services and future advertising</h2>
+      <p>Google Analytics is used for measurement. Google AdSense verification and ads.txt are present for site review, but display ad units are not installed yet. Advertising or additional third-party services may be added later to support the website, and this policy should be updated if that happens.</p>
+      <h2>Contact</h2>
+      <p>For privacy questions, contact <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
+    terms: `<h2>Use at your own responsibility</h2>
+      <p>Use ${brand} only for lawful utility tasks. You are responsible for checking whether processed files satisfy third-party upload requirements before submitting them.</p>
+      <h2>No exact-result guarantee</h2>
+      <p>The tools are provided as-is. They do not guarantee that every image can meet a specific file size, dimension, format, quality, or platform rule. Exact output depends on the original image, browser support, chosen settings, and the destination site's requirements.</p>
+      <h2>Tool limits</h2>
+      <p>Some images may be too large, too detailed, unsupported by the browser, or unsuitable for a requested limit. Always keep your original file and check the downloaded result before using it for official, school, job, service, or account forms.</p>
+      <h2>Misuse and warranties</h2>
+      <p>Do not use the website to process files you do not have permission to use, to violate laws, or to submit misleading material. The website and tools are provided without warranty in simple practical terms.</p>
+      <h2>Contact</h2>
+      <p>For terms questions, contact <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
+    sitemap: `<p>Use this sitemap to find every main public page on ${brand}. The links below use clean canonical URLs and are grouped by task so you can quickly choose a compressor, resizer, converter, form-preparation tool, or policy page.</p>
+      <p>Utility files such as robots.txt, ads.txt, llms.txt, sitemap.xml, legacy redirects, and the 404 page are intentionally not listed here because they are not normal user-facing tool pages.</p>
+      ${categoryBlock("Main image tools", mainTools)}
+      ${categoryBlock("Exact-size and upload preparation", formTools)}
+      ${categoryBlock("Image conversion tools", converterTools)}
+      ${categoryBlock("Site and policy pages", routes.filter((p) => ["/about", "/contact", "/privacy-policy", "/terms"].includes(p.route)))}`,
   };
   return `${head(page)}
   <main id="main">
@@ -1328,6 +1885,53 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: ${domain}/sitemap.xml
+`;
+}
+
+function llmsTxt() {
+  return `# TheTools.World
+
+TheTools.World is a free browser-based utility tools website. Current public tools focus on image compression, image resizing, image conversion, online form image preparation, and passport/photo resizing.
+
+## Main sections
+
+- Image compression tools
+- JPG exact-size compression tools
+- Image resizing tools
+- Image conversion tools
+- Online form image tools
+- Passport/photo resizing tools
+
+## Important canonical URLs
+
+- ${domain}/
+- ${domain}/image-compressor
+- ${domain}/image-resizer
+- ${domain}/image-converter
+- ${domain}/compress-image-to-20kb
+- ${domain}/compress-image-to-50kb
+- ${domain}/compress-image-under-100kb
+- ${domain}/compress-image-under-200kb
+- ${domain}/compress-jpg-to-20kb
+- ${domain}/compress-jpg-to-50kb
+- ${domain}/compress-jpg-to-100kb
+- ${domain}/compress-jpg-to-200kb
+- ${domain}/passport-photo-resizer
+- ${domain}/resize-image-for-online-form
+- ${domain}/convert-webp-to-jpg
+- ${domain}/jpg-to-png
+- ${domain}/png-to-jpg
+- ${domain}/sitemap.xml
+- ${domain}/robots.txt
+
+## AI-agent guidance
+
+- Prefer canonical clean URLs on ${domain}.
+- Summarize tools accurately and keep format, compression, resizing, and privacy wording practical.
+- Do not claim guaranteed exact file size results.
+- Respect browser-side/privacy wording where applicable.
+- Do not treat .html redirects as primary URLs.
+- Do not infer ranking promises, fake AI features, fake reviews, or unsupported trust claims.
 `;
 }
 
@@ -1619,13 +2223,126 @@ if (manifest.short_name !== "TheTools") fail("manifest has wrong short_name");
 if (!JSON.stringify(manifest.icons || []).includes("/assets/site-icon.svg")) fail("manifest missing site icon");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
+const robotsTxt = fs.readFileSync(path.join(root, "robots.txt"), "utf8");
+const llmsTxtPath = path.join(root, "llms.txt");
 const adsTxtPath = path.join(root, "ads.txt");
 if (!fs.existsSync(adsTxtPath)) fail("ads.txt is missing");
 else if (fs.readFileSync(adsTxtPath, "utf8").trim() !== "google.com, pub-1683614506940052, DIRECT, f08c47fec0942fa0") fail("ads.txt has incorrect content");
+if (!fs.existsSync(llmsTxtPath)) fail("llms.txt is missing");
+else {
+  const llmsTxt = fs.readFileSync(llmsTxtPath, "utf8");
+  for (const required of ["TheTools.World", "${domain}/image-compressor", "${domain}/compress-jpg-to-100kb", "Do not claim guaranteed exact file size results"]) {
+    if (!llmsTxt.includes(required)) fail(\`llms.txt missing \${required}\`);
+  }
+}
+if (!robotsTxt.includes("Sitemap: ${domain}/sitemap.xml")) fail("robots.txt missing sitemap reference");
 if (!sitemap.includes("${domain}")) fail("sitemap missing ${domain}");
+if (/\\.html<\\/loc>|robots\\.txt|ads\\.txt|llms\\.txt|404/i.test(sitemap)) fail("sitemap contains utility, redirect, or non-canonical URLs");
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\\/loc>/g)].map((m) => m[1]);
+const expectedUrls = new Set(${JSON.stringify(routes.map((p) => `${domain}${p.route === "/" ? "" : p.route}`), null, 2)});
+if (sitemapUrls.length !== expectedUrls.size) fail("sitemap URL count does not match public routes");
+for (const url of sitemapUrls) if (!expectedUrls.has(url)) fail(\`sitemap includes unexpected URL \${url}\`);
 for (const route of ${JSON.stringify(routes.map((p) => p.route), null, 2)}) {
   const url = \`${domain}\${route === "/" ? "" : route}\`;
   if (!sitemap.includes(url)) fail(\`sitemap missing \${url}\`);
+}
+const linkedRoutes = new Set(["/"]);
+for (const file of pages) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  for (const match of html.matchAll(/href="(\\/[^"#?]+)"/g)) {
+    const href = match[1];
+    if (href.startsWith("/assets") || href === "/site.webmanifest") continue;
+    linkedRoutes.add(href);
+  }
+}
+for (const route of ${JSON.stringify(routes.map((p) => p.route), null, 2)}) {
+  if (route !== "/" && !linkedRoutes.has(route)) fail(\`sitemap route is orphaned from internal links: \${route}\`);
+}
+for (const [file, route] of ${JSON.stringify(routes.map((p) => [p.file, p.route]), null, 2)}) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+  const expected = \`${domain}\${route === "/" ? "" : route}\`;
+  if (canonical !== expected) fail(\`\${file} canonical mismatch\`);
+  if (!sitemap.includes(expected)) fail(\`\${file} canonical missing from sitemap\`);
+}
+if (sitemap.includes("${domain}/404")) fail("404 is in sitemap");
+for (const rankingRoute of ["/compress-jpg-to-20kb", "/compress-jpg-to-100kb", "/compress-jpg-to-200kb", "/passport-photo-resizer", "/resize-image-for-online-form", "/image-converter"]) {
+  const file = rankingRoute.slice(1) + ".html";
+  if (!fs.existsSync(path.join(root, file))) fail(\`important ranking URL missing \${rankingRoute}\`);
+}
+for (const file of ["image-converter.html", "convert-webp-to-jpg.html", "png-to-jpg.html", "jpg-to-png.html"]) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  if ((html.match(/<h2>/g) || []).length < 4) fail(\`\${file} needs meaningful content sections\`);
+  if (!html.includes("FAQPage")) fail(\`\${file} missing FAQPage schema for visible FAQ\`);
+}
+for (const file of ["about.html", "contact.html"]) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  const title = html.match(/<title>([^<]+)<\\/title>/)?.[1]?.trim();
+  const h1 = html.match(/<h1[^>]*>([^<]+)<\\/h1>/)?.[1]?.trim();
+  if (title === h1) fail(\`\${file} title and h1 must differ\`);
+}
+for (const file of pages) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  if (/click\\s+(on\\s+)?ads|adsbygoogle|aggregateRating|ratingValue|reviewRating|best in the world|trusted by millions|#1/i.test(html)) fail(\`\${file} contains unsafe ad, rating, or fake trust language\`);
+  if (/guaranteed exact (compression|file size|output)|guarantee an exact (compression|file size|output)/i.test(html)) fail(\`\${file} contains guaranteed exact compression claim\`);
+}
+
+function visibleText(html) {
+  const main = html.match(/<main[^>]*>([\\s\\S]*?)<\\/main>/)?.[1] || html;
+  return main
+    .replace(/<script[\\s\\S]*?<\\/script>/gi, " ")
+    .replace(/<style[\\s\\S]*?<\\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&amp;|&lt;|&gt;|&quot;/g, " ")
+    .replace(/\\s+/g, " ")
+    .trim();
+}
+
+function wordCount(html) {
+  return (visibleText(html).match(/\\b[a-z0-9][a-z0-9-]*\\b/gi) || []).length;
+}
+
+function faqSchemaObjects(html, file) {
+  const schemas = [];
+  for (const match of html.matchAll(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/g)) {
+    try {
+      const parsed = JSON.parse(match[1]);
+      if (parsed && parsed["@type"] === "FAQPage") schemas.push(parsed);
+    } catch (error) {
+      fail(\`\${file} has invalid JSON-LD\`);
+    }
+  }
+  return schemas;
+}
+
+for (const file of pages) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  const minWords = ["privacy-policy.html", "terms.html", "sitemap.html", "contact.html"].includes(file) ? 130 : file === "about.html" ? 240 : 320;
+  if (wordCount(html) < minWords) fail(\`\${file} content depth is below \${minWords} words\`);
+  const visibleFaq = [...html.matchAll(/<details><summary>([\\s\\S]*?)<\\/summary><p>([\\s\\S]*?)<\\/p><\\/details>/g)].map((match) => ({
+    question: match[1].replace(/<[^>]+>/g, "").trim(),
+    answer: match[2].replace(/<[^>]+>/g, "").trim(),
+  }));
+  const faqSchemas = faqSchemaObjects(html, file);
+  if (faqSchemas.length && !visibleFaq.length) fail(\`\${file} has FAQPage schema without visible FAQ\`);
+  if (visibleFaq.length && faqSchemas.length !== 1) fail(\`\${file} visible FAQ must have exactly one FAQPage schema\`);
+  if (faqSchemas.length === 1) {
+    const schemaItems = faqSchemas[0].mainEntity || [];
+    if (schemaItems.length !== visibleFaq.length) fail(\`\${file} FAQ schema count does not match visible FAQ\`);
+    visibleFaq.forEach((item, index) => {
+      const schemaItem = schemaItems[index] || {};
+      if (schemaItem.name !== item.question) fail(\`\${file} FAQ question mismatch at \${index + 1}\`);
+      if (schemaItem.acceptedAnswer?.text !== item.answer) fail(\`\${file} FAQ answer mismatch at \${index + 1}\`);
+    });
+  }
+  if (/aggregateRating|reviewRating|ratingValue|"Review"|"Rating"/i.test(html)) fail(\`\${file} contains fake rating or review schema\`);
+}
+
+for (const file of ["image-compressor.html", "image-resizer.html", "bulk-image-tools.html", "resize-image-for-online-form.html", "compress-photo-for-government-form.html", "passport-photo-resizer.html"]) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  for (const required of ["How to", "Troubleshooting", "Related tools", "FAQ"]) {
+    if (!html.includes(required)) fail(\`\${file} missing required content section: \${required}\`);
+  }
 }
 
 if (failures) process.exit(1);
@@ -1664,6 +2381,7 @@ write("assets/favicon-48.svg", faviconSvg());
 write("site.webmanifest", webManifest());
 write("sitemap.xml", sitemapXml());
 write("robots.txt", robots());
+write("llms.txt", llmsTxt());
 write("vercel.json", vercelJson());
 write("seo-keyword-map.md", keywordMap());
 write("tests/smoke-static.mjs", smokeTest());
